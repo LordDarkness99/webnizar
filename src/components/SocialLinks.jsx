@@ -15,7 +15,7 @@ const socialLinks = [
     displayName: "Let's Connect",
     subText: "on LinkedIn",
     icon: Linkedin,
-    url: "https://www.linkedin.com/in/kevin-gultom31",
+    url: "https://www.linkedin.com/in/nizar-alif-ramadhan-5ba1a2315/",
     color: "#0A66C2",
     gradient: "from-[#0A66C2] to-[#0077B5]",
     isPrimary: true,
@@ -23,34 +23,25 @@ const socialLinks = [
   {
     name: "Instagram",
     displayName: "Instagram",
-    subText: "@kevgtm",
+    subText: "@nizar.ramm",
     icon: Instagram,
-    url: "https://www.instagram.com/kevgtm",
+    url: "https://www.instagram.com/nizar.ramm?igsh=MWg2ODRoOXg5Zm4x",
     color: "#E4405F",
     gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]",
   },
   {
-    name: "YouTube",
-    displayName: "Youtube",
-    subText: "@kevingtm31",
-    icon: Youtube,
-    url: "https://www.youtube.com/@kevingtm31",
-    color: "#FF0000",
-    gradient: "from-[#FF0000] to-[#CC0000]",
-  },
-  {
     name: "GitHub",
     displayName: "Github",
-    subText: "@kevingultom",
+    subText: "@LordDarknes",
     icon: Github,
-    url: "https://github.com/kevingultom",
+    url: "https://github.com/LordDarkness99",
     color: "#ffffff",
     gradient: "from-[#333] to-[#24292e]",
   },
   {
     name: "TikTok",
     displayName: "Tiktok",
-    subText: "@movingtime",
+    subText: "@nizramlif",
     icon: ({ className, ...props }) => (
       <svg
         width="24px"
@@ -88,7 +79,7 @@ const socialLinks = [
         </g>
       </svg>
     ),
-    url: "https://tiktok.com/@movingtime",
+    url: "https://www.tiktok.com/@nizramlif?_r=1&_t=ZS-953xSVN66o0",
     color: "black",
     gradient: "from-[#000000] via-[#25F4EE] to-[#FE2C55]",
   },
@@ -97,7 +88,7 @@ const socialLinks = [
 const SocialLinks = () => {
   const linkedIn = socialLinks.find((link) => link.isPrimary);
   const otherLinks = socialLinks.filter((link) => !link.isPrimary);
-  const [instagram, youtube, github, tiktok] = otherLinks;
+  const [instagram, github, tiktok] = otherLinks;
 
   useEffect(() => {
     AOS.init({
@@ -178,9 +169,9 @@ const SocialLinks = () => {
           </div>
         </a>
 
-        {/* Second Row - Instagram & YouTube */}
+        {/* Second Row - Instagram & GitHub */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[instagram, youtube].map((link, index) => (
+          {[instagram, github].map((link, index) => (
             <a
               key={link.name}
               href={link.url}
@@ -237,9 +228,9 @@ const SocialLinks = () => {
           ))}
         </div>
 
-        {/* Third Row - GitHub & TikTok */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[github, tiktok].map((link, index) => (
+        {/* Third Row - TikTok */}
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+          {[tiktok].map((link, index) => (
             <a
               key={link.name}
               href={link.url}

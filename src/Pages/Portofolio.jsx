@@ -158,20 +158,20 @@ export default function FullWidthTabs() {
       // Supabase mengembalikan data dalam properti 'data'
       const projectData = (projectsResponse.data || []).map(p => ({
         id: p.id,
-        Title: p.title,
-        Description: p.description,
-        Img: p.img,
-        Link: p.link,
-        Github: p.github,
-        TechStack: p.tech_stack || [],
-        Features: p.features || [],
+        Title: p.Title,
+        Description: p.Description,
+        Img: p.Img,
+        Link: p.Link,
+        Github: p.Github,
+        TechStack: p.TechStack || [],
+        Features: p.Features || [],
       }));  
 
       console.log("PROJECTS FROM SUPABASE:", projectData);
 
       const certificateData = (certificatesResponse.data || []).map(c => ({
         id: c.id,
-        Img: c.img,
+        Img: c.Img,
         Link: c.link,
       }));
 

@@ -45,7 +45,7 @@ const ContactPage = () => {
 
     try {
       // Ganti dengan email Anda di FormSubmit
-      const formSubmitUrl = 'https://formsubmit.co/kevingultom3110@gmail.com';
+      const formSubmitUrl = 'https://formsubmit.co/nizaram4dhan@gmail.com';
       
       // Siapkan data form untuk FormSubmit
       const submitData = new FormData();
@@ -64,8 +64,8 @@ const ContactPage = () => {
 
      
       Swal.fire({
-        title: 'Berhasil!',
-        text: 'Pesan Anda telah berhasil terkirim!',
+        title: 'Success!',
+        text: 'Your message has been successfully sent!',
         icon: 'success',
         confirmButtonColor: '#3b82f6',
         timer: 2000,
@@ -81,8 +81,8 @@ const ContactPage = () => {
     } catch (error) {
       if (error.request && error.request.status === 0) {
         Swal.fire({
-          title: 'Berhasil!',
-          text: 'Pesan Anda telah berhasil terkirim!',
+          title: 'Succes!',
+          text: 'Your message has been successfully sent!',
           icon: 'success',
           confirmButtonColor: '#3b82f6',
           timer: 2000,
@@ -96,8 +96,8 @@ const ContactPage = () => {
         });
       } else {
         Swal.fire({
-          title: 'Gagal!',
-          text: 'Terjadi kesalahan. Silakan coba lagi nanti.',
+          title: 'Failed!',
+          text: 'An error occurred. Please try again later.',
           icon: 'error',
           confirmButtonColor: '#3b82f6'
         });
@@ -133,7 +133,7 @@ const ContactPage = () => {
           data-aos-duration="1100"
           className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2"
         >
-          Punya pertanyaan atau ingin berdiskusi? Kirimkan pesan, saya akan membalasnya segera.
+          Have a question or want to chat? Send me a message, and I’ll get back to you right away.
         </p>
       </div>
 
@@ -149,10 +149,10 @@ const ContactPage = () => {
             <div className="flex justify-between items-start mb-8">
               <div>
                 <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-blue-500">
-                  Hubungi
+                  Contact
                 </h2>
                 <p className="text-gray-400">
-                  Mau diskusi sesuatu? Kirim pesan aja, kita ngobrol bareng!
+                  Want to talk about something? Just send me a message, and let’s chat!
                 </p>
               </div>
               <Share2 className="w-10 h-10 text-blue-500 opacity-50" />
@@ -171,7 +171,7 @@ const ContactPage = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Nama Anda"
+                  placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -188,7 +188,7 @@ const ContactPage = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="Email Anda"
+                  placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
                   disabled={isSubmitting}
@@ -204,7 +204,7 @@ const ContactPage = () => {
                 <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
                 <textarea
                   name="message"
-                  placeholder="Pesan Anda"
+                  placeholder="Your Message"
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isSubmitting}

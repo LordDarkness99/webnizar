@@ -21,7 +21,7 @@ const Header = memo(() => (
       data-aos-duration="800"
     >
       <Sparkles className="w-5 h-5 text-blue-400" />
-      Transforming ideas into digital experiences
+      Transforming data into intelligent insights and experiences.
       <Sparkles className="w-5 h-5 text-blue-400" />
     </p>
   </div>
@@ -50,7 +50,7 @@ const ProfileImage = memo(() => (
           <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 via-transparent to-gray-500/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
           
           <img
-            src="/profil1_remove.png"
+            src="/niz2.png"
             alt="Profile"
             className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-2"
             loading="lazy"
@@ -205,7 +205,7 @@ const AboutPage = () => {
                 data-aos="fade-right"
                 data-aos-duration="1300"
               >
-              Kevin Gultom
+              Nizar Rama
               </span>
             </h2>
             
@@ -214,8 +214,8 @@ const AboutPage = () => {
               data-aos="fade-right"
               data-aos-duration="1500"
             >
-            I am a 6th-semester Information Systems student at Institut Teknologi Del with a strong interest in web development, artificial intelligence, and databases. Currently, I focus on leveraging AI technology to create more effective solutions.
-            I also enjoy learning new digital technologies and tools to continuously improve my skills and broaden my knowledge. </p>
+            I am a 4th-semester Information Systems student at State University of SUrabaya with a strong interest in Machine Learning, data science, and artificial intelligence. Currently, I focus on leveraging Machine Learning techniques to build intelligent and data-driven solutions.
+            I am also passionate about exploring new technologies, tools, and algorithms to continuously enhance my skills and expand my knowledge in the field of Machine Learning. </p>
 
                {/* Quote Section */}
       <div 
@@ -235,12 +235,12 @@ const AboutPage = () => {
         </div>
         
         <blockquote className="text-gray-300 text-center lg:text-left italic font-medium text-sm relative z-10 pl-6">
-          "Leveraging AI as a professional tool, not a replacement."
+          "Building intelligent solutions with Machine Learning as a tool, not a substitute for human insight."
         </blockquote>
       </div>
 
             <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 lg:gap-4 lg:px-0 w-full">
-              <a href="https://drive.google.com/file/d/119YYWMO46MB05z9GgvMf49h4S7IRnwlH/view?usp=sharing" className="w-full lg:w-auto">
+              <a href="https://drive.google.com/file/d/1LExMn7KKyDgfpG_f5EEQE3e0sf4X3Y3X/view?usp=drive_link" className="w-full lg:w-auto">
               <button 
                 data-aos="fade-up"
                 data-aos-duration="800"

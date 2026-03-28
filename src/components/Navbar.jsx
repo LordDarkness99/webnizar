@@ -80,7 +80,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center gap-2">
                         <img
-                            src="/icon1.png"
+                            src="/logo_ni2.png"
                             alt="Logo"
                             className="w-8 h-8 object-contain"
                         />
@@ -89,7 +89,7 @@ const Navbar = () => {
                             onClick={(e) => scrollToSection(e, "#Home")}
                             className="text-xl font-bold bg-gradient-to-r from-blue-500 to-gray-600 bg-clip-text text-transparent"
                         >
-                            KEVin.
+                            NIZAR.
                         </a>
                     </div>
         
