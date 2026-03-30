@@ -7,7 +7,7 @@ import { WhatsApp } from "@mui/icons-material"
 
 // Memoized Components
 const StatusBadge = memo(() => (
-  <div className="inline-block w-full sm:w-auto" data-aos="zoom-in" data-aos-delay="400">
+  <div className="inline-block w-full sm:w-auto mt-4 sm:mt-6" data-aos="zoom-in" data-aos-delay="400">
     <div className="relative group inline-block">
       <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-700 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
       <div className="relative px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 whitespace-nowrap">
