@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Share2, User, Mail, MessageSquare, Send } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Share2, User, Mail, MessageSquare, Send, Sparkles } from "lucide-react";
 import SocialLinks from "../components/SocialLinks";
 import Komentar from "../components/Commentar";
 import Swal from "sweetalert2";
@@ -19,6 +18,7 @@ const ContactPage = () => {
   useEffect(() => {
     AOS.init({
       once: false,
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
     });
   }, []);
 
@@ -38,23 +38,23 @@ const ContactPage = () => {
       title: 'Mengirim Pesan...',
       html: 'Harap tunggu selagi kami mengirim pesan Anda',
       allowOutsideClick: false,
+      background: '#1d1d1f',
+      color: '#f5f5f7',
       didOpen: () => {
         Swal.showLoading();
       }
     });
 
     try {
-      // Ganti dengan email Anda di FormSubmit
       const formSubmitUrl = 'https://formsubmit.co/nizaram4dhan@gmail.com';
       
-      // Siapkan data form untuk FormSubmit
       const submitData = new FormData();
       submitData.append('name', formData.name);
       submitData.append('email', formData.email);
       submitData.append('message', formData.message);
       submitData.append('_subject', 'Pesan Baru dari Website Portfolio');
-      submitData.append('_captcha', 'false'); // Nonaktifkan captcha
-      submitData.append('_template', 'table'); // Format email sebagai tabel
+      submitData.append('_captcha', 'false');
+      submitData.append('_template', 'table');
 
       await axios.post(formSubmitUrl, submitData, {
         headers: {
@@ -62,12 +62,13 @@ const ContactPage = () => {
         },
       });
 
-     
       Swal.fire({
         title: 'Success!',
         text: 'Your message has been successfully sent!',
         icon: 'success',
-        confirmButtonColor: '#3b82f6',
+        background: '#1d1d1f',
+        color: '#f5f5f7',
+        confirmButtonColor: '#0071E3',
         timer: 2000,
         timerProgressBar: true
       });
@@ -81,10 +82,12 @@ const ContactPage = () => {
     } catch (error) {
       if (error.request && error.request.status === 0) {
         Swal.fire({
-          title: 'Succes!',
+          title: 'Success!',
           text: 'Your message has been successfully sent!',
           icon: 'success',
-          confirmButtonColor: '#3b82f6',
+          background: '#1d1d1f',
+          color: '#f5f5f7',
+          confirmButtonColor: '#0071E3',
           timer: 2000,
           timerProgressBar: true
         });
@@ -99,7 +102,9 @@ const ContactPage = () => {
           title: 'Failed!',
           text: 'An error occurred. Please try again later.',
           icon: 'error',
-          confirmButtonColor: '#3b82f6'
+          background: '#1d1d1f',
+          color: '#f5f5f7',
+          confirmButtonColor: '#0071E3'
         });
       }
     } finally {
@@ -108,66 +113,53 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="px-[5%] sm:px-[5%] lg:px-[10%] " >
-      <div className="text-center lg:mt-[5%] mt-10 mb-2 sm:px-0 px-[5%]">
-        <h2
-          data-aos="fade-down"
-          data-aos-duration="1000"
-          className="inline-block text-3xl md:text-5xl font-bold text-center mx-auto text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-blue-500"
-        >
-          <span
-            style={{
-              color: "#3b82f6",
-              backgroundImage:
-                "linear-gradient(45deg, #4b5563 10%, #3b82f6 93%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Contact Me
-          </span>
-        </h2>
-        <p
-          data-aos="fade-up"
-          data-aos-duration="1100"
-          className="text-slate-400 max-w-2xl mx-auto text-sm md:text-base mt-2"
-        >
-          Have a question or want to chat? Send me a message, and I’ll get back to you right away.
-        </p>
+    <div className="min-h-screen bg-[#000000] text-[#f5f5f7] font-sans px-6 sm:px-[6%] lg:px-[10%] py-20 relative selection:bg-[#0066CC] selection:text-white" id="Contact">
+      
+      {/* Apple-style Background Ambient Illumination */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[30%] left-[10%] w-[45vw] h-[45vw] rounded-full bg-blue-600/10 blur-[150px]" />
+        <div className="absolute bottom-[20%] right-[5%] w-[45vw] h-[45vw] rounded-full bg-indigo-600/10 blur-[160px]" />
       </div>
 
-      <div
-        className="h-auto py-10 flex items-center justify-center 2xl:pr-[3.1%] lg:pr-[3.8%]  md:px-0"
-        id="Contact"
-      >
-        <div className="container px-[1%] grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12" >
-          <div
+      <div className="relative z-10 max-w-7xl mx-auto">
         
-            className="bg-white/5 backdrop-blur-xl rounded-3xl shadow-2xl p-5 py-10 sm:p-10 transform transition-all duration-500 hover:shadow-blue-500/10"
+        {/* Header Section */}
+        <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+          <span className="text-xs sm:text-sm font-semibold tracking-widest text-[#0071E3] uppercase block mb-3">
+            Get in Touch
+          </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#f5f5f7]">
+            Contact Me.
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-[#86868b] max-w-xl mx-auto font-normal">
+            Have a question or want to chat? Send me a message, and I’ll get back to you right away.
+          </p>
+        </div>
+
+        {/* Main Grid Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          {/* Form Card (Apple Glassmorphism Style) */}
+          <div 
+            className="lg:col-span-5 bg-[#1d1d1f]/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 p-6 sm:p-10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] transition-all duration-500 hover:border-white/20"
+            data-aos="fade-right"
+            data-aos-duration="1100"
           >
             <div className="flex justify-between items-start mb-8">
               <div>
-                <h2 className="text-4xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-blue-500">
-                  Contact
-                </h2>
-                <p className="text-gray-400">
-                  Want to talk about something? Just send me a message, and let’s chat!
+                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#f5f5f7] mb-2">
+                  Let's Talk
+                </h3>
+                <p className="text-sm text-[#86868b] font-normal">
+                  Want to talk about something? Send a message and let's connect.
                 </p>
               </div>
-              <Share2 className="w-10 h-10 text-blue-500 opacity-50" />
+              <Share2 className="w-8 h-8 text-[#0071E3] opacity-80" />
             </div>
 
-            <form 
-              onSubmit={handleSubmit}
-              className="space-y-6"
-            >
-              <div
-                data-aos="fade-up"
-                data-aos-delay="100"
-                className="relative group"
-              >
-                <User className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div data-aos="fade-up" data-aos-delay="100" className="relative group">
+                <User className="absolute left-4 top-4 w-5 h-5 text-[#86868b] group-focus-within:text-[#0071E3] transition-colors" />
                 <input
                   type="text"
                   name="name"
@@ -175,16 +167,13 @@ const ContactPage = () => {
                   value={formData.name}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 hover:border-blue-500/30 disabled:opacity-50"
+                  className="w-full p-4 pl-12 bg-white/5 rounded-2xl border border-white/10 placeholder-[#86868b] text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
                   required
                 />
               </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="200"
-                className="relative group"
-              >
-                <Mail className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+
+              <div data-aos="fade-up" data-aos-delay="200" className="relative group">
+                <Mail className="absolute left-4 top-4 w-5 h-5 text-[#86868b] group-focus-within:text-[#0071E3] transition-colors" />
                 <input
                   type="email"
                   name="email"
@@ -192,46 +181,50 @@ const ContactPage = () => {
                   value={formData.email}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 hover:border-blue-500/30 disabled:opacity-50"
+                  className="w-full p-4 pl-12 bg-white/5 rounded-2xl border border-white/10 placeholder-[#86868b] text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
                   required
                 />
               </div>
-              <div
-                data-aos="fade-up"
-                data-aos-delay="300"
-                className="relative group"
-              >
-                <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-gray-400 group-focus-within:text-blue-500 transition-colors" />
+
+              <div data-aos="fade-up" data-aos-delay="300" className="relative group">
+                <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-[#86868b] group-focus-within:text-[#0071E3] transition-colors" />
                 <textarea
                   name="message"
                   placeholder="Your Message"
                   value={formData.message}
                   onChange={handleChange}
                   disabled={isSubmitting}
-                  className="w-full resize-none p-4 pl-12 bg-white/10 rounded-xl border border-white/20 placeholder-gray-500 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all duration-300 hover:border-blue-500/30 h-[9.9rem] disabled:opacity-50"
+                  className="w-full resize-none p-4 pl-12 bg-white/5 rounded-2xl border border-white/10 placeholder-[#86868b] text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all duration-300 h-36 disabled:opacity-50"
                   required
                 />
               </div>
+
               <button
                 data-aos="fade-up"
                 data-aos-delay="400"
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-gray-600 to-blue-500 text-white py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-blue-500/20 active:scale-[0.98] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full bg-[#0071E3] hover:bg-[#0077ED] text-white py-4 rounded-full font-medium transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_14px_rgba(0,113,227,0.3)] active:scale-[0.98] flex items-center justify-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send className="w-5 h-5" />
-                {isSubmitting ? 'Send...' : 'Send a message'}
+                <Send className="w-4 h-4" />
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
 
-            <div className="mt-10 pt-6 border-t border-white/10 flex justify-center space-x-6">
+            <div className="mt-8 pt-6 border-t border-white/10 flex justify-center">
               <SocialLinks />
             </div>
           </div>
 
-          <div className="  bg-white/5 backdrop-blur-xl rounded-3xl p-3 py-3 md:p-10 md:py-8 shadow-2xl transform transition-all duration-500 hover:shadow-blue-500/10">
+          {/* Comments Section (Apple Glassmorphism Style) */}
+          <div 
+            className="lg:col-span-7 bg-[#1d1d1f]/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 p-6 sm:p-10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] transition-all duration-500 hover:border-white/20"
+            data-aos="fade-left"
+            data-aos-duration="1100"
+          >
             <Komentar />
           </div>
+
         </div>
       </div>
     </div>

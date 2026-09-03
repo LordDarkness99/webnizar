@@ -3,7 +3,6 @@ import {
   Linkedin,
   Github,
   Instagram,
-  Youtube,
   ExternalLink,
 } from "lucide-react";
 import AOS from "aos";
@@ -32,7 +31,7 @@ const socialLinks = [
   {
     name: "GitHub",
     displayName: "Github",
-    subText: "@LordDarknes",
+    subText: "@LordDarkness99",
     icon: Github,
     url: "https://github.com/LordDarkness99",
     color: "#ffffff",
@@ -50,6 +49,7 @@ const socialLinks = [
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
+        {...props}
       >
         <title>Tiktok</title>
         <g
@@ -73,14 +73,14 @@ const socialLinks = [
             <path
               d="M21.6220653,23.5764245 L21.6220653,11.392751 C23.8996163,12.9794449 26.6204327,13.7141388 29.5251673,13.7633633 L29.5251673,9.44581224 C28.0822286,9.04613878 26.7617388,8.29381224 25.6824735,7.25617959 C25.5110449,7.09724082 25.3494122,6.92826122 25.1926776,6.75438367 C24.7922694,6.4752 24.4126776,6.16736327 24.056351,5.83356735 C22.8186367,4.66026122 22.0041061,3.11030204 21.7396163,1.42540408 L17.3730857,1.42540408 L17.3730857,23.7111184 C17.3730857,27.7957714 15.1690041,29.9560163 12.4334939,29.9560163 C11.6569224,29.9538122 10.8918612,29.7681796 10.2005143,29.414302 C9.50941224,29.0601796 8.91186122,28.5476082 8.45635102,27.9182204 C7.49071837,27.3946286 6.72712653,26.5636898 6.2865551,25.5571592 C5.84573878,24.5508735 5.75341224,23.4260571 6.02377959,22.3609959 C6.29390204,21.2959347 6.91177959,20.3516082 7.77896327,19.6771592 C8.64639184,19.0027102 9.71365714,18.6365878 10.8122694,18.6365878 C11.3564327,18.6412408 11.8961878,18.7362612 12.4090041,18.9182204 L12.4090041,14.1894857 C10.304351,14.1921796 8.24647347,14.8093224 6.48786122,15.9657306 C4.72924898,17.1221388 3.3470449,18.7666286 2.51047347,20.6978939 C1.67390204,22.6291592 1.41969796,24.7627102 1.77896327,26.8362612 C2.13822857,28.9098122 3.09553469,30.8334857 4.53308571,32.3704653 C6.36271837,33.6848327 8.55945306,34.3906286 10.8122694,34.3884296 C16.7730857,34.3884296 21.6220653,30.7445878 21.6220653,23.5764245"
               id="Fill-5"
-              fill="#000000"
+              fill="#ffffff"
             ></path>
           </g>
         </g>
       </svg>
     ),
     url: "https://www.tiktok.com/@nizramlif?_r=1&_t=ZS-953xSVN66o0",
-    color: "black",
+    color: "#ffffff",
     gradient: "from-[#000000] via-[#25F4EE] to-[#FE2C55]",
   },
 ];
@@ -93,17 +93,17 @@ const SocialLinks = () => {
   useEffect(() => {
     AOS.init({
       offset: 10,
-     
+      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
     });
   }, []);
 
   return (
-    <div className="w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-6 py-8 backdrop-blur-xl">
+    <div className="w-full bg-[#1d1d1f]/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 p-6 sm:p-8 shadow-[0_30px_100px_rgba(0,0,0,0.6)] font-sans">
       <h3
-        className="text-xl font-semibold text-white mb-6 flex items-center gap-2"
+        className="text-xl font-semibold text-[#f5f5f7] mb-6 flex items-center gap-3 tracking-tight"
         data-aos="fade-down" 
       >
-        <span className="inline-block w-8 h-1 bg-blue-500 rounded-full"></span>
+        <span className="inline-block w-8 h-1 bg-[#0071E3] rounded-full"></span>
         Connect With Me
       </h3>
 
@@ -113,15 +113,15 @@ const SocialLinks = () => {
           href={linkedIn.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative flex items-center justify-between p-4 rounded-lg 
+          className="group relative flex items-center justify-between p-4 rounded-2xl 
                      bg-white/5 border border-white/10 overflow-hidden
-                     hover:border-white/20 transition-all duration-500"
+                     hover:border-white/25 transition-all duration-500 hover:scale-[1.01]"
           data-aos="fade-up"
           data-aos-delay="100" 
         >
           {/* Hover Gradient Background */}
           <div
-            className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
+            className={`absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500
                        bg-gradient-to-r ${linkedIn.gradient}`}
           />
 
@@ -130,13 +130,13 @@ const SocialLinks = () => {
             {/* Icon Container */}
             <div className="relative flex items-center justify-center">
               <div
-                className="absolute inset-0 opacity-20 rounded-md transition-all duration-500
+                className="absolute inset-0 opacity-20 rounded-xl transition-all duration-500
                                group-hover:scale-110 group-hover:opacity-30"
                 style={{ backgroundColor: linkedIn.color }}
               />
-              <div className="relative p-2 rounded-md">
+              <div className="relative p-2.5 rounded-xl bg-white/5 border border-white/10">
                 <linkedIn.icon
-                  className="w-6 h-6 transition-all duration-500 group-hover:scale-105"
+                  className="w-5 h-5 transition-all duration-500 group-hover:scale-105"
                   style={{ color: linkedIn.color }}
                 />
               </div>
@@ -144,10 +144,10 @@ const SocialLinks = () => {
 
             {/* Text Container */}
             <div className="flex flex-col">
-              <span className="text-lg font-bold pt-[0.2rem] text-gray-200 tracking-tight leading-none group-hover:text-white transition-colors duration-300">
+              <span className="text-base font-semibold text-[#f5f5f7] tracking-tight leading-none group-hover:text-white transition-colors duration-300 mb-1">
                 {linkedIn.displayName}
               </span>
-              <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+              <span className="text-xs text-[#86868b] group-hover:text-gray-300 transition-colors duration-300">
                 {linkedIn.subText}
               </span>
             </div>
@@ -155,7 +155,7 @@ const SocialLinks = () => {
 
           {/* External Link */}
           <ExternalLink
-            className="relative w-5 h-5 text-gray-500 group-hover:text-white
+            className="relative w-4 h-4 text-[#86868b] group-hover:text-[#f5f5f7]
                        opacity-0 group-hover:opacity-100 transition-all duration-300
                        transform group-hover:translate-x-0 -translate-x-1"
           />
@@ -177,26 +177,26 @@ const SocialLinks = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 p-4 rounded-xl 
+              className="group relative flex items-center gap-3.5 p-4 rounded-2xl 
                                bg-white/5 border border-white/10 overflow-hidden
-                               hover:border-white/20 transition-all duration-500"
+                               hover:border-white/25 transition-all duration-500 hover:scale-[1.01]"
               data-aos="fade-up" 
               data-aos-delay={200 + index * 100} 
             >
               <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
+                className={`absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500
                                      bg-gradient-to-r ${link.gradient}`}
               />
 
               <div className="relative flex items-center justify-center">
                 <div
-                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
+                  className="absolute inset-0 opacity-20 rounded-xl transition-all duration-500
                                        group-hover:scale-125 group-hover:opacity-30"
                   style={{ backgroundColor: link.color }}
                 />
-                <div className="relative p-2 rounded-lg">
+                <div className="relative p-2.5 rounded-xl bg-white/5 border border-white/10">
                   <link.icon
-                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
+                    className="w-4 h-4 transition-all duration-500 group-hover:scale-110"
                     style={{ color: link.color }}
                   />
                 </div>
@@ -204,16 +204,16 @@ const SocialLinks = () => {
 
               {/* Text Container */}
               <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+                <span className="text-sm font-semibold text-[#f5f5f7] group-hover:text-white transition-colors duration-300 truncate">
                   {link.displayName}
                 </span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
+                <span className="text-xs text-[#86868b] truncate group-hover:text-gray-300 transition-colors duration-300">
                   {link.subText}
                 </span>
               </div>
 
               <ExternalLink
-                className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
+                className="w-4 h-4 text-[#86868b] group-hover:text-[#f5f5f7] ml-auto
                                        opacity-0 group-hover:opacity-100 transition-all duration-300
                                        transform group-hover:translate-x-0 -translate-x-2"
               />
@@ -236,26 +236,26 @@ const SocialLinks = () => {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex items-center gap-3 p-4 rounded-xl 
+              className="group relative flex items-center gap-3.5 p-4 rounded-2xl 
                                bg-white/5 border border-white/10 overflow-hidden
-                               hover:border-white/20 transition-all duration-500"
+                               hover:border-white/25 transition-all duration-500 hover:scale-[1.01]"
               data-aos="fade-up" 
               data-aos-delay={400 + index * 100}
             >
               <div
-                className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500
+                className={`absolute inset-0 opacity-0 group-hover:opacity-15 transition-opacity duration-500
                                      bg-gradient-to-r ${link.gradient}`}
               />
 
               <div className="relative flex items-center justify-center">
                 <div
-                  className="absolute inset-0 opacity-20 rounded-lg transition-all duration-500
+                  className="absolute inset-0 opacity-20 rounded-xl transition-all duration-500
                                        group-hover:scale-125 group-hover:opacity-30"
                   style={{ backgroundColor: link.color }}
                 />
-                <div className="relative p-2 rounded-lg">
+                <div className="relative p-2.5 rounded-xl bg-white/5 border border-white/10">
                   <link.icon
-                    className="w-5 h-5 transition-all duration-500 group-hover:scale-110"
+                    className="w-4 h-4 transition-all duration-500 group-hover:scale-110"
                     style={{ color: link.color }}
                   />
                 </div>
@@ -263,16 +263,16 @@ const SocialLinks = () => {
 
               {/* Text Container */}
               <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors duration-300">
+                <span className="text-sm font-semibold text-[#f5f5f7] group-hover:text-white transition-colors duration-300 truncate">
                   {link.displayName}
                 </span>
-                <span className="text-xs text-gray-400 truncate group-hover:text-gray-300 transition-colors duration-300">
+                <span className="text-xs text-[#86868b] truncate group-hover:text-gray-300 transition-colors duration-300">
                   {link.subText}
                 </span>
               </div>
 
               <ExternalLink
-                className="w-4 h-4 text-gray-500 group-hover:text-white ml-auto
+                className="w-4 h-4 text-[#86868b] group-hover:text-[#f5f5f7] ml-auto
                                        opacity-0 group-hover:opacity-100 transition-all duration-300
                                        transform group-hover:translate-x-0 -translate-x-2"
               />

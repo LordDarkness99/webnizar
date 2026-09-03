@@ -5,19 +5,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { supabase } from '../supabase';
 
-
 const Comment = memo(({ comment, formatDate, index, isPinned = false }) => (
     <div 
-        className={`px-4 pt-4 pb-2 rounded-xl border transition-all group hover:shadow-lg hover:-translate-y-0.5 ${
+        className={`px-4 pt-4 pb-2 rounded-2xl border transition-all group hover:shadow-lg hover:-translate-y-0.5 ${
             isPinned 
-                ? 'bg-gradient-to-r from-blue-500/10 to-gray-500/10 border-blue-500/30 hover:bg-gradient-to-r hover:from-blue-500/15 hover:to-gray-500/15' 
-                : 'bg-white/5 border-white/10 hover:bg-white/10'
+                ? 'bg-blue-500/10 border-blue-500/30 hover:bg-blue-500/15' 
+                : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
         }`}
     >
         {isPinned && (
-            <div className="flex items-center gap-2 mb-3 text-blue-400">
+            <div className="flex items-center gap-2 mb-3 text-[#0071E3]">
                 <Pin className="w-4 h-4" />
-                <span className="text-xs font-medium uppercase tracking-wide">Pinned Comment</span>
+                <span className="text-xs font-semibold uppercase tracking-wide">Pinned Comment</span>
             </div>
         )}
         <div className="flex items-start gap-3">
@@ -25,37 +24,37 @@ const Comment = memo(({ comment, formatDate, index, isPinned = false }) => (
                 <img
                     src={comment.profile_image}
                     alt={`${comment.user_name}'s profile`}
-                    className={`w-10 h-10 rounded-full object-cover border-2 flex-shrink-0  ${
-                        isPinned ? 'border-blue-500/50' : 'border-blue-500/30'
+                    className={`w-10 h-10 rounded-full object-cover border-2 flex-shrink-0 ${
+                        isPinned ? 'border-[#0071E3]/50' : 'border-white/10'
                     }`}
                     loading="lazy"
                 />
             ) : (
-                <div className={`p-2 rounded-full text-blue-400 group-hover:bg-blue-500/30 transition-colors ${
-                    isPinned ? 'bg-blue-500/30' : 'bg-blue-500/20'
+                <div className={`p-2 rounded-full text-[#0071E3] transition-colors ${
+                    isPinned ? 'bg-[#0071E3]/20' : 'bg-white/5'
                 }`}>
-                    <UserCircle2 className="w-5 h-5" />
+                    <UserCircle2 className="w-5 h-5 text-[#86868b]" />
                 </div>
             )}
             <div className="flex-grow min-w-0">
                 <div className="flex items-center justify-between gap-4 mb-2">
                     <div className="flex items-center gap-2">
-                        <h4 className={`font-medium truncate ${
-                            isPinned ? 'text-blue-200' : 'text-white'
+                        <h4 className={`font-medium text-sm truncate ${
+                            isPinned ? 'text-white' : 'text-[#f5f5f7]'
                         }`}>
                             {comment.user_name}
                         </h4>
                         {isPinned && (
-                            <span className="px-2 py-0.5 text-xs bg-blue-500/20 text-blue-300 rounded-full">
+                            <span className="px-2 py-0.5 text-[10px] font-semibold bg-[#0071E3]/20 text-[#0071E3] rounded-full">
                                 Admin
                             </span>
                         )}
                     </div>
-                    <span className="text-xs text-gray-400 whitespace-nowrap">
+                    <span className="text-xs text-[#86868b] whitespace-nowrap">
                         {formatDate(comment.created_at)}
                     </span>
                 </div>
-                <p className="text-gray-300 text-sm break-words leading-relaxed relative bottom-2">
+                <p className="text-[#86868b] text-sm break-words leading-relaxed relative bottom-1 font-normal">
                     {comment.content}
                 </p>
             </div>
@@ -74,21 +73,16 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
     const handleImageChange = useCallback((e) => {
         const file = e.target.files[0];
         if (file) {
-            // Check file size (5MB limit)
             if (file.size > 5 * 1024 * 1024) {
                 alert('File size must be less than 5MB. Please choose a smaller image.');
-                // Reset the input
                 if (e.target) e.target.value = '';
                 return;
             }
-            
-            // Check file type
             if (!file.type.startsWith('image/')) {
                 alert('Please select a valid image file.');
                 if (e.target) e.target.value = '';
                 return;
             }
-            
             setImageFile(file);
             const reader = new FileReader();
             reader.onloadend = () => setImagePreview(reader.result);
@@ -107,7 +101,6 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
     const handleSubmit = useCallback((e) => {
         e.preventDefault();
         if (!newComment.trim() || !userName.trim()) return;
-        
         onSubmit({ newComment, userName, imageFile });
         setNewComment('');
         setUserName('');
@@ -118,50 +111,52 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
     }, [newComment, userName, imageFile, onSubmit]);
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1000">
-                <label className="block text-sm font-medium text-white">
+                <label className="block text-xs font-medium text-[#86868b] uppercase tracking-wider">
                     Name <span className="text-red-400">*</span>
                 </label>
                 <input
                     type="text"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                     maxLength={15}
+                    maxLength={15}
                     placeholder="Enter your name"
-                    className="w-full p-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full p-3.5 rounded-2xl bg-white/5 border border-white/10 text-[#f5f5f7] placeholder-[#86868b] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all"
                     required
                 />
             </div>
 
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1200">
-                <label className="block text-sm font-medium text-white">
+                <label className="block text-xs font-medium text-[#86868b] uppercase tracking-wider">
                     Message <span className="text-red-400">*</span>
                 </label>
                 <textarea
                     ref={textareaRef}
                     value={newComment}
-                     maxLength={200}
-
+                    maxLength={200}
                     onChange={handleTextareaChange}
                     placeholder="Write your message here..."
-                    className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none min-h-[120px]"
+                    className="w-full p-4 rounded-2xl bg-white/5 border border-white/10 text-[#f5f5f7] placeholder-[#86868b] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all resize-none min-h-[100px]"
                     required
                 />
             </div>
 
             <div className="space-y-2" data-aos="fade-up" data-aos-duration="1400">
-                <label className="block text-sm font-medium text-white">
-                    Profile Photo <span className="text-gray-400">(optional)</span>
+                <label className="block text-xs font-medium text-[#86868b] uppercase tracking-wider">
+                    Profile Photo <span className="text-[#86868b]/60">(optional)</span>
                 </label>
-                <div className="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
+                <div className="flex items-center gap-4 p-3.5 bg-white/5 border border-white/10 rounded-2xl">
                     {imagePreview ? (
-                        <div className="flex items-center gap-4">
-                            <img
-                                src={imagePreview}
-                                alt="Profile preview"
-                                className="w-16 h-16 rounded-full object-cover border-2 border-blue-500/50"
-                            />
+                        <div className="flex items-center gap-4 w-full justify-between">
+                            <div className="flex items-center gap-3">
+                                <img
+                                    src={imagePreview}
+                                    alt="Profile preview"
+                                    className="w-12 h-12 rounded-full object-cover border border-[#0071E3]"
+                                />
+                                <span className="text-xs text-[#f5f5f7] font-medium">Photo attached</span>
+                            </div>
                             <button
                                 type="button"
                                 onClick={() => {
@@ -169,10 +164,10 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                                     setImageFile(null);
                                     if (fileInputRef.current) fileInputRef.current.value = '';
                                 }}
-                                className="flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-all group"
+                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-all text-xs"
                             >
-                                <X className="w-4 h-4" />
-                                <span>Remove Photo</span>
+                                <X className="w-3.5 h-3.5" />
+                                <span>Remove</span>
                             </button>
                         </div>
                     ) : (
@@ -187,14 +182,11 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                             <button
                                 type="button"
                                 onClick={() => fileInputRef.current?.click()}
-                                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-all border border-dashed border-blue-500/50 hover:border-blue-500 group"
+                                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 text-[#0071E3] hover:bg-white/10 transition-all border border-dashed border-white/20 hover:border-white/40 group text-xs font-medium"
                             >
-                                <ImagePlus className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                                <span>Choose Profile Photo</span>
+                                <ImagePlus className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                                <span>Choose Profile Photo (Max 5MB)</span>
                             </button>
-                            <p className="text-center text-gray-400 text-sm mt-2">
-                                Max file size: 5MB
-                            </p>
                         </div>
                     )}
                 </div>
@@ -204,22 +196,19 @@ const CommentForm = memo(({ onSubmit, isSubmitting, error }) => {
                 type="submit"
                 disabled={isSubmitting}
                 data-aos="fade-up" data-aos-duration="1000"
-                className="relative w-full h-12 bg-gradient-to-r from-gray-600 to-blue-500 rounded-xl font-medium text-white overflow-hidden group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98] disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                className="w-full h-12 bg-[#0071E3] hover:bg-[#0077ED] rounded-full font-medium text-white transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_14px_rgba(0,113,227,0.3)] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm"
             >
-                <div className="absolute inset-0 bg-white/20 translate-y-12 group-hover:translate-y-0 transition-transform duration-300" />
-                <div className="relative flex items-center justify-center gap-2">
-                    {isSubmitting ? (
-                        <>
-                            <Loader2 className="w-4 h-4 animate-spin" />
-                            <span>Posting...</span>
-                        </>
-                    ) : (
-                        <>
-                            <Send className="w-4 h-4" />
-                            <span>Post Comment</span>
-                        </>
-                    )}
-                </div>
+                {isSubmitting ? (
+                    <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Posting...</span>
+                    </>
+                ) : (
+                    <>
+                        <Send className="w-4 h-4" />
+                        <span>Post Comment</span>
+                    </>
+                )}
             </button>
         </form>
     );
@@ -232,14 +221,13 @@ const Komentar = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        // Initialize AOS
         AOS.init({
             once: false,
             duration: 1000,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
         });
     }, []);
 
-    // Fetch pinned comment
     useEffect(() => {
         const fetchPinnedComment = async () => {
             try {
@@ -247,15 +235,18 @@ const Komentar = () => {
                     .from('portfolio_comments')
                     .select('*')
                     .eq('is_pinned', true)
-                    .single();
+                    .limit(1)
+                    .maybeSingle();
                 
-                if (error && error.code !== 'PGRST116') {
+                if (error) {
                     console.error('Error fetching pinned comment:', error);
                     return;
                 }
                 
                 if (data) {
                     setPinnedComment(data);
+                } else {
+                    setPinnedComment(null);
                 }
             } catch (error) {
                 console.error('Error fetching pinned comment:', error);
@@ -265,7 +256,6 @@ const Komentar = () => {
         fetchPinnedComment();
     }, []);
 
-    // Fetch regular comments (excluding pinned) and set up real-time subscription
     useEffect(() => {
         const fetchComments = async () => {
             const { data, error } = await supabase
@@ -284,7 +274,6 @@ const Komentar = () => {
 
         fetchComments();
 
-        // Set up real-time subscription
         const subscription = supabase
             .channel('portfolio_comments')
             .on('postgres_changes', 
@@ -295,7 +284,7 @@ const Komentar = () => {
                     filter: 'is_pinned=eq.false'
                 }, 
                 () => {
-                    fetchComments(); // Refresh comments when changes occur
+                    fetchComments();
                 }
             )
             .subscribe();
@@ -377,26 +366,26 @@ const Komentar = () => {
         }).format(date);
     }, []);
 
-    // Calculate total comments (pinned + regular)
     const totalComments = comments.length + (pinnedComment ? 1 : 0);
 
     return (
-        <div className="w-full bg-gradient-to-b from-white/10 to-white/5 rounded-2xl  backdrop-blur-xl shadow-xl" data-aos="fade-up" data-aos-duration="1000">
-            <div className="p-6 border-b border-white/10" data-aos="fade-down" data-aos-duration="800">
+        <div className="w-full bg-transparent text-[#f5f5f7] font-sans" data-aos="fade-up" data-aos-duration="1000">
+            <div className="pb-6 border-b border-white/10 flex items-center justify-between" data-aos="fade-down" data-aos-duration="800">
                 <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-xl bg-blue-500/20">
-                        <MessageCircle className="w-6 h-6 text-blue-400" />
+                    <div className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-[#0071E3]">
+                        <MessageCircle className="w-5 h-5" />
                     </div>
-                    <h3 className="text-xl font-semibold text-white">
-                        Comments <span className="text-blue-400">({totalComments})</span>
+                    <h3 className="text-xl font-semibold tracking-tight text-[#f5f5f7]">
+                        Discussion <span className="text-[#86868b] font-normal text-base">({totalComments})</span>
                     </h3>
                 </div>
             </div>
-            <div className="p-6 space-y-6">
+
+            <div className="pt-6 space-y-6">
                 {error && (
-                    <div className="flex items-center gap-2 p-4 text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl" data-aos="fade-in">
+                    <div className="flex items-center gap-2 p-4 text-red-400 bg-red-500/10 border border-red-500/20 rounded-2xl text-sm" data-aos="fade-in">
                         <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                        <p className="text-sm">{error}</p>
+                        <p>{error}</p>
                     </div>
                 )}
                 
@@ -404,8 +393,7 @@ const Komentar = () => {
                     <CommentForm onSubmit={handleCommentSubmit} isSubmitting={isSubmitting} error={error} />
                 </div>
 
-                <div className="space-y-4 h-[328px] overflow-y-auto overflow-x-hidden custom-scrollbar pt-1 pr-1 " data-aos="fade-up" data-aos-delay="200">
-                    {/* Pinned Comment */}
+                <div className="space-y-4 max-h-[350px] overflow-y-auto overflow-x-hidden custom-scrollbar pr-2 pt-1" data-aos="fade-up" data-aos-delay="200">
                     {pinnedComment && (
                         <div data-aos="fade-down" data-aos-duration="800">
                             <Comment 
@@ -417,11 +405,10 @@ const Komentar = () => {
                         </div>
                     )}
                     
-                    {/* Regular Comments */}
                     {comments.length === 0 && !pinnedComment ? (
-                        <div className="text-center py-8" data-aos="fade-in">
-                            <UserCircle2 className="w-12 h-12 text-blue-400 mx-auto mb-3 opacity-50" />
-                            <p className="text-gray-400">No comments yet. Start the conversation!</p>
+                        <div className="text-center py-12" data-aos="fade-in">
+                            <UserCircle2 className="w-12 h-12 text-[#86868b] mx-auto mb-3 opacity-40" />
+                            <p className="text-[#86868b] text-sm">No comments yet. Start the conversation!</p>
                         </div>
                     ) : (
                         comments.map((comment, index) => (
@@ -436,20 +423,21 @@ const Komentar = () => {
                     )}
                 </div>
             </div>
-            <style jsx>{`
+
+            <style>{`
                 .custom-scrollbar::-webkit-scrollbar {
-                    width: 6px;
+                    width: 5px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-track {
-                    background: rgba(255, 255, 255, 0.05);
+                    background: rgba(255, 255, 255, 0.02);
                     border-radius: 6px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb {
-                    background: rgba(59, 130, 246, 0.5);
+                    background: rgba(255, 255, 255, 0.15);
                     border-radius: 6px;
                 }
                 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                    background: rgba(59, 130, 246, 0.7);
+                    background: rgba(255, 255, 255, 0.3);
                 }
             `}</style>
         </div>

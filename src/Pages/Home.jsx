@@ -5,14 +5,13 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { WhatsApp } from "@mui/icons-material"
 
-// Memoized Components
+// Memoized Components (Apple Aesthetic)
 const StatusBadge = memo(() => (
-  <div className="inline-block w-full sm:w-auto mt-4 sm:mt-6" data-aos="zoom-in" data-aos-delay="400">
+  <div className="inline-block w-full sm:w-auto mt-2 sm:mt-4" data-aos="zoom-in" data-aos-delay="200">
     <div className="relative group inline-block">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-700 to-blue-500 rounded-full blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
-      <div className="relative px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border border-white/10 whitespace-nowrap">
-        <span className="bg-gradient-to-r from-gray-600 to-blue-400 text-transparent bg-clip-text text-sm font-medium flex items-center justify-center">
-          <Sparkles className="w-4 h-4 mr-2 text-blue-400" />
+      <div className="relative px-4 py-1.5 rounded-full bg-[#1d1d1f]/60 backdrop-blur-2xl border border-white/10 shadow-[0_4px_20px_rgb(0,0,0,0.1)] whitespace-nowrap transition-all duration-300 group-hover:border-white/20">
+        <span className="text-[#f5f5f7] text-xs sm:text-sm font-medium flex items-center justify-center tracking-tight">
+          <Sparkles className="w-3.5 h-3.5 mr-2 text-[#0071E3]" />
           Ready to Innovate
         </span>
       </div>
@@ -21,42 +20,32 @@ const StatusBadge = memo(() => (
 ));
 
 const MainTitle = memo(() => (
-  <div className="space-y-1 sm:space-y-2" data-aos="fade-up" data-aos-delay="600">
-    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-center lg:text-left">
-      <span className="relative inline-block">
-        <span className="absolute -inset-2 bg-gradient-to-r from-gray-700 to-blue-500 blur-2xl opacity-20"></span>
-        <span className="relative bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-          Nizar
-        </span>
-      </span>
+  <div className="space-y-1" data-aos="fade-up" data-aos-delay="300">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-center lg:text-left text-[#f5f5f7] leading-[1.08]">
+      <span>Nizar</span>
       <br />
-      <span className="relative inline-block mt-1 sm:mt-2">
-        <span className="absolute -inset-2 bg-gradient-to-r from-gray-700 to-blue-500 blur-2xl opacity-20"></span>
-        <span className="relative bg-gradient-to-r from-gray-600 to-blue-400 bg-clip-text text-transparent">
-          Rama.
-        </span>
-      </span>
+      <span className="text-[#86868b]">Rama.</span>
     </h1>
   </div>
 ));
 
 const TechStack = memo(({ tech }) => (
-  <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-xs sm:text-sm text-gray-300 hover:bg-white/10 transition-colors whitespace-nowrap">
+  <div className="px-3.5 py-1.5 rounded-full bg-[#1d1d1f]/50 backdrop-blur-xl border border-white/10 text-xs sm:text-sm text-[#f5f5f7] font-medium hover:bg-[#2d2d2f]/80 hover:border-white/20 transition-all whitespace-nowrap shadow-sm">
     {tech}
   </div>
 ));
 
 const CTAButton = memo(({ href, text, icon: Icon }) => (
   <a href={href}>
-    <button className="group relative w-[140px] sm:w-[160px]">
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-700 to-blue-500 rounded-xl opacity-50 blur-md group-hover:opacity-90 transition-all duration-700"></div>
-      <div className="relative h-10 sm:h-11 bg-[#030014] backdrop-blur-xl rounded-lg border border-white/10 leading-none overflow-hidden">
-        <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-gradient-to-r from-gray-700/20 to-blue-500/20"></div>
-        <span className="absolute inset-0 flex items-center justify-center gap-2 text-xs sm:text-sm group-hover:gap-3 transition-all duration-300">
-          <span className="bg-gradient-to-r from-gray-200 to-white bg-clip-text text-transparent font-medium z-10">
-            {text}
-          </span>
-          <Icon className={`w-3 h-3 sm:w-4 sm:h-4 text-gray-200 ${text === 'Contact' ? 'group-hover:translate-x-1' : 'group-hover:rotate-45'} transform transition-all duration-300 z-10`} />
+    <button className="group relative w-[130px] sm:w-[150px] transition-transform duration-300 hover:scale-[1.02]">
+      <div className={`relative h-11 rounded-full backdrop-blur-xl border flex items-center justify-center transition-all duration-300 ${
+        text === 'Contact' 
+          ? 'bg-transparent border-white/20 text-[#f5f5f7] hover:bg-white/10 hover:border-white/30' 
+          : 'bg-[#0071E3] border-transparent text-white hover:bg-[#0077ED] shadow-[0_4px_14px_rgba(0,113,227,0.3)]'
+      }`}>
+        <span className="flex items-center justify-center gap-2 text-xs sm:text-sm font-medium">
+          <span>{text}</span>
+          <Icon className={`w-3.5 h-3.5 ${text === 'Contact' ? 'group-hover:translate-x-0.5' : 'group-hover:rotate-45'} transition-transform duration-300`} />
         </span>
       </div>
     </button>
@@ -65,23 +54,22 @@ const CTAButton = memo(({ href, text, icon: Icon }) => (
 
 const SocialLink = memo(({ icon: Icon, link }) => (
   <a href={link} target="_blank" rel="noopener noreferrer">
-    <button className="group relative p-2 sm:p-3">
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-700 to-blue-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
-      <div className="relative rounded-xl bg-black/50 backdrop-blur-xl p-1.5 sm:p-2 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-all duration-300">
-        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white transition-colors" />
+    <button className="group relative p-2.5 transition-transform duration-300 hover:scale-110">
+      <div className="rounded-2xl bg-[#1d1d1f]/60 backdrop-blur-2xl p-2.5 flex items-center justify-center border border-white/10 group-hover:border-white/20 group-hover:bg-[#2d2d2f]/80 transition-all duration-300 shadow-[0_4px_20px_rgb(0,0,0,0.2)]">
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#86868b] group-hover:text-[#f5f5f7] transition-colors" />
       </div>
     </button>
   </a>
 ));
 
 // Constants
-const TYPING_SPEED = 100;
-const ERASING_SPEED = 50;
+const TYPING_SPEED = 90;
+const ERASING_SPEED = 45;
 const PAUSE_DURATION = 2000;
-const WORDS = ["Information Tecnology Edu Student", "AI/Machine Learning Enthusiast"];
-const TECH_STACK = ["Python", "PostgreSQL", "Java", "Tenseorflow"];
+const WORDS = ["Information Technology Edu Student", "AI / Machine Learning Enthusiast"];
+const TECH_STACK = ["Python", "PostgreSQL", "Java", "Tensorflow"];
 const SOCIAL_LINKS = [
-  { icon : WhatsApp, link: "https://wa.me/6285334646271" },
+  { icon: WhatsApp, link: "https://wa.me/6285334646271" },
   { icon: Github, link: "https://github.com/LordDarkness99" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/nizar-alif-ramadhan-5ba1a2315/" },
   { icon: Instagram, link: "https://www.instagram.com/nizar.ramm?igsh=MWg2ODRoOXg5Zm4x" }
@@ -101,7 +89,7 @@ const Home = () => {
       AOS.init({
         once: true,
         offset: 10,
-       
+        easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
       });
     };
 
@@ -143,67 +131,68 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [handleTyping]);
 
-  // Lottie configuration
   const lottieOptions = {
     src: "/Coding.json",
     loop: true,
     autoplay: true,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-      progressiveLoad: true,
-    },
     style: { width: "100%", height: "100%" },
-    className: `w-full h-full transition-all duration-500 ${
+    className: `w-full h-full transition-all duration-700 ${
       isHovering 
-        ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
-        : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[140%]"
+        ? "scale-[110%] rotate-1" 
+        : "scale-100"
     }`
   };
 
   return (
-    <div className="min-h-screen bg-[#030014] overflow-hidden px-4 sm:px-[5%] lg:px-[10%]" id="Home">
+    <div className="min-h-screen bg-[#000000] text-[#f5f5f7] font-sans overflow-hidden px-6 sm:px-[6%] lg:px-[10%] selection:bg-[#0066CC] selection:text-white" id="Home">
+      {/* Apple-style ambient radial lighting */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[10%] left-[5%] w-[50vw] h-[50vw] rounded-full bg-blue-600/10 blur-[140px]" />
+        <div className="absolute bottom-[10%] right-[5%] w-[50vw] h-[50vw] rounded-full bg-indigo-600/10 blur-[160px]" />
+      </div>
+
       <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
-        <div className="container mx-auto min-h-screen py-8 sm:py-12 md:py-16">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-6 sm:gap-8 lg:gap-12">
+        <div className="container mx-auto min-h-screen py-16 sm:py-20 flex items-center">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 w-full">
             
             {/* Left Column */}
-            <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6 text-center lg:text-left order-1 lg:order-1"
+            <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 text-center lg:text-left order-1"
               data-aos="fade-right"
-              data-aos-delay="200">
-              <div className="space-y-3 sm:space-y-4">
+              data-aos-delay="100">
+              <div className="space-y-4">
                 <StatusBadge />
                 <MainTitle />
 
                 {/* Typing Effect */}
-                <div className="h-8 flex justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="800">
-                  <span className="text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent font-light">
+                <div className="h-8 flex items-center justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="400">
+                  <span className="text-lg sm:text-xl font-normal text-[#86868b] tracking-tight">
                     {text}
                   </span>
-                  <span className="w-[3px] h-6 bg-gradient-to-t from-gray-600 to-blue-500 ml-1 animate-blink"></span>
+                  <span className="w-[2px] h-5 bg-[#0071E3] ml-1.5 animate-pulse"></span>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-xl leading-relaxed font-light mx-auto lg:mx-0"
+                <p className="text-base sm:text-lg text-[#86868b] max-w-xl leading-relaxed font-normal mx-auto lg:mx-0 tracking-normal"
                   data-aos="fade-up"
-                  data-aos-delay="1000">
-                  Creating Innovative, Functional, and User-Friendly Machine Learning Systems for Modern Digital Solutions.
+                  data-aos-delay="500">
+                  Creating innovative, functional, and user-friendly machine learning systems for modern digital solutions.
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="1200">
+                <div className="flex flex-wrap gap-2.5 justify-center lg:justify-start pt-1" data-aos="fade-up" data-aos-delay="600">
                   {TECH_STACK.map((tech, index) => (
                     <TechStack key={index} tech={tech} />
                   ))}
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-row gap-3 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="1400">
+                <div className="flex flex-row gap-4 justify-center lg:justify-start pt-2" data-aos="fade-up" data-aos-delay="700">
                   <CTAButton href="#Portofolio" text="Projects" icon={ExternalLink} />
                   <CTAButton href="#Contact" text="Contact" icon={Mail} />
                 </div>
 
                 {/* Social Links */}
-                <div className="hidden sm:flex gap-3 sm:gap-4 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="1600">
+                <div className="hidden sm:flex gap-2 justify-center lg:justify-start pt-2" data-aos="fade-up" data-aos-delay="800">
                   {SOCIAL_LINKS.map((social, index) => (
                     <SocialLink key={index} {...social} />
                   ))}
@@ -211,33 +200,24 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Column - Optimized Lottie Animation */}
-            <div className="w-full lg:w-1/2 h-auto flex items-center justify-center order-2 lg:order-2 mt-4 sm:mt-6 lg:mt-0"
+            {/* Right Column - Lottie Animation with Apple Card Frame */}
+            <div className="w-full lg:w-1/2 flex items-center justify-center order-2"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               data-aos="fade-left"
-              data-aos-delay="600">
-              <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-full opacity-90">
-                <div className={`absolute inset-0 bg-gradient-to-r from-gray-700/10 to-blue-500/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${
-                  isHovering ? "opacity-50 scale-105" : "opacity-20 scale-100"
-                }`}>
-                </div>
+              data-aos-delay="300">
+              
+              <div className="relative w-full max-w-md sm:max-w-lg p-6 sm:p-8 rounded-3xl bg-[#1d1d1f]/40 backdrop-blur-3xl border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.5)] transition-all duration-700 hover:border-white/20 group">
+                {/* Ambient glow inside card */}
+                <div className={`absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-indigo-500/10 rounded-3xl transition-opacity duration-700 pointer-events-none ${
+                  isHovering ? "opacity-100" : "opacity-40"
+                }`} />
 
-                <div className={`relative z-10 w-full opacity-90 transform transition-transform duration-500 ${
-                  isHovering ? "scale-105" : "scale-100"
-                }`}>
+                <div className="relative z-10 w-full flex items-center justify-center">
                   <DotLottieReact {...lottieOptions} />
                 </div>
-
-                <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
-                  isHovering ? "opacity-50" : "opacity-20"
-                }`}>
-                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[350px] md:w-[400px] h-[300px] sm:h-[350px] md:h-[400px] bg-gradient-to-br from-gray-700/10 to-blue-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${
-                    isHovering ? "scale-110" : "scale-100"
-                  }`}>
-                  </div>
-                </div>
               </div>
+
             </div>
             
           </div>
