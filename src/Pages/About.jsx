@@ -167,7 +167,7 @@ const AboutPage = () => {
               </h2>
               
               <p className="text-base sm:text-lg text-[#86868b] leading-relaxed font-normal text-justify lg:text-left tracking-normal">
-                I am a 4th-semester Information Systems student at State University of Surabaya with a strong interest in Machine Learning, data science, and artificial intelligence. Currently, I focus on leveraging Machine Learning techniques to build intelligent and data-driven solutions. I am also passionate about exploring new technologies, tools, and algorithms to continuously enhance my skills and expand my knowledge in the field of Machine Learning.
+                I am a 5th-semester Information Systems student at State University of Surabaya with a strong interest in Machine Learning, data science, and artificial intelligence. Currently, I focus on leveraging Machine Learning techniques to build intelligent and data-driven solutions. I am also passionate about exploring new technologies, tools, and algorithms to continuously enhance my skills and expand my knowledge in the field of Machine Learning.
               </p>
 
               {/* Apple-style Quote Glass Box */}
@@ -180,7 +180,7 @@ const AboutPage = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                <a href="https://drive.google.com/file/d/1mnE8p7czQLa9ovu_oAf27bQ1kfMqWsoa/view?usp=sharing" className="w-full sm:w-auto" target="_blank" rel="noopener noreferrer">
+                <a href="https://drive.google.com/file/d/1Ijs8s1XyiRPn5DL8Y9CKl6UeVFo9PudM/view?usp=sharing" className="w-full sm:w-auto" target="_blank" rel="noopener noreferrer">
                   <button 
                     data-aos="fade-up"
                     data-aos-duration="800"
