@@ -15,23 +15,41 @@
 	--mac-border-light: rgba(0, 0, 0, 0.08);
 }
 
-* {
+*, *::before, *::after {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Poppins", sans-serif;
-	scroll-behavior: smooth;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Strictly prevent horizontal overflow on all screen sizes */
 html {
 	scroll-behavior: smooth !important;
+	overflow-x: hidden !important;
+	max-width: 100% !important;
+	width: 100% !important;
 }
 
 body {
-	overflow-x: hidden;
+	overflow-x: hidden !important;
+	max-width: 100% !important;
+	width: 100% !important;
+	position: relative;
 	transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#root {
+	overflow-x: hidden !important;
+	max-width: 100% !important;
+	width: 100% !important;
+	position: relative;
+}
+
+section, main, header, footer {
+	max-width: 100% !important;
+	overflow-x: clip !important;
 }
 
 /* Light / Dark Mode root backgrounds */
@@ -98,10 +116,16 @@ html:not(.dark) body {
 	font-family: "Fira Code", "SF Mono", Monaco, Inconsolata, "Courier New", monospace;
 }
 
+/* Ensure pre and code blocks never cause horizontal page expansion */
+pre {
+	max-width: 100% !important;
+	overflow-x: auto !important;
+}
+
 /* macOS Custom Scrollbar */
 ::-webkit-scrollbar {
-	width: 8px;
-	height: 8px;
+	width: 6px;
+	height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -161,4 +185,21 @@ html:not(.dark) body {
 
 [data-aos] {
 	will-change: transform, opacity !important;
+}
+
+/* CRITICAL: Fix for mobile horizontal scroll caused by AOS animations */
+@media screen and (max-width: 768px) {
+	/* Prevent horizontal transform shifts from creating page scrollbars on phones */
+	[data-aos="fade-left"],
+	[data-aos="fade-right"],
+	[data-aos="fade-up-left"],
+	[data-aos="fade-up-right"] {
+		transform: translate3d(0, 16px, 0) !important;
+	}
+	
+	[data-aos="zoom-in"],
+	[data-aos="zoom-in-up"],
+	[data-aos="zoom-in-down"] {
+		transform: scale(0.96) !important;
+	}
 }

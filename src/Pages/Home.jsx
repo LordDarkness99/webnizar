@@ -184,10 +184,10 @@ const Home = () => {
         </div>
 
         {/* Main Stage Grid: Non-template Asymmetric Bento */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch w-full max-w-full min-w-0">
           {/* Left Column: Developer Profile & Mission (7 Columns) */}
           <div
-            className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden"
+            className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden min-w-0 max-w-full"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
@@ -292,7 +292,7 @@ const Home = () => {
 
           {/* Right Column: Interactive macOS AI & Code Studio Inspector (5 Columns) */}
           <div
-            className="lg:col-span-5 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between min-w-0 max-w-full"
             data-aos="fade-left"
             data-aos-duration="1000"
           >
@@ -377,7 +377,7 @@ const Home = () => {
 
               {/* Tab 2: Syntax Highlighted Python Code */}
               {activeTab === "code" && (
-                <div className="relative flex flex-col h-full animate-fadeIn">
+                <div className="relative flex flex-col h-full animate-fadeIn min-w-0 max-w-full">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono-code text-gray-500 dark:text-gray-400">
                       python 3.11 • pytorch 2.3
@@ -401,7 +401,7 @@ const Home = () => {
                     </button>
                   </div>
 
-                  <pre className="p-3.5 rounded-2xl bg-black/80 dark:bg-black/90 text-gray-200 font-mono-code text-[11px] leading-relaxed overflow-x-auto max-h-[260px] border border-white/10">
+                  <pre className="p-3.5 rounded-2xl bg-black/80 dark:bg-black/90 text-gray-200 font-mono-code text-[11px] leading-relaxed overflow-x-auto max-h-[260px] border border-white/10 w-full max-w-full">
                     <code>{CODE_SNIPPET}</code>
                   </pre>
                 </div>

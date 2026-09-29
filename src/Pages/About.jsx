@@ -76,11 +76,11 @@ const AboutPage = () => {
         <Header />
 
         {/* Top Executive Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch w-full max-w-full min-w-0">
 
           {/* Card 1: Developer Profiler & Identity Window (5 Columns) */}
           <div
-            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between min-w-0 max-w-full"
             data-aos="fade-right"
             data-aos-duration="1000"
           >

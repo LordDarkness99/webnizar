@@ -23,10 +23,10 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
       </AnimatePresence>
 
       {!showWelcome && (
-        <div className="min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500">
+        <div className="min-h-screen w-full max-w-full overflow-x-hidden text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500">
           <Navbar />
           <AnimatedBackground />
-          <main className="relative z-10">
+          <main className="relative z-10 w-full max-w-full overflow-x-hidden">
             <Home />
             <About />
             <Portofolio />
@@ -72,10 +72,10 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
 };
 
 const ProjectPageLayout = () => (
-  <div className="min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500">
+  <div className="min-h-screen w-full max-w-full overflow-x-hidden text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500">
     <Navbar />
     <AnimatedBackground />
-    <main className="relative z-10">
+    <main className="relative z-10 w-full max-w-full overflow-x-hidden">
       <ProjectDetails />
     </main>
 
