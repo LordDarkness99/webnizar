@@ -6,8 +6,11 @@ import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
+import MacWindowHeader from "../components/MacWindowHeader";
+import { useTheme } from "../context/ThemeContext";
 
 const ContactPage = () => {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,7 +21,7 @@ const ContactPage = () => {
   useEffect(() => {
     AOS.init({
       once: false,
-      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
     });
   }, []);
 
@@ -35,42 +38,42 @@ const ContactPage = () => {
     setIsSubmitting(true);
 
     Swal.fire({
-      title: 'Mengirim Pesan...',
-      html: 'Harap tunggu selagi kami mengirim pesan Anda',
+      title: "Mengirim Pesan...",
+      html: "Harap tunggu selagi kami mengirim pesan Anda",
       allowOutsideClick: false,
-      background: '#1d1d1f',
-      color: '#f5f5f7',
+      background: isDark ? "#1d1d24" : "#ffffff",
+      color: isDark ? "#f5f5f7" : "#1d1d1f",
       didOpen: () => {
         Swal.showLoading();
-      }
+      },
     });
 
     try {
-      const formSubmitUrl = 'https://formsubmit.co/nizaram4dhan@gmail.com';
-      
+      const formSubmitUrl = "https://formsubmit.co/nizaram4dhan@gmail.com";
+
       const submitData = new FormData();
-      submitData.append('name', formData.name);
-      submitData.append('email', formData.email);
-      submitData.append('message', formData.message);
-      submitData.append('_subject', 'Pesan Baru dari Website Portfolio');
-      submitData.append('_captcha', 'false');
-      submitData.append('_template', 'table');
+      submitData.append("name", formData.name);
+      submitData.append("email", formData.email);
+      submitData.append("message", formData.message);
+      submitData.append("_subject", "Pesan Baru dari Website Portfolio");
+      submitData.append("_captcha", "false");
+      submitData.append("_template", "table");
 
       await axios.post(formSubmitUrl, submitData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
 
       Swal.fire({
-        title: 'Success!',
-        text: 'Your message has been successfully sent!',
-        icon: 'success',
-        background: '#1d1d1f',
-        color: '#f5f5f7',
-        confirmButtonColor: '#0071E3',
-        timer: 2000,
-        timerProgressBar: true
+        title: "Pesan Terkirim!",
+        text: "Pesan Anda berhasil dikirimkan.",
+        icon: "success",
+        background: isDark ? "#1d1d24" : "#ffffff",
+        color: isDark ? "#f5f5f7" : "#1d1d1f",
+        confirmButtonColor: "#0071E3",
+        timer: 2500,
+        timerProgressBar: true,
       });
 
       setFormData({
@@ -78,18 +81,17 @@ const ContactPage = () => {
         email: "",
         message: "",
       });
-
     } catch (error) {
       if (error.request && error.request.status === 0) {
         Swal.fire({
-          title: 'Success!',
-          text: 'Your message has been successfully sent!',
-          icon: 'success',
-          background: '#1d1d1f',
-          color: '#f5f5f7',
-          confirmButtonColor: '#0071E3',
-          timer: 2000,
-          timerProgressBar: true
+          title: "Pesan Terkirim!",
+          text: "Pesan Anda berhasil dikirimkan.",
+          icon: "success",
+          background: isDark ? "#1d1d24" : "#ffffff",
+          color: isDark ? "#f5f5f7" : "#1d1d1f",
+          confirmButtonColor: "#0071E3",
+          timer: 2500,
+          timerProgressBar: true,
         });
 
         setFormData({
@@ -99,12 +101,12 @@ const ContactPage = () => {
         });
       } else {
         Swal.fire({
-          title: 'Failed!',
-          text: 'An error occurred. Please try again later.',
-          icon: 'error',
-          background: '#1d1d1f',
-          color: '#f5f5f7',
-          confirmButtonColor: '#0071E3'
+          title: "Gagal Mengirim",
+          text: "Terjadi kesalahan, silakan coba lagi nanti.",
+          icon: "error",
+          background: isDark ? "#1d1d24" : "#ffffff",
+          color: isDark ? "#f5f5f7" : "#1d1d1f",
+          confirmButtonColor: "#0071E3",
         });
       }
     } finally {
@@ -113,118 +115,124 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-[#f5f5f7] font-sans px-6 sm:px-[6%] lg:px-[10%] py-20 relative selection:bg-[#0066CC] selection:text-white" id="Contact">
-      
-      {/* Apple-style Background Ambient Illumination */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[30%] left-[10%] w-[45vw] h-[45vw] rounded-full bg-blue-600/10 blur-[150px]" />
-        <div className="absolute bottom-[20%] right-[5%] w-[45vw] h-[45vw] rounded-full bg-indigo-600/10 blur-[160px]" />
-      </div>
-
+    <div
+      className="min-h-screen font-sans px-6 sm:px-8 py-24 relative selection:bg-[#0071E3] selection:text-white"
+      id="Contact"
+    >
       <div className="relative z-10 max-w-7xl mx-auto">
-        
         {/* Header Section */}
         <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
           <span className="text-xs sm:text-sm font-semibold tracking-widest text-[#0071E3] uppercase block mb-3">
-            Get in Touch
+            Communication Center
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#f5f5f7]">
-            Contact Me.
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
+            Get In Touch.
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#86868b] max-w-xl mx-auto font-normal">
-            Have a question or want to chat? Send me a message, and I’ll get back to you right away.
+          <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-xl mx-auto font-normal flex items-center justify-center gap-2">
+            <Sparkles className="w-4 h-4 text-[#0071E3]" />
+            Have a project in mind, query, or collaboration? Drop me a message.
           </p>
         </div>
 
         {/* Main Grid Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          {/* Form Card (Apple Glassmorphism Style) */}
-          <div 
-            className="lg:col-span-5 bg-[#1d1d1f]/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 p-6 sm:p-10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] transition-all duration-500 hover:border-white/20"
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Form Window Card (macOS Mail Compose Window) */}
+          <div
+            className="lg:col-span-5 mac-glass rounded-[2rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.005]"
             data-aos="fade-right"
             data-aos-duration="1100"
           >
-            <div className="flex justify-between items-start mb-8">
-              <div>
-                <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#f5f5f7] mb-2">
-                  Let's Talk
-                </h3>
-                <p className="text-sm text-[#86868b] font-normal">
-                  Want to talk about something? Send a message and let's connect.
-                </p>
-              </div>
-              <Share2 className="w-8 h-8 text-[#0071E3] opacity-80" />
-            </div>
+            {/* macOS Window Titlebar with Traffic Lights */}
+            <MacWindowHeader title="New Message — Mail.app" icon={Mail} />
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div data-aos="fade-up" data-aos-delay="100" className="relative group">
-                <User className="absolute left-4 top-4 w-5 h-5 text-[#86868b] group-focus-within:text-[#0071E3] transition-colors" />
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
+            <div className="p-6 sm:p-8">
+              <div className="flex justify-between items-start mb-6">
+                <div>
+                  <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7] mb-1">
+                    Send a Message
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-[#86868b] font-normal">
+                    Direct communication to my personal inbox.
+                  </p>
+                </div>
+                <div className="p-2.5 rounded-2xl bg-[#0071E3]/10 dark:bg-white/10 text-[#0071E3]">
+                  <Share2 className="w-5 h-5" />
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div data-aos="fade-up" data-aos-delay="100" className="relative group">
+                  <User className="absolute left-4 top-4 w-4 h-4 text-gray-400 group-focus-within:text-[#0071E3] transition-colors" />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="w-full p-3.5 pl-11 bg-black/[0.03] dark:bg-white/5 rounded-2xl border border-black/[0.08] dark:border-white/10 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3] focus:bg-white dark:focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
+                    required
+                  />
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200" className="relative group">
+                  <Mail className="absolute left-4 top-4 w-4 h-4 text-gray-400 group-focus-within:text-[#0071E3] transition-colors" />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email Address"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="w-full p-3.5 pl-11 bg-black/[0.03] dark:bg-white/5 rounded-2xl border border-black/[0.08] dark:border-white/10 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3] focus:bg-white dark:focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
+                    required
+                  />
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="300" className="relative group">
+                  <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-gray-400 group-focus-within:text-[#0071E3] transition-colors" />
+                  <textarea
+                    name="message"
+                    placeholder="Type your message here..."
+                    value={formData.message}
+                    onChange={handleChange}
+                    disabled={isSubmitting}
+                    className="w-full resize-none p-3.5 pl-11 bg-black/[0.03] dark:bg-white/5 rounded-2xl border border-black/[0.08] dark:border-white/10 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3] focus:bg-white dark:focus:bg-white/10 transition-all duration-300 h-32 disabled:opacity-50"
+                    required
+                  />
+                </div>
+
+                <button
+                  data-aos="fade-up"
+                  data-aos-delay="400"
+                  type="submit"
                   disabled={isSubmitting}
-                  className="w-full p-4 pl-12 bg-white/5 rounded-2xl border border-white/10 placeholder-[#86868b] text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
-                  required
-                />
+                  className="w-full bg-[#0071E3] hover:bg-[#0077ED] text-white py-3.5 rounded-full font-semibold transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_16px_rgba(0,113,227,0.35)] active:scale-[0.98] flex items-center justify-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Send className="w-4 h-4" />
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+
+              {/* Social Connect Dock Inside Window */}
+              <div className="mt-8 pt-6 border-t border-black/[0.06] dark:border-white/10">
+                <SocialLinks />
               </div>
-
-              <div data-aos="fade-up" data-aos-delay="200" className="relative group">
-                <Mail className="absolute left-4 top-4 w-5 h-5 text-[#86868b] group-focus-within:text-[#0071E3] transition-colors" />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="w-full p-4 pl-12 bg-white/5 rounded-2xl border border-white/10 placeholder-[#86868b] text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all duration-300 disabled:opacity-50"
-                  required
-                />
-              </div>
-
-              <div data-aos="fade-up" data-aos-delay="300" className="relative group">
-                <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-[#86868b] group-focus-within:text-[#0071E3] transition-colors" />
-                <textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  disabled={isSubmitting}
-                  className="w-full resize-none p-4 pl-12 bg-white/5 rounded-2xl border border-white/10 placeholder-[#86868b] text-[#f5f5f7] text-sm focus:outline-none focus:border-[#0071E3]/60 focus:bg-white/10 transition-all duration-300 h-36 disabled:opacity-50"
-                  required
-                />
-              </div>
-
-              <button
-                data-aos="fade-up"
-                data-aos-delay="400"
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-[#0071E3] hover:bg-[#0077ED] text-white py-4 rounded-full font-medium transition-all duration-300 hover:scale-[1.02] shadow-[0_4px_14px_rgba(0,113,227,0.3)] active:scale-[0.98] flex items-center justify-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <Send className="w-4 h-4" />
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-
-            <div className="mt-8 pt-6 border-t border-white/10 flex justify-center">
-              <SocialLinks />
             </div>
           </div>
 
-          {/* Comments Section (Apple Glassmorphism Style) */}
-          <div 
-            className="lg:col-span-7 bg-[#1d1d1f]/60 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 p-6 sm:p-10 shadow-[0_30px_100px_rgba(0,0,0,0.6)] transition-all duration-500 hover:border-white/20"
+          {/* Comments Window Card (macOS Messages / Discussion) */}
+          <div
+            className="lg:col-span-7 mac-glass rounded-[2rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500 hover:scale-[1.005]"
             data-aos="fade-left"
             data-aos-duration="1100"
           >
-            <Komentar />
-          </div>
+            <MacWindowHeader title="Discussion Board — Messages.app" icon={MessageSquare} />
 
+            <div className="p-6 sm:p-8">
+              <Komentar />
+            </div>
+          </div>
         </div>
       </div>
     </div>

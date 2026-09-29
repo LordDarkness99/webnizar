@@ -1,17 +1,21 @@
-import React from 'react';
+import React from "react";
 
-const TechStackIcon = ({ TechStackIcon, Language }) => {
+const TechStackIcon = ({ TechStackIcon: iconSrc, Language }) => {
   return (
-    <div className="group p-6 rounded-2xl bg-slate-800/50 hover:bg-slate-700/50 transition-all duration-300 ease-in-out flex flex-col items-center justify-center gap-3 hover:scale-105 cursor-pointer shadow-lg hover:shadow-xl">
-      <div className="relative">
-        <div className="absolute -inset-1 bg-gradient-to-r from-gray-500 to-blue-500 rounded-full opacity-0 group-hover:opacity-50 blur transition duration-300"></div>
-        <img 
-          src={TechStackIcon} 
-          alt={`${Language} icon`} 
-          className="relative h-16 w-16 md:h-20 md:w-20 transform transition-transform duration-300"
-        />
+    <div className="group relative p-5 sm:p-6 rounded-[1.75rem] mac-glass border border-black/[0.08] dark:border-white/12 transition-all duration-300 ease-out flex flex-col items-center justify-center gap-3 hover:scale-105 hover:-translate-y-1 cursor-pointer shadow-md hover:shadow-xl">
+      {/* macOS Squircle Icon Glow */}
+      <div className="relative flex items-center justify-center">
+        <div className="absolute -inset-2 bg-gradient-to-tr from-[#0071E3]/20 via-sky-400/10 to-indigo-500/20 rounded-2xl opacity-0 group-hover:opacity-100 blur-md transition-opacity duration-300 pointer-events-none" />
+        <div className="relative p-2 rounded-2xl bg-black/[0.03] dark:bg-white/[0.06] border border-black/[0.04] dark:border-white/10 group-hover:border-[#0071E3]/30 transition-colors">
+          <img
+            src={iconSrc}
+            alt={`${Language} icon`}
+            className="h-12 w-12 sm:h-14 sm:w-14 object-contain transform transition-transform duration-300 group-hover:scale-110"
+            loading="lazy"
+          />
+        </div>
       </div>
-      <span className="text-slate-300 font-semibold text-sm md:text-base tracking-wide group-hover:text-white transition-colors duration-300">
+      <span className="text-gray-800 dark:text-gray-200 font-semibold text-xs sm:text-sm tracking-tight group-hover:text-[#0071E3] transition-colors duration-300 text-center">
         {Language}
       </span>
     </div>

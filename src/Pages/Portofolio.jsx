@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { supabase } from "../supabase";
 import PropTypes from "prop-types";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { useTheme } from "@mui/material/styles";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { useTheme as useMuiTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -14,57 +14,38 @@ import TechStackIcon from "../components/TechStackIcon";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Certificate from "../components/Certificate";
-import { Code, Award, Boxes, Sparkles } from "lucide-react";
+import { Code, Award, Boxes, Sparkles, ChevronDown, ChevronUp } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 const ToggleButton = ({ onClick, isShowingMore }) => (
   <button
     onClick={onClick}
     className="
       px-5 py-2.5
-      text-[#f5f5f7] 
+      text-gray-800 dark:text-[#f5f5f7]
       text-sm 
-      font-medium 
+      font-semibold 
       transition-all 
       duration-300 
       ease-in-out
       flex 
       items-center 
       gap-2
-      bg-[#1d1d1f]/60 
-      hover:bg-[#2d2d2f]/80
+      mac-glass
       rounded-full
       border 
-      border-white/10
-      hover:border-white/20
-      backdrop-blur-2xl
-      group
-      relative
-      overflow-hidden
-      shadow-[0_4px_20px_rgb(0,0,0,0.2)]
+      border-black/[0.08] dark:border-white/15
+      hover:scale-105
+      active:scale-95
+      shadow-md
     "
   >
-    <span className="relative z-10 flex items-center gap-2">
-      {isShowingMore ? "See Less" : "See More"}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={`
-          transition-transform 
-          duration-300 
-          text-[#0071E3]
-          ${isShowingMore ? "group-hover:-translate-y-0.5" : "group-hover:translate-y-0.5"}
-        `}
-      >
-        <polyline points={isShowingMore ? "18 15 12 9 6 15" : "6 9 12 15 18 9"}></polyline>
-      </svg>
-    </span>
+    <span>{isShowingMore ? "Show Less" : "Show More"}</span>
+    {isShowingMore ? (
+      <ChevronUp className="w-4 h-4 text-[#0071E3]" />
+    ) : (
+      <ChevronDown className="w-4 h-4 text-[#0071E3]" />
+    )}
   </button>
 );
 
@@ -78,7 +59,7 @@ function TabPanel({ children, value, index, ...other }) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: { xs: 1, sm: 3 } }}>
+        <Box sx={{ p: { xs: 1, sm: 2 } }}>
           <Typography component="div">{children}</Typography>
         </Box>
       )}
@@ -123,35 +104,36 @@ const techStacks = [
 ];
 
 export default function FullWidthTabs() {
-  const theme = useTheme();
+  const muiTheme = useMuiTheme();
+  const { isDark } = useTheme();
   const [value, setValue] = useState(0);
   const [projects, setProjects] = useState([]);
   const [certificates, setCertificates] = useState([]);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [showAllCertificates, setShowAllCertificates] = useState(false);
   const swiperRef = useRef(null);
-  
-  const isMobile = window.innerWidth < 768;
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
   const initialItems = isMobile ? 4 : 6;
 
   useEffect(() => {
     AOS.init({
       once: false,
-      easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
     });
   }, []);
 
   const fetchData = useCallback(async () => {
     try {
       const [projectsResponse, certificatesResponse] = await Promise.all([
-        supabase.from("projects").select("*").order('id', { ascending: true }),
-        supabase.from("certificates").select("*").order('id', { ascending: true }),
+        supabase.from("projects").select("*").order("id", { ascending: true }),
+        supabase.from("certificates").select("*").order("id", { ascending: true }),
       ]);
 
       if (projectsResponse.error) throw projectsResponse.error;
       if (certificatesResponse.error) throw certificatesResponse.error;
 
-      const projectData = (projectsResponse.data || []).map(p => ({
+      const projectData = (projectsResponse.data || []).map((p) => ({
         id: p.id,
         Title: p.Title,
         Description: p.Description,
@@ -162,7 +144,7 @@ export default function FullWidthTabs() {
         Features: p.Features || [],
       }));
 
-      const certificateData = (certificatesResponse.data || []).map(c => ({
+      const certificateData = (certificatesResponse.data || []).map((c) => ({
         id: c.id,
         Img: c.Img,
         Link: c.link,
@@ -179,8 +161,8 @@ export default function FullWidthTabs() {
   }, []);
 
   useEffect(() => {
-    const cachedProjects = localStorage.getItem('projects');
-    const cachedCertificates = localStorage.getItem('certificates');
+    const cachedProjects = localStorage.getItem("projects");
+    const cachedCertificates = localStorage.getItem("certificates");
 
     if (cachedProjects && cachedCertificates) {
       setProjects(JSON.parse(cachedProjects));
@@ -197,84 +179,90 @@ export default function FullWidthTabs() {
   };
 
   const toggleShowMore = useCallback((type) => {
-    if (type === 'projects') {
-      setShowAllProjects(prev => !prev);
+    if (type === "projects") {
+      setShowAllProjects((prev) => !prev);
     } else {
-      setShowAllCertificates(prev => !prev);
+      setShowAllCertificates((prev) => !prev);
     }
   }, []);
 
-  const displayedProjects = showAllProjects ? projects : projects.slice(0, initialItems);
-  const displayedCertificates = showAllCertificates ? certificates : certificates.slice(0, initialItems);
+  const displayedProjects = showAllProjects
+    ? projects
+    : projects.slice(0, initialItems);
+  const displayedCertificates = showAllCertificates
+    ? certificates
+    : certificates.slice(0, initialItems);
 
   return (
-    <div className="min-h-screen bg-[#000000] text-[#f5f5f7] font-sans px-6 sm:px-[6%] lg:px-[10%] py-24 relative overflow-hidden selection:bg-[#0066CC] selection:text-white" id="Portofolio">
-      
-      {/* Apple-style Background Ambient Illumination */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[15%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-blue-600/10 blur-[150px]" />
-        <div className="absolute bottom-[10%] right-[15%] w-[50vw] h-[50vw] rounded-full bg-indigo-600/10 blur-[160px]" />
-      </div>
-
+    <div
+      className="min-h-screen font-sans px-6 sm:px-8 py-24 relative overflow-hidden selection:bg-[#0071E3] selection:text-white"
+      id="Portofolio"
+    >
       <div className="relative z-10 max-w-7xl mx-auto">
-        
         {/* Header Section */}
-        <div className="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+        <div className="text-center mb-14" data-aos="fade-up" data-aos-duration="1000">
           <span className="text-xs sm:text-sm font-semibold tracking-widest text-[#0071E3] uppercase block mb-3">
-            Explore Work
+            Applications & Skills
           </span>
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-[#f5f5f7]">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
             Portfolio Showcase.
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#86868b] max-w-xl mx-auto flex items-center justify-center gap-2 font-normal">
+          <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-xl mx-auto flex items-center justify-center gap-2 font-normal">
             <Sparkles className="w-4 h-4 text-[#0071E3]" />
-            Projects, certifications, and technological stack milestones.
+            Projects, accredited certifications, and technological toolbelt.
           </p>
         </div>
 
         <Box sx={{ width: "100%" }}>
-          {/* Apple Glassmorphism Tab Bar */}
+          {/* macOS Segmented Control Tabs */}
           <AppBar
             position="static"
             elevation={0}
             sx={{
-              bgcolor: "rgba(29, 29, 31, 0.6)",
+              bgcolor: isDark
+                ? "rgba(22, 22, 28, 0.7)"
+                : "rgba(255, 255, 255, 0.75)",
               backdropFilter: "blur(30px)",
-              border: "1px solid rgba(255, 255, 255, 0.1)",
+              WebkitBackdropFilter: "blur(30px)",
+              border: isDark
+                ? "1px solid rgba(255, 255, 255, 0.12)"
+                : "1px solid rgba(0, 0, 0, 0.08)",
               borderRadius: "24px",
               position: "relative",
               overflow: "hidden",
-              boxShadow: "0 20px 50px rgba(0,0,0,0.4)",
+              boxShadow: isDark
+                ? "0 20px 50px rgba(0,0,0,0.5)"
+                : "0 10px 40px rgba(0,0,0,0.06)",
+              transition: "all 0.3s ease",
             }}
             className="md:px-2"
           >
             <Tabs
               value={value}
               onChange={handleChange}
-              textColor="secondary"
-              indicatorColor="secondary"
               variant="fullWidth"
               sx={{
-                minHeight: "72px",
+                minHeight: "68px",
                 "& .MuiTab-root": {
                   fontSize: { xs: "0.85rem", md: "0.95rem" },
-                  fontWeight: "500",
-                  color: "#86868b",
+                  fontWeight: "600",
+                  color: isDark ? "#8e8e93" : "#636366",
                   textTransform: "none",
-                  transition: "all 0.3s ease",
-                  padding: "16px 0",
+                  transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                  padding: "14px 0",
                   zIndex: 1,
                   margin: "6px",
                   borderRadius: "18px",
                   "&:hover": {
-                    color: "#f5f5f7",
-                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    color: isDark ? "#ffffff" : "#1d1d1f",
+                    backgroundColor: isDark
+                      ? "rgba(255, 255, 255, 0.06)"
+                      : "rgba(0, 0, 0, 0.04)",
                   },
                   "&.Mui-selected": {
-                    color: "#ffffff",
+                    color: "#ffffff !important",
                     backgroundColor: "#0071E3",
-                    boxShadow: "0 4px 14px rgba(0,113,227,0.4)",
-                    fontWeight: "600",
+                    boxShadow: "0 4px 16px rgba(0,113,227,0.4)",
                     "& .lucide": {
                       color: "#ffffff",
                     },
@@ -289,17 +277,17 @@ export default function FullWidthTabs() {
               }}
             >
               <Tab
-                icon={<Code className="mb-1 w-4 h-4 transition-all duration-300 text-[#86868b]" />}
+                icon={<Code className="mb-1 w-4 h-4 transition-all duration-300" />}
                 label="Projects"
                 {...a11yProps(0)}
               />
               <Tab
-                icon={<Award className="mb-1 w-4 h-4 transition-all duration-300 text-[#86868b]" />}
+                icon={<Award className="mb-1 w-4 h-4 transition-all duration-300" />}
                 label="Certificates"
                 {...a11yProps(1)}
               />
               <Tab
-                icon={<Boxes className="mb-1 w-4 h-4 transition-all duration-300 text-[#86868b]" />}
+                icon={<Boxes className="mb-1 w-4 h-4 transition-all duration-300" />}
                 label="Tech Stack"
                 {...a11yProps(2)}
               />
@@ -316,15 +304,23 @@ export default function FullWidthTabs() {
               resistanceRatio={0.85}
               className="my-swiper"
             >
+              {/* Slide 1: Projects */}
               <SwiperSlide>
-                <TabPanel value={value} index={0} dir={theme.direction}>
+                <TabPanel value={value} index={0} dir={muiTheme.direction}>
                   <div className="container mx-auto flex justify-center items-center overflow-hidden">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full">
                       {displayedProjects.map((project, index) => (
                         <div
                           key={project.id || index}
-                          data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
+                          data-aos={
+                            index % 3 === 0
+                              ? "fade-up-right"
+                              : index % 3 === 1
+                              ? "fade-up"
+                              : "fade-up-left"
+                          }
                           data-aos-duration="1000"
+                          className="h-full"
                         >
                           <CardProject
                             Img={project.Img}
@@ -338,9 +334,9 @@ export default function FullWidthTabs() {
                     </div>
                   </div>
                   {projects.length > initialItems && (
-                    <div className="mt-8 w-full flex justify-start">
+                    <div className="mt-10 w-full flex justify-center">
                       <ToggleButton
-                        onClick={() => toggleShowMore('projects')}
+                        onClick={() => toggleShowMore("projects")}
                         isShowingMore={showAllProjects}
                       />
                     </div>
@@ -348,25 +344,35 @@ export default function FullWidthTabs() {
                 </TabPanel>
               </SwiperSlide>
 
+              {/* Slide 2: Certificates */}
               <SwiperSlide>
-                <TabPanel value={value} index={1} dir={theme.direction}>
+                <TabPanel value={value} index={1} dir={muiTheme.direction}>
                   <div className="container mx-auto flex justify-center items-center overflow-hidden">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
                       {displayedCertificates.map((certificate, index) => (
                         <div
                           key={certificate.id || index}
-                          data-aos={index % 3 === 0 ? "fade-up-right" : index % 3 === 1 ? "fade-up" : "fade-up-left"}
+                          data-aos={
+                            index % 3 === 0
+                              ? "fade-up-right"
+                              : index % 3 === 1
+                              ? "fade-up"
+                              : "fade-up-left"
+                          }
                           data-aos-duration="1000"
                         >
-                          <Certificate ImgSertif={certificate.Img} Link={certificate.Link} />
+                          <Certificate
+                            ImgSertif={certificate.Img}
+                            Link={certificate.Link}
+                          />
                         </div>
                       ))}
                     </div>
                   </div>
                   {certificates.length > initialItems && (
-                    <div className="mt-8 w-full flex justify-start">
+                    <div className="mt-10 w-full flex justify-center">
                       <ToggleButton
-                        onClick={() => toggleShowMore('certificates')}
+                        onClick={() => toggleShowMore("certificates")}
                         isShowingMore={showAllCertificates}
                       />
                     </div>
@@ -374,18 +380,22 @@ export default function FullWidthTabs() {
                 </TabPanel>
               </SwiperSlide>
 
+              {/* Slide 3: Tech Stack */}
               <SwiperSlide>
-                <TabPanel value={value} index={2} dir={theme.direction}>
-                  <div className="container mx-auto flex justify-center items-center overflow-hidden pb-12">
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 w-full">
+                <TabPanel value={value} index={2} dir={muiTheme.direction}>
+                  <div className="container mx-auto flex justify-center items-center overflow-hidden">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 w-full">
                       {techStacks.map((stack, index) => (
                         <div
                           key={index}
-                          data-aos="fade-up"
+                          data-aos="zoom-in"
                           data-aos-duration="800"
                           data-aos-delay={index * 30}
                         >
-                          <TechStackIcon TechStackIcon={stack.icon} Language={stack.language} />
+                          <TechStackIcon
+                            TechStackIcon={stack.icon}
+                            Language={stack.language}
+                          />
                         </div>
                       ))}
                     </div>
