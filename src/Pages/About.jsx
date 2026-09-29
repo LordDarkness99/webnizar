@@ -69,18 +69,18 @@ const AboutPage = () => {
 
   return (
     <section
-      className="min-h-screen font-sans overflow-hidden px-6 sm:px-8 py-24 relative selection:bg-[#0071E3] selection:text-white"
+      className="min-h-screen font-sans overflow-hidden px-4 sm:px-6 lg:px-8 py-24 relative selection:bg-[#0071E3] selection:text-white"
       id="About"
     >
       <div className="max-w-7xl mx-auto space-y-12">
         <Header />
 
         {/* Top Executive Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
 
           {/* Card 1: Developer Profiler & Identity Window (5 Columns) */}
           <div
-            className="lg:col-span-5 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
@@ -94,7 +94,7 @@ const AboutPage = () => {
               }
             />
 
-            <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+            <div className="p-5 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
               {/* Photo Viewport */}
               <div className="relative group mx-auto w-full max-w-[280px] sm:max-w-[320px]">
                 <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-black/5 dark:bg-white/5 border border-black/[0.08] dark:border-white/10 shadow-lg">
@@ -170,7 +170,7 @@ const AboutPage = () => {
 
           {/* Card 2: Interactive Narrative & Research Studio (7 Columns) */}
           <div
-            className="lg:col-span-7 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-7 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
             data-aos="fade-left"
             data-aos-duration="1000"
           >
@@ -185,45 +185,45 @@ const AboutPage = () => {
             />
 
             {/* Interactive Narrative Tabs */}
-            <div className="p-3 px-6 border-b border-black/[0.06] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
-              <div className="grid grid-cols-3 gap-1.5 p-1 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
+            <div className="p-2.5 sm:p-3 px-3 sm:px-6 border-b border-black/[0.06] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
+              <div className="grid grid-cols-3 gap-1 sm:gap-1.5 p-1 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
                 <button
                   onClick={() => setActiveStoryTab("journey")}
-                  className={`py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "journey"
+                  className={`py-2 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "journey"
                     ? "bg-[#0071E3] text-white shadow-sm"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
-                  <UserCheck className="w-3.5 h-3.5" />
+                  <UserCheck className="w-3.5 h-3.5 shrink-0" />
                   <span className="truncate">Background</span>
                 </button>
 
                 <button
                   onClick={() => setActiveStoryTab("research")}
-                  className={`py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "research"
+                  className={`py-2 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "research"
                     ? "bg-[#0071E3] text-white shadow-sm"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
-                  <Cpu className="w-3.5 h-3.5" />
+                  <Cpu className="w-3.5 h-3.5 shrink-0" />
                   <span className="truncate">AI & ML Focus</span>
                 </button>
 
                 <button
                   onClick={() => setActiveStoryTab("philosophy")}
-                  className={`py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "philosophy"
+                  className={`py-2 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "philosophy"
                     ? "bg-[#0071E3] text-white shadow-sm"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
-                  <Sparkles className="w-3.5 h-3.5" />
+                  <Sparkles className="w-3.5 h-3.5 shrink-0" />
                   <span className="truncate">Philosophy</span>
                 </button>
               </div>
             </div>
 
             {/* Tab Viewport */}
-            <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+            <div className="p-5 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
               {/* Tab 1: Journey */}
               {activeStoryTab === "journey" && (
                 <div className="space-y-4 animate-fadeIn">

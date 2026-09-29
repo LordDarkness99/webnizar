@@ -148,7 +148,7 @@ const Home = () => {
 
   return (
     <section
-      className="min-h-screen font-sans overflow-hidden px-6 sm:px-8 pt-24 pb-16 relative selection:bg-[#0071E3] selection:text-white"
+      className="min-h-screen font-sans overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 pb-16 relative selection:bg-[#0071E3] selection:text-white"
       id="Home"
     >
       <div className="max-w-7xl mx-auto">
@@ -156,17 +156,17 @@ const Home = () => {
         <div
           data-aos="fade-down"
           data-aos-duration="800"
-          className="flex flex-wrap items-center justify-between gap-3 p-3 px-5 mb-8 rounded-2xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-sm text-xs"
+          className="flex flex-wrap items-center justify-between gap-3 p-3 px-4 sm:px-5 mb-8 rounded-2xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-sm text-xs"
         >
           <div className="flex items-center gap-2.5">
-            <span className="relative flex h-2.5 w-2.5">
+            <span className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
             <span className="font-semibold text-gray-800 dark:text-gray-200">
               Active Status:
             </span>
-            <span className="text-gray-600 dark:text-gray-400">
+            <span className="text-gray-600 dark:text-gray-400 truncate">
               Open for Machine Learning & Software Engineering
             </span>
           </div>
@@ -184,10 +184,10 @@ const Home = () => {
         </div>
 
         {/* Main Stage Grid: Non-template Asymmetric Bento */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Left Column: Developer Profile & Mission (7 Columns) */}
           <div
-            className="lg:col-span-7 flex flex-col justify-between space-y-8 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-7 sm:p-10 shadow-2xl relative overflow-hidden"
+            className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden"
             data-aos="fade-right"
             data-aos-duration="1000"
           >

@@ -174,7 +174,7 @@ export default function Portofolio() {
 
   return (
     <section
-      className="min-h-screen font-sans px-6 sm:px-8 py-24 relative overflow-hidden selection:bg-[#0071E3] selection:text-white"
+      className="min-h-screen font-sans px-4 sm:px-6 lg:px-8 py-24 relative overflow-hidden selection:bg-[#0071E3] selection:text-white"
       id="Portofolio"
     >
       <div className="max-w-7xl mx-auto">
@@ -194,40 +194,40 @@ export default function Portofolio() {
 
         {/* Custom macOS Segmented Control Bar */}
         <div className="flex justify-center mb-10" data-aos="fade-up" data-aos-delay="100">
-          <div className="p-1.5 rounded-full mac-dock flex items-center gap-2 border border-black/[0.08] dark:border-white/15 max-w-2xl w-full justify-between sm:justify-center">
+          <div className="p-1 sm:p-1.5 rounded-full mac-dock flex items-center gap-1 sm:gap-2 border border-black/[0.08] dark:border-white/15 max-w-2xl w-full justify-between sm:justify-center overflow-x-auto">
             <button
               onClick={() => setActiveTab("projects")}
-              className={`flex-1 sm:flex-initial px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 shrink-0 ${
                 activeTab === "projects"
                   ? "bg-[#0071E3] text-white shadow-[0_4px_16px_rgba(0,113,227,0.4)]"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
-              <Code className="w-4 h-4" />
+              <Code className="w-3.5 h-3.5" />
               <span>Projects ({projects.length})</span>
             </button>
 
             <button
               onClick={() => setActiveTab("certificates")}
-              className={`flex-1 sm:flex-initial px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 shrink-0 ${
                 activeTab === "certificates"
                   ? "bg-[#0071E3] text-white shadow-[0_4px_16px_rgba(0,113,227,0.4)]"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
-              <Award className="w-4 h-4" />
+              <Award className="w-3.5 h-3.5" />
               <span>Certificates ({certificates.length})</span>
             </button>
 
             <button
               onClick={() => setActiveTab("stack")}
-              className={`flex-1 sm:flex-initial px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 shrink-0 ${
                 activeTab === "stack"
                   ? "bg-[#0071E3] text-white shadow-[0_4px_16px_rgba(0,113,227,0.4)]"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
-              <Boxes className="w-4 h-4" />
+              <Boxes className="w-3.5 h-3.5" />
               <span>Tech Arsenal</span>
             </button>
           </div>

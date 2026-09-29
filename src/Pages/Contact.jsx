@@ -181,7 +181,7 @@ const ContactPage = () => {
 
   return (
     <section
-      className="min-h-screen font-sans px-6 sm:px-8 py-24 relative selection:bg-[#0071E3] selection:text-white"
+      className="min-h-screen font-sans px-4 sm:px-6 lg:px-8 py-24 relative selection:bg-[#0071E3] selection:text-white"
       id="Contact"
     >
       <div className="max-w-7xl mx-auto space-y-12">
@@ -282,14 +282,14 @@ const ContactPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Form Window Card (macOS Mail Compose Window) - 7 Columns */}
           <div
-            className="lg:col-span-7 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
+            className="lg:col-span-7 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
             {/* Window Chrome */}
             <MacWindowHeader title="New Message — Mail.app" icon={Mail} />
 
-            <div className="p-6 sm:p-8 space-y-6">
+            <div className="p-5 sm:p-8 space-y-6">
               {/* Recipient Bar */}
               <div className="p-3.5 px-4 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10 flex items-center justify-between text-xs text-gray-600 dark:text-gray-300">
                 <div className="flex items-center gap-2 truncate">
@@ -393,7 +393,7 @@ const ContactPage = () => {
 
           {/* Comments / Discussion Window (macOS Messages.app) - 5 Columns */}
           <div
-            className="lg:col-span-5 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
+            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
             data-aos="fade-left"
             data-aos-duration="1000"
           >
@@ -407,7 +407,7 @@ const ContactPage = () => {
               }
             />
 
-            <div className="p-6 sm:p-8">
+            <div className="p-5 sm:p-8">
               <Komentar />
             </div>
           </div>
