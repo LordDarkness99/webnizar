@@ -1,92 +1,47 @@
-import React, { useEffect, memo, useMemo } from "react";
-import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles, UserCheck, Laptop } from "lucide-react";
+import React, { useEffect, memo, useMemo, useState } from "react";
+import {
+  FileText,
+  Code,
+  Award,
+  Globe,
+  ArrowUpRight,
+  Sparkles,
+  UserCheck,
+  Cpu,
+  GraduationCap,
+  MapPin,
+  Compass,
+  CheckCircle2,
+  BookOpen,
+  Terminal,
+  Layers,
+  BrainCircuit,
+  ArrowRight,
+} from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import MacWindowHeader from "../components/MacWindowHeader";
 
-// Header
+// Section Header
 const Header = memo(() => (
-  <div className="text-center mb-12 sm:mb-16 px-4" data-aos="fade-up" data-aos-duration="1000">
+  <div className="text-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-duration="1000">
     <span className="text-xs sm:text-sm font-semibold tracking-widest text-[#0071E3] uppercase block mb-3">
-      System Overview
+      System Overview & Trajectory
     </span>
-    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
-      About Me.
+    <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
+      Behind the Architecture.
     </h2>
-    <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-xl mx-auto flex items-center justify-center gap-2 font-normal">
+    <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-2xl mx-auto flex items-center justify-center gap-2 font-normal">
       <Sparkles className="w-4 h-4 text-[#0071E3]" />
-      Transforming data into intelligent insights and human-centric experiences.
+      Bridging foundational data science, machine learning models, and modern software craft.
     </p>
   </div>
 ));
 
-// Profile Image in macOS Glass Card
-const ProfileImage = memo(() => (
-  <div className="flex justify-center items-center p-2 sm:p-0">
-    <div className="relative group w-full max-w-[340px] sm:max-w-[380px]" data-aos="fade-up" data-aos-duration="1200">
-      {/* Multi-Layered Glowing Ambiance */}
-      <div
-        className="absolute -inset-6 bg-gradient-to-tr from-blue-600/25 via-indigo-500/20 to-sky-400/20 rounded-[2.5rem] blur-[40px] opacity-70 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-      />
-
-      {/* Main Glass Window Frame */}
-      <div className="relative mac-glass rounded-[2rem] overflow-hidden border border-black/[0.08] dark:border-white/15 shadow-2xl transition-all duration-700 group-hover:scale-[1.02]">
-        <MacWindowHeader title="PhotoPreview.app" icon={UserCheck} />
-
-        {/* Inner Image Wrapper */}
-        <div className="p-4 sm:p-5">
-          <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-black/5 dark:bg-white/5 border border-black/[0.05] dark:border-white/10">
-            <img
-              src="/niz.png"
-              alt="Nizar Rama"
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40 pointer-events-none" />
-          </div>
-
-          <div className="mt-4 flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 px-1">
-            <span className="font-medium text-gray-800 dark:text-gray-200">Nizar Alif Ramadhan</span>
-            <span className="font-mono text-[11px]">Surabaya, ID</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-));
-
-// macOS Widget Stat Card
-const StatCard = memo(({ icon: Icon, value, label, description, animation }) => (
-  <div data-aos={animation} data-aos-duration="1000" className="relative group h-full">
-    <div className="relative z-10 mac-glass rounded-[2rem] p-6 sm:p-7 border border-black/[0.08] dark:border-white/15 overflow-hidden transition-all duration-300 hover:scale-[1.02] shadow-lg flex flex-col justify-between h-full">
-      {/* Subtle interior glow */}
-      <div className="absolute -z-10 inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-      <div className="flex items-center justify-between mb-5">
-        <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-[#0071E3]/10 dark:bg-white/10 border border-[#0071E3]/20 dark:border-white/10 group-hover:scale-110 transition-transform duration-300">
-          <Icon className="w-6 h-6 text-[#0071E3]" />
-        </div>
-        <span className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
-          {value}
-        </span>
-      </div>
-
-      <div>
-        <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-[#f5f5f7] mb-1">
-          {label}
-        </h3>
-        <div className="flex items-center justify-between pt-1">
-          <p className="text-xs sm:text-sm text-gray-600 dark:text-[#86868b] font-normal">
-            {description}
-          </p>
-          <ArrowUpRight className="w-4 h-4 text-gray-400 dark:text-[#86868b] group-hover:text-[#0071E3] transition-colors" />
-        </div>
-      </div>
-    </div>
-  </div>
-));
-
 const AboutPage = () => {
+  const [activeStoryTab, setActiveStoryTab] = useState("journey"); // "journey" | "research" | "philosophy"
+
+  // Dynamic calculations
   const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
     const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
     const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
@@ -99,148 +54,439 @@ const AboutPage = () => {
       (today < new Date(today.getFullYear(), startDate.getMonth(), startDate.getDate()) ? 1 : 0);
 
     return {
-      totalProjects: storedProjects.length,
-      totalCertificates: storedCertificates.length,
+      totalProjects: storedProjects.length || 6,
+      totalCertificates: storedCertificates.length || 3,
       YearExperience: experience || 2,
     };
   }, []);
 
   useEffect(() => {
-    const initAOS = () => {
-      AOS.init({
-        once: false,
-        easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-      });
-    };
-
-    initAOS();
-    let resizeTimer;
-    const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(initAOS, 250);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(resizeTimer);
-    };
+    AOS.init({
+      once: false,
+      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+    });
   }, []);
 
-  const statsData = useMemo(
-    () => [
-      {
-        icon: Code,
-        value: totalProjects,
-        label: "Total Projects",
-        description: "Innovative web & AI solutions",
-        animation: "fade-right",
-      },
-      {
-        icon: Award,
-        value: totalCertificates,
-        label: "Certificates",
-        description: "Professional skills verified",
-        animation: "fade-up",
-      },
-      {
-        icon: Globe,
-        value: YearExperience,
-        label: "Years Experience",
-        description: "Deep continuous tech learning",
-        animation: "fade-left",
-      },
-    ],
-    [totalProjects, totalCertificates, YearExperience]
-  );
-
   return (
-    <div
-      className="min-h-screen font-sans overflow-hidden px-6 sm:px-8 py-20 relative selection:bg-[#0071E3] selection:text-white"
+    <section
+      className="min-h-screen font-sans overflow-hidden px-6 sm:px-8 py-24 relative selection:bg-[#0071E3] selection:text-white"
       id="About"
     >
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto space-y-12">
         <Header />
 
-        <div className="w-full pt-4 sm:pt-8">
-          <div className="flex flex-col-reverse lg:grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            {/* Left Content Column */}
-            <div
-              className="w-full lg:col-span-7 space-y-6 text-center lg:text-left"
-              data-aos="fade-right"
-              data-aos-duration="1000"
-            >
-              <div className="space-y-2">
-                <span className="text-gray-500 dark:text-[#86868b] font-medium text-lg block">
-                  Hello, I'm
+        {/* Top Executive Bento Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+          {/* Card 1: Developer Profiler & Identity Window (5 Columns) */}
+          <div
+            className="lg:col-span-5 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <MacWindowHeader
+              title="DeveloperProfiler.app"
+              icon={UserCheck}
+              actions={
+                <span className="text-[10px] font-mono-code font-bold uppercase text-[#0071E3] bg-[#0071E3]/10 px-2 py-0.5 rounded-full">
+                  Verified
                 </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
-                  Nizar Rama
-                </h2>
+              }
+            />
+
+            <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+              {/* Photo Viewport */}
+              <div className="relative group mx-auto w-full max-w-[280px] sm:max-w-[320px]">
+                <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-black/5 dark:bg-white/5 border border-black/[0.08] dark:border-white/10 shadow-lg">
+                  <img
+                    src="/niz.png"
+                    alt="Nizar Rama"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-30 pointer-events-none" />
+                </div>
               </div>
 
-              <p className="text-base sm:text-lg text-gray-600 dark:text-[#86868b] leading-relaxed font-normal text-justify lg:text-left tracking-normal">
-                I am a 5th-semester Information Systems student at State University of Surabaya with a strong interest in Machine Learning, data science, and artificial intelligence. Currently, I focus on leveraging Machine Learning techniques to build intelligent and data-driven solutions. I am also passionate about exploring new technologies, tools, and algorithms to continuously enhance my skills and expand my knowledge in the field of Machine Learning.
-              </p>
+              {/* Developer Specs List */}
+              <div className="space-y-2.5 pt-2">
+                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                    <UserCheck className="w-3.5 h-3.5 text-[#0071E3]" />
+                    Full Name
+                  </span>
+                  <span className="font-bold text-gray-900 dark:text-white">
+                    Nizar Alif Ramadhan
+                  </span>
+                </div>
 
-              {/* macOS Glass Quote Box */}
-              <div
-                className="relative mac-glass rounded-2xl p-5 my-6 shadow-md overflow-hidden text-left border border-black/[0.08] dark:border-white/10"
-                data-aos="fade-up"
-                data-aos-duration="1200"
-              >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
-                <blockquote className="text-gray-800 dark:text-[#f5f5f7] italic font-normal text-sm sm:text-base relative z-10 leading-snug">
-                  "Building intelligent solutions with Machine Learning as a tool, not a substitute for human insight."
-                </blockquote>
+                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                    <GraduationCap className="w-3.5 h-3.5 text-[#0071E3]" />
+                    University
+                  </span>
+                  <span className="font-semibold text-gray-900 dark:text-white truncate max-w-[190px]">
+                    State University of Surabaya
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                    <BookOpen className="w-3.5 h-3.5 text-[#0071E3]" />
+                    Department
+                  </span>
+                  <span className="font-semibold text-[#0071E3]">
+                    Information Technology Edu (Sem 5)
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-[#0071E3]" />
+                    Location
+                  </span>
+                  <span className="font-medium text-gray-800 dark:text-gray-200">
+                    Surabaya, Indonesia
+                  </span>
+                </div>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+              {/* Action Buttons */}
+              <div className="pt-2">
                 <a
                   href="https://drive.google.com/file/d/1Ijs8s1XyiRPn5DL8Y9CKl6UeVFo9PudM/view?usp=sharing"
-                  className="w-full sm:w-auto"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="w-full"
                 >
-                  <button
-                    data-aos="fade-up"
-                    data-aos-duration="800"
-                    className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(0,113,227,0.35)] text-sm sm:text-base"
-                  >
-                    <FileText className="w-4 h-4" /> Download CV
-                  </button>
-                </a>
-
-                <a href="#Portofolio" className="w-full sm:w-auto">
-                  <button
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                    className="w-full sm:w-auto px-6 py-3 rounded-full mac-glass text-gray-900 dark:text-[#f5f5f7] font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 text-sm sm:text-base border border-black/[0.1] dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10"
-                  >
-                    <Code className="w-4 h-4 text-[#0071E3]" /> View Projects
+                  <button className="w-full py-3 px-4 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(0,113,227,0.35)] transition-all hover:scale-[1.02] active:scale-[0.98]">
+                    <FileText className="w-4 h-4" />
+                    <span>Download Official Resume (CV)</span>
                   </button>
                 </a>
               </div>
-            </div>
-
-            {/* Right Picture Column with macOS Frame */}
-            <div className="w-full lg:col-span-5">
-              <ProfileImage />
             </div>
           </div>
 
-          {/* Stat Cards Grid (macOS Desktop Widgets) */}
-          <a href="#Portofolio" className="block mt-16">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {statsData.map((stat) => (
-                <StatCard key={stat.label} {...stat} />
-              ))}
+          {/* Card 2: Interactive Narrative & Research Studio (7 Columns) */}
+          <div
+            className="lg:col-span-7 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            data-aos="fade-left"
+            data-aos-duration="1000"
+          >
+            <MacWindowHeader
+              title="Engineering_Narrative.md"
+              icon={BrainCircuit}
+              actions={
+                <span className="text-[11px] font-mono-code text-gray-500 dark:text-gray-400">
+                  ReadMode: Interactive
+                </span>
+              }
+            />
+
+            {/* Interactive Narrative Tabs */}
+            <div className="p-3 px-6 border-b border-black/[0.06] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
+              <div className="grid grid-cols-3 gap-1.5 p-1 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
+                <button
+                  onClick={() => setActiveStoryTab("journey")}
+                  className={`py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "journey"
+                    ? "bg-[#0071E3] text-white shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    }`}
+                >
+                  <UserCheck className="w-3.5 h-3.5" />
+                  <span className="truncate">Background</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveStoryTab("research")}
+                  className={`py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "research"
+                    ? "bg-[#0071E3] text-white shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    }`}
+                >
+                  <Cpu className="w-3.5 h-3.5" />
+                  <span className="truncate">AI & ML Focus</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveStoryTab("philosophy")}
+                  className={`py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "philosophy"
+                    ? "bg-[#0071E3] text-white shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
+                    }`}
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span className="truncate">Philosophy</span>
+                </button>
+              </div>
             </div>
-          </a>
+
+            {/* Tab Viewport */}
+            <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+              {/* Tab 1: Journey */}
+              {activeStoryTab === "journey" && (
+                <div className="space-y-4 animate-fadeIn">
+                  <div className="space-y-1">
+                    <span className="text-xs font-mono-code uppercase tracking-wider text-[#0071E3] font-bold">
+                      Section 01 // The Trajectory
+                    </span>
+                    <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      From Code Fundamentals to Intelligent Systems.
+                    </h3>
+                  </div>
+
+                  <p className="text-base text-gray-600 dark:text-[#86868b] leading-relaxed font-normal text-justify">
+                    I am a 5th-semester Information Technology Edu undergraduate at the State University of Surabaya with a dedicated specialization in Machine Learning, predictive modeling, and intelligent software engineering. My technical foundation spans algorithmic problem solving, structured database design, and end-to-end fullstack web implementations.
+                  </p>
+
+                  <p className="text-base text-gray-600 dark:text-[#86868b] leading-relaxed font-normal text-justify">
+                    Throughout my university career, I have consistently balanced classroom theoretical depth with practical projects: writing modular Python pipelines, fine-tuning neural architectures, and deploying web interfaces that make complex models useful for end users.
+                  </p>
+                </div>
+              )}
+
+              {/* Tab 2: AI & ML Focus */}
+              {activeStoryTab === "research" && (
+                <div className="space-y-4 animate-fadeIn">
+                  <div className="space-y-1">
+                    <span className="text-xs font-mono-code uppercase tracking-wider text-[#0071E3] font-bold">
+                      Section 02 // Research & Technical Depth
+                    </span>
+                    <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      Deep Learning, Computer Vision & Data Pipelines.
+                    </h3>
+                  </div>
+
+                  <p className="text-base text-gray-600 dark:text-[#86868b] leading-relaxed font-normal text-justify">
+                    My current focus revolves around leveraging PyTorch and TensorFlow for Computer Vision, classification, and predictive analytics. I prioritize clean data preprocessing, model evaluation with rigorous validation metrics (Precision, Recall, F1), and model quantization to ensure practical, latency-conscious inference.
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    <div className="p-3 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
+                      <span className="text-xs font-bold text-gray-900 dark:text-white block">
+                        Computer Vision
+                      </span>
+                      <span className="text-[11px] text-gray-500">
+                        Object Detection, YOLOv8, CNN architectures
+                      </span>
+                    </div>
+                    <div className="p-3 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
+                      <span className="text-xs font-bold text-gray-900 dark:text-white block">
+                        Predictive Modeling
+                      </span>
+                      <span className="text-[11px] text-gray-500">
+                        Supervised & Unsupervised learning, Scikit-Learn
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Tab 3: Philosophy */}
+              {activeStoryTab === "philosophy" && (
+                <div className="space-y-4 animate-fadeIn">
+                  <div className="space-y-1">
+                    <span className="text-xs font-mono-code uppercase tracking-wider text-[#0071E3] font-bold">
+                      Section 03 // Core Principles
+                    </span>
+                    <h3 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                      Intelligent Tools, Human Judgment.
+                    </h3>
+                  </div>
+
+                  <p className="text-base text-gray-600 dark:text-[#86868b] leading-relaxed font-normal text-justify">
+                    Technology is most valuable when it solves genuine friction for people. I believe Machine Learning should be treated not as an opaque black box, but as a disciplined mathematical tool that amplifies human insight and enables data-driven decisions.
+                  </p>
+
+                  {/* Quote Block */}
+                  <div className="p-5 rounded-2xl mac-glass border-l-4 border-l-[#0071E3] border border-black/[0.08] dark:border-white/10 shadow-sm">
+                    <blockquote className="italic text-sm sm:text-base font-normal text-gray-800 dark:text-[#f5f5f7] leading-relaxed">
+                      "Building intelligent solutions with Machine Learning as a tool, not a substitute for human insight."
+                    </blockquote>
+                  </div>
+                </div>
+              )}
+
+              {/* Bottom Quick-Action Link */}
+              <div className="pt-4 border-t border-black/[0.06] dark:border-white/10 flex items-center justify-between">
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  Ready to collaborate on data-driven projects?
+                </span>
+                <a
+                  href="#Contact"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0071E3] hover:text-[#0077ED] transition-colors"
+                >
+                  <span>Connect with Nizar</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Middle Bento: 4 High-Impact Metric Widgets */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          {/* Metric 1 */}
+          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
+            <div className="flex items-center justify-between">
+              <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center">
+                <Code className="w-6 h-6" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#0071E3] bg-[#0071E3]/10 px-2.5 py-1 rounded-full">
+                Delivered
+              </span>
+            </div>
+            <div>
+              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+                {totalProjects}+
+              </div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+                Completed Projects
+              </div>
+              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+                Machine Learning apps & modern web software
+              </p>
+            </div>
+          </div>
+
+          {/* Metric 2 */}
+          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
+            <div className="flex items-center justify-between">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+                <Award className="w-6 h-6" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-500/10 px-2.5 py-1 rounded-full">
+                Accredited
+              </span>
+            </div>
+            <div>
+              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+                {totalCertificates}+
+              </div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+                Verified Certificates
+              </div>
+              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+                Validated technical & academic credentials
+              </p>
+            </div>
+          </div>
+
+          {/* Metric 3 */}
+          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
+            <div className="flex items-center justify-between">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+                <Globe className="w-6 h-6" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-500/10 px-2.5 py-1 rounded-full">
+                Experience
+              </span>
+            </div>
+            <div>
+              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+                {YearExperience}+ Years
+              </div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+                Continuous Craft
+              </div>
+              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+                Hands-on algorithmic & fullstack development
+              </p>
+            </div>
+          </div>
+
+          {/* Metric 4 */}
+          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
+            <div className="flex items-center justify-between">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-500/10 px-2.5 py-1 rounded-full">
+                Active
+              </span>
+            </div>
+            <div>
+              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+                5th Sem
+              </div>
+              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+                Academic Standing
+              </div>
+              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+                Information Technology Edu • Unesa Surabaya
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Milestone Roadmap: Growth & Trajectory */}
+        <div
+          className="p-6 sm:p-8 rounded-[2.5rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-xl space-y-6"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div className="flex items-center justify-between pb-4 border-b border-black/[0.06] dark:border-white/10">
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-xl bg-[#0071E3]/10 text-[#0071E3]">
+                <Layers className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                  Technical Evolution & Milestones
+                </h3>
+                <span className="text-xs text-gray-500 dark:text-gray-400">
+                  Continuous progression from core programming to deep learning architectures
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="p-5 rounded-2xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 space-y-2">
+              <span className="text-xs font-mono-code font-bold text-[#0071E3]">
+                Phase 01 // 2022 - 2023
+              </span>
+              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+                Software & Algorithm Fundamentals
+              </h4>
+              <p className="text-xs text-gray-600 dark:text-[#86868b] leading-relaxed">
+                Mastering core OOP in Java, Python, and C++, relational schema modeling in MySQL/PostgreSQL, and foundational web protocols.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 space-y-2">
+              <span className="text-xs font-mono-code font-bold text-[#0071E3]">
+                Phase 02 // 2023 - 2024
+              </span>
+              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+                Data Science & Machine Learning
+              </h4>
+              <p className="text-xs text-gray-600 dark:text-[#86868b] leading-relaxed">
+                Exploring mathematical foundations, Scikit-Learn pipelines, TensorFlow neural nets, and statistical data cleansing for real datasets.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 space-y-2">
+              <span className="text-xs font-mono-code font-bold text-emerald-500">
+                Phase 03 // 2024 - Present
+              </span>
+              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+                Intelligent Production Systems
+              </h4>
+              <p className="text-xs text-gray-600 dark:text-[#86868b] leading-relaxed">
+                Building Computer Vision models, PyTorch pipelines, and deploying high-performance web systems with modern React & Supabase cloud backend.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
