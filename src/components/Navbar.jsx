@@ -12,7 +12,7 @@ import {
   ExternalLink,
   ChevronRight,
 } from "lucide-react";
-import { WhatsApp } from "@mui/icons-material";
+import WhatsAppIcon from "./icons/WhatsAppIcon";
 import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
@@ -260,7 +260,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className="p-3 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10 flex items-center gap-2 text-xs font-semibold text-gray-800 dark:text-gray-200 hover:text-[#25D366]"
               >
-                <WhatsApp className="w-4 h-4 text-[#25D366] shrink-0" />
+                <WhatsAppIcon className="w-4 h-4 text-[#25D366] shrink-0" />
                 <span className="truncate">WhatsApp</span>
               </a>
             </div>

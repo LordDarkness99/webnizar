@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import "./index.css";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
@@ -7,11 +7,13 @@ import AnimatedBackground from "./components/Background";
 import Navbar from "./components/Navbar";
 import Portofolio from "./Pages/Portofolio";
 import ContactPage from "./Pages/Contact";
-import ProjectDetails from "./components/ProjectDetail";
 import WelcomeScreen from "./Pages/WelcomeScreen";
 import { AnimatePresence } from "framer-motion";
-import NotFoundPage from "./Pages/404";
 import { ThemeProvider } from "./context/ThemeContext";
+
+// Lazy load secondary pages
+const ProjectDetails = lazy(() => import("./components/ProjectDetail"));
+const NotFoundPage = lazy(() => import("./Pages/404"));
 
 const LandingPage = ({ showWelcome, setShowWelcome }) => {
   return (
@@ -121,8 +123,22 @@ function App() {
               />
             }
           />
-          <Route path="/project/:id" element={<ProjectPageLayout />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route
+            path="/project/:id"
+            element={
+              <Suspense fallback={<div className="min-h-screen bg-[#070709] flex items-center justify-center text-white text-xs">Loading...</div>}>
+                <ProjectPageLayout />
+              </Suspense>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Suspense fallback={<div className="min-h-screen bg-[#070709] flex items-center justify-center text-white text-xs">Loading...</div>}>
+                <NotFoundPage />
+              </Suspense>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

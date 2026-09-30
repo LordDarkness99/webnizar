@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Modal, Box, Backdrop } from "@mui/material";
+import React, { useState, useEffect } from "react";
 import { Maximize2, ExternalLink, X, Award } from "lucide-react";
 import MacWindowHeader from "./MacWindowHeader";
 
@@ -8,6 +7,22 @@ const Certificate = ({ ImgSertif, Link }) => {
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") handleClose();
+    };
+    if (open) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [open]);
 
   return (
     <div className="w-full">
@@ -56,77 +71,59 @@ const Certificate = ({ ImgSertif, Link }) => {
         </div>
       </div>
 
-      {/* macOS QuickLook Modal */}
-      <Modal
-        open={open}
-        onClose={handleClose}
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 300,
-          sx: {
-            backgroundColor: "rgba(0, 0, 0, 0.75)",
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-          },
-        }}
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          p: { xs: 2, sm: 4 },
-        }}
-      >
-        <Box
-          sx={{
-            outline: "none",
-            maxWidth: "92vw",
-            maxHeight: "92vh",
-            width: { xs: "100%", sm: "800px" },
-          }}
-          className="mac-glass rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl flex flex-col"
+      {/* Lightweight Pure React/Tailwind QuickLook Modal */}
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
+          onClick={handleClose}
         >
-          {/* Window Header */}
-          <MacWindowHeader
-            title="Certificate - QuickLook Preview"
-            actions={
-              <button
-                onClick={handleClose}
-                className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
-                aria-label="Close"
-              >
-                <X className="w-4 h-4 text-gray-600 dark:text-gray-300" />
-              </button>
-            }
-          />
-
-          {/* Modal Image Display */}
-          <div className="p-4 sm:p-6 overflow-auto max-h-[75vh] flex items-center justify-center bg-black/10 dark:bg-black/30">
-            <img
-              src={ImgSertif}
-              alt="Certificate Full View"
-              className="max-h-[70vh] w-auto max-w-full rounded-xl object-contain shadow-lg"
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="mac-glass rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl flex flex-col w-full max-w-3xl max-h-[92vh] animate-scaleUp"
+          >
+            {/* Window Header */}
+            <MacWindowHeader
+              title="Certificate - QuickLook Preview"
+              actions={
+                <button
+                  onClick={handleClose}
+                  className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                  aria-label="Close"
+                >
+                  <X className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+                </button>
+              }
             />
-          </div>
 
-          {/* Modal Footer Bar */}
-          <div className="p-4 px-4 sm:px-6 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 bg-white/40 dark:bg-black/20 text-center sm:text-left">
-            <span className="text-xs text-gray-500 dark:text-gray-400 hidden sm:inline">
-              Press ESC or click outside to dismiss
-            </span>
-            {Link && (
-              <a
-                href={Link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md hover:scale-105"
-              >
-                <span>Open Original Credential</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            )}
+            {/* Modal Image Display */}
+            <div className="p-4 sm:p-6 overflow-auto max-h-[70vh] flex items-center justify-center bg-black/10 dark:bg-black/30">
+              <img
+                src={ImgSertif}
+                alt="Certificate Full View"
+                className="max-h-[65vh] w-auto max-w-full rounded-xl object-contain shadow-lg"
+              />
+            </div>
+
+            {/* Modal Footer Bar */}
+            <div className="p-4 px-4 sm:px-6 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 bg-white/40 dark:bg-black/20 text-center sm:text-left">
+              <span className="text-xs text-gray-500 dark:text-gray-400 hidden sm:inline">
+                Press ESC or click outside to dismiss
+              </span>
+              {Link && (
+                <a
+                  href={Link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md hover:scale-105"
+                >
+                  <span>Open Original Credential</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              )}
+            </div>
           </div>
-        </Box>
-      </Modal>
+        </div>
+      )}
     </div>
   );
 };

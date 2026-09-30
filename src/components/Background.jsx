@@ -12,6 +12,10 @@ const AnimatedBackground = () => {
   useEffect(() => {
     let requestId;
 
+    // Skip heavy scroll animation calculations on mobile to keep frame rate 60fps
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
     const handleScroll = () => {
       const scrollY = window.pageYOffset;
 
@@ -25,8 +29,7 @@ const AnimatedBackground = () => {
         const x = initialPos.x + xOffset;
         const y = initialPos.y + yOffset;
 
-        blob.style.transform = `translate(${x}px, ${y}px)`;
-        blob.style.transition = "transform 1.8s cubic-bezier(0.16, 1, 0.3, 1)";
+        blob.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       });
     };
 

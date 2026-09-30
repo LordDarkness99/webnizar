@@ -21,7 +21,7 @@ import {
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { WhatsApp } from "@mui/icons-material";
+import WhatsAppIcon from "../components/icons/WhatsAppIcon";
 import MacWindowHeader from "../components/MacWindowHeader";
 
 // Constants
@@ -63,7 +63,7 @@ const METRICS_DATA = [
 ];
 
 const SOCIAL_LINKS = [
-  { icon: WhatsApp, link: "https://wa.me/6285334646271", name: "WhatsApp", color: "#25D366" },
+  { icon: WhatsAppIcon, link: "https://wa.me/6285334646271", name: "WhatsApp", color: "#25D366" },
   { icon: Github, link: "https://github.com/LordDarkness99", name: "GitHub", color: "#181717" },
   { icon: Linkedin, link: "https://www.linkedin.com/in/nizar-alif-ramadhan-5ba1a2315/", name: "LinkedIn", color: "#0A66C2" },
   { icon: Instagram, link: "https://www.instagram.com/nizar.ramm?igsh=MWg2ODRoOXg5Zm4x", name: "Instagram", color: "#E4405F" },

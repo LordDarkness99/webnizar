@@ -190,4 +190,27 @@ html:not(.dark) body {
 	select {
 		font-size: 16px !important;
 	}
+
+	/* GPU Optimization for mobile devices: lighter blur for silky 60fps scrolling */
+	.mac-glass {
+		backdrop-filter: blur(12px) !important;
+		-webkit-backdrop-filter: blur(12px) !important;
+	}
+	.dark .mac-glass {
+		backdrop-filter: blur(14px) !important;
+		-webkit-backdrop-filter: blur(14px) !important;
+	}
+	.mac-dock {
+		backdrop-filter: blur(14px) !important;
+		-webkit-backdrop-filter: blur(14px) !important;
+	}
+	.dark .mac-dock {
+		backdrop-filter: blur(14px) !important;
+		-webkit-backdrop-filter: blur(14px) !important;
+	}
+	.mac-glass-subtle,
+	.dark .mac-glass-subtle {
+		backdrop-filter: blur(8px) !important;
+		-webkit-backdrop-filter: blur(8px) !important;
+	}
 }

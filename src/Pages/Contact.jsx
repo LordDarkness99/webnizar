@@ -14,7 +14,7 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
-import { WhatsApp } from "@mui/icons-material";
+import WhatsAppIcon from "../components/icons/WhatsAppIcon";
 import SocialLinks from "../components/SocialLinks";
 import Komentar from "../components/Commentar";
 import Swal from "sweetalert2";
@@ -233,7 +233,7 @@ const ContactPage = () => {
           >
             <div className="flex items-center gap-3.5">
               <div className="w-10 h-10 rounded-2xl bg-[#25D366]/10 flex items-center justify-center text-[#25D366] shrink-0">
-                <WhatsApp className="w-5 h-5" />
+                <WhatsAppIcon className="w-5 h-5 text-[#25D366]" />
               </div>
               <div>
                 <span className="text-xs text-gray-500 dark:text-gray-400 block font-medium">
