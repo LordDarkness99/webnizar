@@ -422,7 +422,7 @@ const AboutPage = () => {
                 Academic Standing
               </div>
               <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
-                Information Technology Edu • Unesa Surabaya
+                Information Technology Edu • State University of Surabaya
               </p>
             </div>
           </div>
