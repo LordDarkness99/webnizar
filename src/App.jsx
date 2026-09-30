@@ -23,10 +23,10 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
       </AnimatePresence>
 
       {!showWelcome && (
-        <div className="min-h-screen w-full max-w-full overflow-x-hidden text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500">
+        <div className="min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500 overflow-x-hidden w-full max-w-full">
           <Navbar />
           <AnimatedBackground />
-          <main className="relative z-10 w-full max-w-full overflow-x-hidden">
+          <main className="relative z-10 overflow-x-hidden w-full max-w-full">
             <Home />
             <About />
             <Portofolio />
@@ -34,10 +34,10 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
           </main>
 
           {/* macOS Glass Footer Bar */}
-          <footer className="w-full mac-glass border-t border-black/[0.08] dark:border-white/10 py-8 px-6 sm:px-8 relative z-10 transition-colors duration-500">
+          <footer className="w-full mac-glass border-t border-black/[0.08] dark:border-white/10 py-8 px-4 sm:px-6 lg:px-8 relative z-10 transition-colors duration-500">
             <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
                 <span className="text-xs sm:text-sm text-gray-600 dark:text-[#86868b] font-normal">
                   © {new Date().getFullYear()}{" "}
                   <a
@@ -49,7 +49,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                   . Designed with macOS Glass UI.
                 </span>
               </div>
-              <div className="flex items-center gap-6 text-xs text-gray-500 dark:text-[#86868b]">
+              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-gray-500 dark:text-[#86868b]">
                 <a href="#Home" className="hover:text-[#0071E3] dark:hover:text-white transition-colors">
                   Home
                 </a>
@@ -72,15 +72,15 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
 };
 
 const ProjectPageLayout = () => (
-  <div className="min-h-screen w-full max-w-full overflow-x-hidden text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500">
+  <div className="min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500 overflow-x-hidden w-full max-w-full">
     <Navbar />
     <AnimatedBackground />
-    <main className="relative z-10 w-full max-w-full overflow-x-hidden">
+    <main className="relative z-10 overflow-x-hidden w-full max-w-full">
       <ProjectDetails />
     </main>
 
     {/* macOS Glass Footer Bar */}
-    <footer className="w-full mac-glass border-t border-black/[0.08] dark:border-white/10 py-8 px-6 sm:px-8 relative z-10 transition-colors duration-500">
+    <footer className="w-full mac-glass border-t border-black/[0.08] dark:border-white/10 py-8 px-4 sm:px-6 lg:px-8 relative z-10 transition-colors duration-500">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
         <span className="text-xs sm:text-sm text-gray-600 dark:text-[#86868b] font-normal">
           © {new Date().getFullYear()}{" "}
@@ -92,7 +92,7 @@ const ProjectPageLayout = () => (
           </a>
           . All Rights Reserved.
         </span>
-        <div className="flex items-center gap-6 text-xs text-gray-500 dark:text-[#86868b]">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-gray-500 dark:text-[#86868b]">
           <a href="/" className="hover:text-[#0071E3] dark:hover:text-white transition-colors">
             Home
           </a>

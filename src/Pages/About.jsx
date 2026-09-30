@@ -76,11 +76,11 @@ const AboutPage = () => {
         <Header />
 
         {/* Top Executive Bento Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch w-full max-w-full min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
 
           {/* Card 1: Developer Profiler & Identity Window (5 Columns) */}
           <div
-            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between min-w-0 max-w-full"
+            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
@@ -110,42 +110,42 @@ const AboutPage = () => {
 
               {/* Developer Specs List */}
               <div className="space-y-2.5 pt-2">
-                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
-                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
-                    <UserCheck className="w-3.5 h-3.5 text-[#0071E3]" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs gap-1 sm:gap-2">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5 shrink-0">
+                    <UserCheck className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
                     Full Name
                   </span>
-                  <span className="font-bold text-gray-900 dark:text-white">
+                  <span className="font-bold text-gray-900 dark:text-white sm:text-right break-words">
                     Nizar Alif Ramadhan
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
-                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
-                    <GraduationCap className="w-3.5 h-3.5 text-[#0071E3]" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs gap-1 sm:gap-2">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5 shrink-0">
+                    <GraduationCap className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
                     University
                   </span>
-                  <span className="font-semibold text-gray-900 dark:text-white truncate max-w-[190px]">
+                  <span className="font-semibold text-gray-900 dark:text-white sm:text-right break-words">
                     State University of Surabaya
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
-                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
-                    <BookOpen className="w-3.5 h-3.5 text-[#0071E3]" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs gap-1 sm:gap-2">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5 shrink-0">
+                    <BookOpen className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
                     Department
                   </span>
-                  <span className="font-semibold text-[#0071E3]">
+                  <span className="font-semibold text-[#0071E3] sm:text-right break-words">
                     Information Technology Edu (Sem 5)
                   </span>
                 </div>
 
-                <div className="flex items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs">
-                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#0071E3]" />
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between p-2.5 px-3.5 rounded-xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.04] dark:border-white/10 text-xs gap-1 sm:gap-2">
+                  <span className="text-gray-500 dark:text-gray-400 flex items-center gap-1.5 shrink-0">
+                    <MapPin className="w-3.5 h-3.5 text-[#0071E3] shrink-0" />
                     Location
                   </span>
-                  <span className="font-medium text-gray-800 dark:text-gray-200">
+                  <span className="font-medium text-gray-800 dark:text-gray-200 sm:text-right break-words">
                     Surabaya, Indonesia
                   </span>
                 </div>
@@ -189,35 +189,38 @@ const AboutPage = () => {
               <div className="grid grid-cols-3 gap-1 sm:gap-1.5 p-1 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
                 <button
                   onClick={() => setActiveStoryTab("journey")}
-                  className={`py-2 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "journey"
+                  className={`py-2 px-1.5 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeStoryTab === "journey"
                     ? "bg-[#0071E3] text-white shadow-sm"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
                   <UserCheck className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">Background</span>
+                  <span className="hidden sm:inline truncate">Background</span>
+                  <span className="sm:hidden truncate">Bio</span>
                 </button>
 
                 <button
                   onClick={() => setActiveStoryTab("research")}
-                  className={`py-2 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "research"
+                  className={`py-2 px-1.5 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeStoryTab === "research"
                     ? "bg-[#0071E3] text-white shadow-sm"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
                   <Cpu className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">AI & ML Focus</span>
+                  <span className="hidden sm:inline truncate">AI & ML Focus</span>
+                  <span className="sm:hidden truncate">AI & ML</span>
                 </button>
 
                 <button
                   onClick={() => setActiveStoryTab("philosophy")}
-                  className={`py-2 px-2 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeStoryTab === "philosophy"
+                  className={`py-2 px-1.5 sm:px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeStoryTab === "philosophy"
                     ? "bg-[#0071E3] text-white shadow-sm"
                     : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
                   <Sparkles className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">Philosophy</span>
+                  <span className="hidden sm:inline truncate">Philosophy</span>
+                  <span className="sm:hidden truncate">Values</span>
                 </button>
               </div>
             </div>
@@ -309,13 +312,13 @@ const AboutPage = () => {
               )}
 
               {/* Bottom Quick-Action Link */}
-              <div className="pt-4 border-t border-black/[0.06] dark:border-white/10 flex items-center justify-between">
+              <div className="pt-4 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <span className="text-xs text-gray-500 dark:text-gray-400">
                   Ready to collaborate on data-driven projects?
                 </span>
                 <a
                   href="#Contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0071E3] hover:text-[#0077ED] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0071E3] hover:text-[#0077ED] transition-colors shrink-0"
                 >
                   <span>Connect with Nizar</span>
                   <ArrowRight className="w-3.5 h-3.5" />

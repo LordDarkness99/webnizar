@@ -91,7 +91,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-50 bg-[#f5f5f7]/90 dark:bg-[#070709]/95 backdrop-blur-3xl font-sans selection:bg-[#0071E3] selection:text-white flex items-center justify-center p-6"
+          className="fixed inset-0 z-50 bg-[#f5f5f7]/90 dark:bg-[#070709]/95 backdrop-blur-3xl font-sans selection:bg-[#0071E3] selection:text-white flex items-center justify-center p-4 sm:p-6 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit="exit"
@@ -105,7 +105,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
 
           <div className="relative w-full max-w-lg mx-auto flex flex-col items-center">
             {/* macOS Frosted Glass Login Window */}
-            <div className="w-full mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-8 sm:p-10 shadow-2xl flex flex-col items-center text-center">
+            <div className="w-full mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-6 sm:p-10 shadow-2xl flex flex-col items-center text-center">
               {/* Profile Avatar / Traffic Dots */}
               <div className="flex gap-2 mb-6">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />

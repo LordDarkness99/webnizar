@@ -252,21 +252,21 @@ const ContactPage = () => {
             onClick={copyEmail}
             className="p-5 rounded-3xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-md flex items-center justify-between cursor-pointer group hover:border-[#0071E3]/40 transition-all hover:scale-[1.02]"
           >
-            <div className="flex items-center gap-3.5 min-w-0">
+            <div className="flex items-center gap-3.5 min-w-0 flex-1 mr-2">
               <div className="w-10 h-10 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center text-[#0071E3] shrink-0">
                 <Mail className="w-5 h-5" />
               </div>
-              <div className="truncate">
+              <div className="min-w-0">
                 <span className="text-xs text-gray-500 dark:text-gray-400 block font-medium">
                   Official Email
                 </span>
-                <span className="text-sm font-bold text-gray-900 dark:text-white truncate block">
+                <span className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white break-all sm:break-normal block">
                   nizaram4dhan@gmail.com
                 </span>
               </div>
             </div>
             <button
-              className="p-2 rounded-xl mac-glass-subtle text-gray-500 group-hover:text-[#0071E3] transition-colors"
+              className="p-2 rounded-xl mac-glass-subtle text-gray-500 group-hover:text-[#0071E3] transition-colors shrink-0"
               title="Copy Email Address"
             >
               {copiedEmail ? (
@@ -291,10 +291,10 @@ const ContactPage = () => {
 
             <div className="p-5 sm:p-8 space-y-6">
               {/* Recipient Bar */}
-              <div className="p-3.5 px-4 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10 flex items-center justify-between text-xs text-gray-600 dark:text-gray-300">
-                <div className="flex items-center gap-2 truncate">
-                  <span className="font-semibold text-gray-500">To:</span>
-                  <span className="font-mono-code font-bold text-[#0071E3] truncate">
+              <div className="p-3.5 px-4 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600 dark:text-gray-300">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="font-semibold text-gray-500 shrink-0">To:</span>
+                  <span className="font-mono-code font-bold text-[#0071E3] text-[11px] sm:text-xs break-all sm:break-normal">
                     Nizar Rama &lt;nizaram4dhan@gmail.com&gt;
                   </span>
                 </div>

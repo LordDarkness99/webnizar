@@ -36,8 +36,8 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id, isFeature
           />
 
           {/* Safari-like Address Bar Mockup */}
-          <div className="px-5 py-2 border-b border-black/[0.05] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] flex items-center justify-between gap-3 text-xs">
-            <div className="flex-1 max-w-md mx-auto py-1 px-3 rounded-xl mac-glass-subtle border border-black/[0.05] dark:border-white/10 flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400 font-mono-code text-[11px] truncate">
+          <div className="px-4 sm:px-5 py-2 border-b border-black/[0.05] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] flex items-center justify-between gap-2 text-xs">
+            <div className="flex-1 max-w-md mx-auto py-1 px-3 rounded-xl mac-glass-subtle border border-black/[0.05] dark:border-white/10 flex items-center justify-center gap-1.5 text-gray-500 dark:text-gray-400 font-mono-code text-[11px] min-w-0">
               <ShieldCheck className="w-3 h-3 text-emerald-500 shrink-0" />
               <span className="truncate">
                 {ProjectLink ? ProjectLink.replace("https://", "") : `webnizar.app/project/${id || "demo"}`}
@@ -98,7 +98,7 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id, isFeature
             </div>
 
             {/* Bottom Actions Bar */}
-            <div className="pt-4 flex items-center justify-between border-t border-black/[0.06] dark:border-white/10">
+            <div className="pt-4 flex flex-wrap items-center justify-between gap-2 border-t border-black/[0.06] dark:border-white/10">
               {ProjectLink ? (
                 <a
                   href={ProjectLink}

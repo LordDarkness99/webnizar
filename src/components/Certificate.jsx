@@ -109,8 +109,8 @@ const Certificate = ({ ImgSertif, Link }) => {
           </div>
 
           {/* Modal Footer Bar */}
-          <div className="p-4 px-6 border-t border-black/[0.06] dark:border-white/10 flex items-center justify-between bg-white/40 dark:bg-black/20">
-            <span className="text-xs text-gray-500 dark:text-gray-400">
+          <div className="p-4 px-4 sm:px-6 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 bg-white/40 dark:bg-black/20 text-center sm:text-left">
+            <span className="text-xs text-gray-500 dark:text-gray-400 hidden sm:inline">
               Press ESC or click outside to dismiss
             </span>
             {Link && (
@@ -118,7 +118,7 @@ const Certificate = ({ ImgSertif, Link }) => {
                 href={Link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-1.5 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-md hover:scale-105"
+                className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md hover:scale-105"
               >
                 <span>Open Original Credential</span>
                 <ExternalLink className="w-3.5 h-3.5" />

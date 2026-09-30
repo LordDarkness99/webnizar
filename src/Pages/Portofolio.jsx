@@ -197,38 +197,41 @@ export default function Portofolio() {
           <div className="p-1 sm:p-1.5 rounded-full mac-dock flex items-center gap-1 sm:gap-2 border border-black/[0.08] dark:border-white/15 max-w-2xl w-full justify-between sm:justify-center overflow-x-auto">
             <button
               onClick={() => setActiveTab("projects")}
-              className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 shrink-0 ${
+              className={`flex-1 sm:flex-initial px-2.5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1 sm:gap-1.5 shrink-0 ${
                 activeTab === "projects"
                   ? "bg-[#0071E3] text-white shadow-[0_4px_16px_rgba(0,113,227,0.4)]"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
-              <Code className="w-3.5 h-3.5" />
-              <span>Projects ({projects.length})</span>
+              <Code className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden sm:inline">Projects ({projects.length})</span>
+              <span className="sm:hidden">Projects</span>
             </button>
 
             <button
               onClick={() => setActiveTab("certificates")}
-              className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 shrink-0 ${
+              className={`flex-1 sm:flex-initial px-2.5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1 sm:gap-1.5 shrink-0 ${
                 activeTab === "certificates"
                   ? "bg-[#0071E3] text-white shadow-[0_4px_16px_rgba(0,113,227,0.4)]"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
-              <Award className="w-3.5 h-3.5" />
-              <span>Certificates ({certificates.length})</span>
+              <Award className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden sm:inline">Certificates ({certificates.length})</span>
+              <span className="sm:hidden">Certs</span>
             </button>
 
             <button
               onClick={() => setActiveTab("stack")}
-              className={`flex-1 sm:flex-initial px-3 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1.5 shrink-0 ${
+              className={`flex-1 sm:flex-initial px-2.5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-1 sm:gap-1.5 shrink-0 ${
                 activeTab === "stack"
                   ? "bg-[#0071E3] text-white shadow-[0_4px_16px_rgba(0,113,227,0.4)]"
                   : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10"
               }`}
             >
-              <Boxes className="w-3.5 h-3.5" />
-              <span>Tech Arsenal</span>
+              <Boxes className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden sm:inline">Tech Arsenal</span>
+              <span className="sm:hidden">Stack</span>
             </button>
           </div>
         </div>

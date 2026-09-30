@@ -147,7 +147,7 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="min-h-screen font-sans px-6 sm:px-8 py-16 relative overflow-hidden selection:bg-[#0071E3] selection:text-white">
+    <div className="min-h-screen font-sans px-4 sm:px-6 lg:px-8 py-16 relative overflow-hidden selection:bg-[#0071E3] selection:text-white">
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Navigation Breadcrumb & Back */}
         <div className="flex items-center space-x-3 mb-10">
@@ -159,9 +159,9 @@ const ProjectDetails = () => {
             <span>Back</span>
           </button>
 
-          <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-[#86868b]">
-            <span className="cursor-pointer hover:underline" onClick={() => navigate("/")}>Home</span>
-            <ChevronRight className="w-4 h-4" />
+          <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-[#86868b] min-w-0">
+            <span className="cursor-pointer hover:underline shrink-0" onClick={() => navigate("/")}>Home</span>
+            <ChevronRight className="w-4 h-4 shrink-0" />
             <span className="text-gray-900 dark:text-[#f5f5f7] font-semibold truncate">
               {project.Title}
             </span>
@@ -190,12 +190,12 @@ const ProjectDetails = () => {
             <ProjectStats project={project} />
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <a
                 href={project.Link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 bg-[#0071E3] hover:bg-[#0077ED] text-white rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,113,227,0.35)] hover:scale-[1.02] text-sm font-semibold"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3.5 bg-[#0071E3] hover:bg-[#0077ED] text-white rounded-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,113,227,0.35)] hover:scale-[1.02] text-sm font-semibold w-full sm:w-auto"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>Launch Live Demo</span>
@@ -205,7 +205,7 @@ const ProjectDetails = () => {
                 href={project.Github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 mac-glass text-gray-900 dark:text-[#f5f5f7] hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-[1.02] text-sm font-semibold border border-black/[0.08] dark:border-white/15"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3.5 mac-glass text-gray-900 dark:text-[#f5f5f7] hover:bg-black/5 dark:hover:bg-white/10 rounded-full transition-all duration-300 hover:scale-[1.02] text-sm font-semibold border border-black/[0.08] dark:border-white/15 w-full sm:w-auto"
                 onClick={(e) => !handleGithubClick(project.Github) && e.preventDefault()}
               >
                 <Github className="w-4 h-4 text-[#0071E3]" />

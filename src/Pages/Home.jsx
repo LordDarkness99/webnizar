@@ -158,15 +158,15 @@ const Home = () => {
           data-aos-duration="800"
           className="flex flex-wrap items-center justify-between gap-3 p-3 px-4 sm:px-5 mb-8 rounded-2xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-sm text-xs"
         >
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 min-w-0">
             <span className="relative flex h-2.5 w-2.5 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
-            <span className="font-semibold text-gray-800 dark:text-gray-200">
+            <span className="font-semibold text-gray-800 dark:text-gray-200 shrink-0">
               Active Status:
             </span>
-            <span className="text-gray-600 dark:text-gray-400 truncate">
+            <span className="text-gray-600 dark:text-gray-400 text-xs break-words">
               Open for Machine Learning & Software Engineering
             </span>
           </div>
@@ -184,10 +184,10 @@ const Home = () => {
         </div>
 
         {/* Main Stage Grid: Non-template Asymmetric Bento */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch w-full max-w-full min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* Left Column: Developer Profile & Mission (7 Columns) */}
           <div
-            className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden min-w-0 max-w-full"
+            className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden"
             data-aos="fade-right"
             data-aos-duration="1000"
           >
@@ -252,16 +252,16 @@ const Home = () => {
 
             {/* Action Group & Social Dock */}
             <div className="pt-6 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 relative z-10">
-              <div className="flex flex-wrap items-center gap-3">
-                <a href="#Portofolio">
-                  <button className="px-6 py-3 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-sm font-semibold transition-all duration-300 shadow-[0_4px_16px_rgba(0,113,227,0.35)] hover:scale-105 active:scale-95 flex items-center gap-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <a href="#Portofolio" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-sm font-semibold transition-all duration-300 shadow-[0_4px_16px_rgba(0,113,227,0.35)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
                     <span>Explore Showcase</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </a>
 
-                <a href="#Contact">
-                  <button className="px-5 py-3 rounded-full mac-glass text-gray-800 dark:text-[#f5f5f7] text-sm font-semibold border border-black/[0.08] dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+                <a href="#Contact" className="w-full sm:w-auto">
+                  <button className="w-full sm:w-auto px-5 py-3 rounded-full mac-glass text-gray-800 dark:text-[#f5f5f7] text-sm font-semibold border border-black/[0.08] dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
                     <Mail className="w-4 h-4 text-[#0071E3]" />
                     <span>Get in Touch</span>
                   </button>
@@ -269,7 +269,7 @@ const Home = () => {
               </div>
 
               {/* Social Channels Pills */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center justify-center sm:justify-start gap-2">
                 {SOCIAL_LINKS.map((item, index) => {
                   const Icon = item.icon;
                   return (
@@ -292,7 +292,7 @@ const Home = () => {
 
           {/* Right Column: Interactive macOS AI & Code Studio Inspector (5 Columns) */}
           <div
-            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between min-w-0 max-w-full"
+            className="lg:col-span-5 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
             data-aos="fade-left"
             data-aos-duration="1000"
           >
@@ -308,39 +308,41 @@ const Home = () => {
             />
 
             {/* Segmented Tab Switcher (Visual vs Code vs Metrics) */}
-            <div className="p-3 px-4 border-b border-black/[0.06] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
+            <div className="p-2.5 sm:p-3 px-3 sm:px-4 border-b border-black/[0.06] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
               <div className="grid grid-cols-3 gap-1 p-1 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
                 <button
                   onClick={() => setActiveTab("visual")}
-                  className={`py-1.5 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeTab === "visual"
+                  className={`py-1.5 px-1.5 sm:px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeTab === "visual"
                       ? "bg-[#0071E3] text-white shadow-sm"
                       : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
-                  <Cpu className="w-3.5 h-3.5" />
-                  <span>Preview</span>
+                  <Cpu className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">Preview</span>
                 </button>
 
                 <button
                   onClick={() => setActiveTab("code")}
-                  className={`py-1.5 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeTab === "code"
+                  className={`py-1.5 px-1.5 sm:px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeTab === "code"
                       ? "bg-[#0071E3] text-white shadow-sm"
                       : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
-                  <Code2 className="w-3.5 h-3.5" />
-                  <span>Pipeline.py</span>
+                  <Code2 className="w-3.5 h-3.5 shrink-0" />
+                  <span className="hidden sm:inline truncate">Pipeline.py</span>
+                  <span className="sm:hidden truncate">Code</span>
                 </button>
 
                 <button
                   onClick={() => setActiveTab("metrics")}
-                  className={`py-1.5 px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all duration-300 ${activeTab === "metrics"
+                  className={`py-1.5 px-1.5 sm:px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeTab === "metrics"
                       ? "bg-[#0071E3] text-white shadow-sm"
                       : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                     }`}
                 >
-                  <Activity className="w-3.5 h-3.5" />
-                  <span>Telemetry</span>
+                  <Activity className="w-3.5 h-3.5 shrink-0" />
+                  <span className="hidden sm:inline truncate">Telemetry</span>
+                  <span className="sm:hidden truncate">Metrics</span>
                 </button>
               </div>
             </div>
@@ -377,7 +379,7 @@ const Home = () => {
 
               {/* Tab 2: Syntax Highlighted Python Code */}
               {activeTab === "code" && (
-                <div className="relative flex flex-col h-full animate-fadeIn min-w-0 max-w-full">
+                <div className="relative flex flex-col h-full animate-fadeIn">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-mono-code text-gray-500 dark:text-gray-400">
                       python 3.11 • pytorch 2.3
@@ -401,7 +403,7 @@ const Home = () => {
                     </button>
                   </div>
 
-                  <pre className="p-3.5 rounded-2xl bg-black/80 dark:bg-black/90 text-gray-200 font-mono-code text-[11px] leading-relaxed overflow-x-auto max-h-[260px] border border-white/10 w-full max-w-full">
+                  <pre className="p-3.5 rounded-2xl bg-black/80 dark:bg-black/90 text-gray-200 font-mono-code text-[11px] leading-relaxed overflow-x-auto max-h-[260px] border border-white/10">
                     <code>{CODE_SNIPPET}</code>
                   </pre>
                 </div>
