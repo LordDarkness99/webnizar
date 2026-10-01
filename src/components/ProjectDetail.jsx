@@ -63,30 +63,30 @@ const ProjectStats = ({ project }) => {
   const featuresCount = project?.Features?.length || 0;
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-4 mac-glass rounded-[2rem] border border-black/[0.08] dark:border-white/12 shadow-lg">
-      <div className="flex items-center space-x-3.5 bg-black/[0.03] dark:bg-white/5 p-3.5 rounded-2xl border border-black/[0.05] dark:border-white/10 transition-all duration-300 hover:scale-[1.02]">
-        <div className="bg-[#0071E3]/15 p-2.5 rounded-xl border border-[#0071E3]/25">
-          <Code2 className="text-[#0071E3] w-5 h-5" strokeWidth={2} />
+    <div className="grid grid-cols-2 gap-2.5 sm:gap-4 p-3 sm:p-4 mac-glass rounded-[1.5rem] sm:rounded-[2rem] border border-black/[0.08] dark:border-white/12 shadow-lg w-full min-w-0">
+      <div className="flex items-center gap-2.5 sm:gap-3.5 bg-black/[0.03] dark:bg-white/5 p-2.5 sm:p-3.5 rounded-2xl border border-black/[0.05] dark:border-white/10 transition-all duration-300 hover:scale-[1.02] min-w-0 overflow-hidden">
+        <div className="bg-[#0071E3]/15 p-2 sm:p-2.5 rounded-xl border border-[#0071E3]/25 shrink-0">
+          <Code2 className="text-[#0071E3] w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
         </div>
-        <div>
-          <div className="text-xl font-bold text-gray-900 dark:text-[#f5f5f7]">
+        <div className="min-w-0">
+          <div className="text-lg sm:text-xl font-bold text-gray-900 dark:text-[#f5f5f7]">
             {techStackCount}
           </div>
-          <div className="text-xs text-gray-500 dark:text-[#86868b]">
+          <div className="text-[11px] sm:text-xs text-gray-500 dark:text-[#86868b] leading-tight">
             Technologies
           </div>
         </div>
       </div>
 
-      <div className="flex items-center space-x-3.5 bg-black/[0.03] dark:bg-white/5 p-3.5 rounded-2xl border border-black/[0.05] dark:border-white/10 transition-all duration-300 hover:scale-[1.02]">
-        <div className="bg-[#0071E3]/15 p-2.5 rounded-xl border border-[#0071E3]/25">
-          <Layers className="text-[#0071E3] w-5 h-5" strokeWidth={2} />
+      <div className="flex items-center gap-2.5 sm:gap-3.5 bg-black/[0.03] dark:bg-white/5 p-2.5 sm:p-3.5 rounded-2xl border border-black/[0.05] dark:border-white/10 transition-all duration-300 hover:scale-[1.02] min-w-0 overflow-hidden">
+        <div className="bg-[#0071E3]/15 p-2 sm:p-2.5 rounded-xl border border-[#0071E3]/25 shrink-0">
+          <Layers className="text-[#0071E3] w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
         </div>
-        <div>
-          <div className="text-xl font-bold text-gray-900 dark:text-[#f5f5f7]">
+        <div className="min-w-0">
+          <div className="text-lg sm:text-xl font-bold text-gray-900 dark:text-[#f5f5f7]">
             {featuresCount}
           </div>
-          <div className="text-xs text-gray-500 dark:text-[#86868b]">
+          <div className="text-[11px] sm:text-xs text-gray-500 dark:text-[#86868b] leading-tight">
             Key Features
           </div>
         </div>
@@ -147,42 +147,42 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="min-h-screen font-sans px-4 sm:px-6 lg:px-8 py-16 relative overflow-hidden selection:bg-[#0071E3] selection:text-white">
-      <div className="relative z-10 max-w-7xl mx-auto">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden font-sans px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 relative selection:bg-[#0071E3] selection:text-white">
+      <div className="relative z-10 w-full min-w-0 max-w-7xl mx-auto">
         {/* Navigation Breadcrumb & Back */}
-        <div className="flex items-center space-x-3 mb-10">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-0 sm:space-x-3 mb-8 sm:mb-10">
           <button
             onClick={() => navigate(-1)}
-            className="group inline-flex items-center space-x-2 px-4 py-2.5 mac-glass hover:bg-black/5 dark:hover:bg-white/10 rounded-full text-gray-900 dark:text-[#f5f5f7] transition-all duration-300 border border-black/[0.08] dark:border-white/15 text-sm font-semibold shadow-md active:scale-95"
+            className="group inline-flex w-fit shrink-0 items-center space-x-2 px-4 py-2.5 mt-2 sm:mt-0 mac-glass hover:bg-black/5 dark:hover:bg-white/10 rounded-full text-gray-900 dark:text-[#f5f5f7] transition-all duration-300 border border-black/[0.08] dark:border-white/15 text-sm font-semibold shadow-md active:scale-95"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform text-[#0071E3]" />
             <span>Back</span>
           </button>
 
-          <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-[#86868b] min-w-0">
+          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-[#86868b] min-w-0 max-w-full">
             <span className="cursor-pointer hover:underline shrink-0" onClick={() => navigate("/")}>Home</span>
             <ChevronRight className="w-4 h-4 shrink-0" />
-            <span className="text-gray-900 dark:text-[#f5f5f7] font-semibold truncate">
+            <span className="text-gray-900 dark:text-[#f5f5f7] font-semibold truncate min-w-0 flex-1">
               {project.Title}
             </span>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 sm:gap-10 items-start w-full min-w-0">
           {/* Left Column (Info & Actions) */}
-          <div className="lg:col-span-6 space-y-8">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8 w-full min-w-0 max-w-full">
             <div className="space-y-3">
               <span className="text-xs font-bold tracking-widest text-[#0071E3] uppercase">
                 Project Detail View
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7] leading-tight">
+              <h1 className="text-[1.7rem] sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7] leading-[1.2] break-words">
                 {project.Title}
               </h1>
               <div className="h-1 w-20 bg-[#0071E3] rounded-full" />
             </div>
 
             <div className="prose max-w-none">
-              <p className="text-base sm:text-lg text-gray-600 dark:text-[#86868b] leading-relaxed font-normal">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-[#86868b] leading-relaxed font-normal break-words">
                 {project.Description}
               </p>
             </div>
@@ -232,8 +232,8 @@ const ProjectDetails = () => {
           </div>
 
           {/* Right Column (macOS Window Showcase & Features) */}
-          <div className="lg:col-span-6 space-y-8">
-            <div className="mac-glass rounded-[2.5rem] overflow-hidden border border-black/[0.08] dark:border-white/15 shadow-2xl group">
+          <div className="lg:col-span-6 space-y-6 sm:space-y-8 w-full min-w-0 max-w-full">
+            <div className="mac-glass rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border border-black/[0.08] dark:border-white/15 shadow-2xl group w-full min-w-0 max-w-full">
               <MacWindowHeader title={`${project.Title} — Safari.app`} icon={Compass} />
               <div className="relative overflow-hidden aspect-video bg-black/5 dark:bg-white/5">
                 <img
@@ -245,7 +245,7 @@ const ProjectDetails = () => {
             </div>
 
             {/* Key Features Container */}
-            <div className="mac-glass rounded-[2rem] p-6 sm:p-8 border border-black/[0.08] dark:border-white/15 shadow-xl space-y-5">
+            <div className="mac-glass rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 border border-black/[0.08] dark:border-white/15 shadow-xl space-y-5 w-full min-w-0 max-w-full">
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7] flex items-center gap-2.5">
                 <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
                 Key Capabilities & Features
