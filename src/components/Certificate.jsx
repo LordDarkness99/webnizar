@@ -71,15 +71,15 @@ const Certificate = ({ ImgSertif, Link }) => {
         </div>
       </div>
 
-      {/* Lightweight Pure React/Tailwind QuickLook Modal */}
+      {/* Lightweight Pure React/Tailwind QuickLook Modal - Enlarged Lightbox */}
       {open && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/75 backdrop-blur-md animate-fadeIn"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 bg-black/85 backdrop-blur-md animate-fadeIn"
           onClick={handleClose}
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="mac-glass rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl flex flex-col w-full max-w-3xl max-h-[92vh] animate-scaleUp"
+            className="mac-glass rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl flex flex-col w-[98vw] sm:w-[96vw] max-w-7xl max-h-[96vh] animate-scaleUp"
           >
             {/* Window Header */}
             <MacWindowHeader
@@ -87,7 +87,7 @@ const Certificate = ({ ImgSertif, Link }) => {
               actions={
                 <button
                   onClick={handleClose}
-                  className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                  className="p-1 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors cursor-pointer"
                   aria-label="Close"
                 >
                   <X className="w-4 h-4 text-gray-600 dark:text-gray-300" />
@@ -96,30 +96,41 @@ const Certificate = ({ ImgSertif, Link }) => {
             />
 
             {/* Modal Image Display */}
-            <div className="p-4 sm:p-6 overflow-auto max-h-[70vh] flex items-center justify-center bg-black/10 dark:bg-black/30">
+            <div className="p-2 sm:p-4 md:p-6 overflow-auto flex-1 flex items-center justify-center bg-black/10 dark:bg-black/30 min-h-[300px] max-h-[82vh]">
               <img
                 src={ImgSertif}
                 alt="Certificate Full View"
-                className="max-h-[65vh] w-auto max-w-full rounded-xl object-contain shadow-lg"
+                className="max-h-[78vh] md:max-h-[82vh] w-auto max-w-full rounded-xl object-contain shadow-lg"
               />
             </div>
 
             {/* Modal Footer Bar */}
-            <div className="p-4 px-4 sm:px-6 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 bg-white/40 dark:bg-black/20 text-center sm:text-left">
+            <div className="p-3 px-4 sm:px-6 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 bg-white/40 dark:bg-black/20 text-center sm:text-left shrink-0">
               <span className="text-xs text-gray-500 dark:text-gray-400 hidden sm:inline">
                 Press ESC or click outside to dismiss
               </span>
-              {Link && (
+              <div className="flex items-center gap-2 w-full sm:w-auto">
                 <a
-                  href={Link}
+                  href={ImgSertif}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto px-4 py-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md hover:scale-105"
+                  className="flex-1 sm:flex-none px-4 py-2 rounded-full bg-white/20 dark:bg-white/10 hover:bg-white/30 dark:hover:bg-white/20 text-gray-800 dark:text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-sm border border-black/10 dark:border-white/10"
                 >
-                  <span>Open Original Credential</span>
+                  <span>View Original Image</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
-              )}
+                {Link && (
+                  <a
+                    href={Link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 sm:flex-none px-4 py-2 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-all shadow-md hover:scale-105"
+                  >
+                    <span>Open Credential Link</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>
