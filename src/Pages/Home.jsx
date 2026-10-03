@@ -18,7 +18,7 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import CrowdCanvas from "../components/ui/CrowdCanvas";
 import WhatsAppIcon from "../components/icons/WhatsAppIcon";
 import MacWindowHeader from "../components/MacWindowHeader";
 
@@ -72,11 +72,8 @@ const Home = () => {
   const [isTyping, setIsTyping] = useState(true);
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState("visual"); // "visual" | "code" | "metrics"
-  const [hasCopiedCode, setHasCopiedCode] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
 
-  // Live Surabaya GMT+7 Clock
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -89,12 +86,12 @@ const Home = () => {
       };
       setCurrentTime(new Intl.DateTimeFormat("en-US", options).format(now));
     };
+
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // Typing Effect
   const handleTyping = useCallback(() => {
     if (isTyping) {
       if (charIndex < ROLES[roleIndex].length) {
@@ -115,160 +112,117 @@ const Home = () => {
   }, [charIndex, isTyping, roleIndex]);
 
   useEffect(() => {
-    const timeout = setTimeout(
-      handleTyping,
-      isTyping ? TYPING_SPEED : ERASING_SPEED
-    );
+    const timeout = setTimeout(handleTyping, isTyping ? TYPING_SPEED : ERASING_SPEED);
     return () => clearTimeout(timeout);
   }, [handleTyping]);
-
-  const copyCodeToClipboard = () => {
-    navigator.clipboard.writeText(CODE_SNIPPET);
-    setHasCopiedCode(true);
-    setTimeout(() => setHasCopiedCode(false), 2000);
-  };
-
-  const lottieOptions = {
-    src: "/Coding.json",
-    loop: true,
-    autoplay: true,
-    style: { width: "100%", height: "100%" },
-    className: "w-full h-full object-contain max-h-[300px]",
-  };
 
   return (
     <section
       className="min-h-screen font-sans overflow-hidden px-4 sm:px-6 lg:px-8 pt-24 pb-16 relative selection:bg-[#0071E3] selection:text-white"
       id="Home"
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Top Command Banner / Status Bar */}
-        <div
-          className="flex flex-wrap items-center justify-between gap-3 p-3 px-4 sm:px-5 mb-8 rounded-2xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-sm text-xs"
-        >
-          <div className="flex items-center gap-2.5 min-w-0">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3 px-1 py-2 text-xs">
+          <div className="flex min-w-0 items-center gap-2.5">
             <span className="relative flex h-2.5 w-2.5 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
             </span>
-            <span className="font-semibold text-gray-800 dark:text-gray-200 shrink-0">
-              Active Status:
-            </span>
-            <span className="text-gray-600 dark:text-gray-400 text-xs break-words">
-              Open for Machine Learning & Software Engineering
-            </span>
+            <span className="shrink-0 font-semibold text-gray-800 dark:text-gray-200">Active Status:</span>
+            <span className="break-words text-gray-600 dark:text-gray-400">Open for Machine Learning & Software Engineering</span>
           </div>
 
-          <div className="flex items-center gap-4 text-gray-500 dark:text-gray-400 hidden sm:flex">
+          <div className="hidden items-center gap-4 text-gray-500 dark:text-gray-400 sm:flex">
             <span className="flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-[#0071E3]" />
+              <MapPin className="h-3.5 w-3.5 text-[#0071E3]" />
               Surabaya, ID
             </span>
             <span className="flex items-center gap-1.5 font-mono-code text-[11px]">
-              <Clock className="w-3.5 h-3.5 text-[#0071E3]" />
+              <Clock className="h-3.5 w-3.5 text-[#0071E3]" />
               {currentTime ? `${currentTime} WIB` : "GMT+7"}
             </span>
           </div>
         </div>
 
-        {/* Main Stage Grid: Non-template Asymmetric Bento */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Left Column: Developer Profile & Mission (7 Columns) */}
-          <div
-            className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden"
-          >
-            {/* Subtle inner background glow */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="grid items-center gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="relative flex flex-col justify-between overflow-hidden p-5 sm:p-8">
+            <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-full bg-blue-500/5 blur-3xl" />
 
-            <div className="space-y-6 relative z-10">
-              {/* Identity Capsule */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mac-glass-subtle border border-black/[0.08] dark:border-white/15 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#0071E3]" />
+            <div className="relative z-10 space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full px-0 py-1 text-xs font-medium text-gray-800 dark:text-gray-200">
+                <Sparkles className="h-3.5 w-3.5 text-[#0071E3]" />
                 <span>Nizar Alif Ramadhan</span>
                 <span className="text-gray-400">•</span>
-                <span className="text-[#0071E3] font-semibold">AI Practitioner</span>
+                <span className="font-semibold text-[#0071E3]">AI Practitioner</span>
               </div>
 
-              {/* Bold Executive Headline */}
-              <div className="space-y-2">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-[#f5f5f7] leading-[1.1]">
+              <div className="space-y-3">
+                <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight text-gray-900 dark:text-[#f5f5f7] sm:text-5xl lg:text-[4rem]">
                   Engineering{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0071E3] via-sky-500 to-indigo-500">
+                  <span className="bg-gradient-to-r from-[#0071E3] via-sky-500 to-indigo-500 bg-clip-text text-transparent">
                     Intelligent
                   </span>{" "}
                   Systems.
                 </h1>
 
-                {/* Interactive Dynamic Role Indicator */}
-                <div className="h-8 flex items-center pt-1">
-                  <span className="text-xs uppercase tracking-wider font-semibold text-gray-400 dark:text-gray-500 mr-2">
+                <div className="flex h-8 items-center">
+                  <span className="mr-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
                     Focus /
                   </span>
-                  <span className="text-base sm:text-lg font-mono-code font-medium text-gray-800 dark:text-gray-200">
+                  <span className="font-mono-code text-base font-medium text-gray-800 dark:text-gray-200 sm:text-lg">
                     {roleText}
                   </span>
-                  <span className="w-2 h-4 bg-[#0071E3] ml-1 animate-pulse" />
+                  <span className="ml-1 h-4 w-1.5 animate-pulse bg-[#0071E3]" />
                 </div>
               </div>
 
-              {/* Value Proposition Description */}
-              <p className="text-base sm:text-lg text-gray-600 dark:text-[#86868b] leading-relaxed max-w-2xl font-normal">
-                I design, train, and deploy data-driven Machine Learning architectures and modern web software. Combining algorithmic precision with human-centered product craftsmanship to solve real-world problems.
+              <p className="max-w-xl text-base leading-relaxed text-gray-600 dark:text-[#86868b] sm:text-lg">
+                I design, train, and deploy data-driven Machine Learning systems and modern digital products with a strong focus on practical impact and clean execution.
               </p>
 
-              {/* Quick Tech Arsenal Chips */}
-              <div className="pt-2">
-                <span className="text-xs uppercase tracking-wider font-semibold text-gray-400 dark:text-gray-500 block mb-2.5">
-                  Core Engineering Stack
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {["Python", "PyTorch / TF", "PostgreSQL", "Java", "Scikit-Learn", "React.js"].map(
-                    (tech, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 rounded-xl text-xs font-medium mac-glass-subtle text-gray-700 dark:text-gray-300 border border-black/[0.06] dark:border-white/10 hover:border-[#0071E3]/50 transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    )
-                  )}
-                </div>
+              <div className="flex flex-wrap gap-2">
+                {['Python', 'PyTorch', 'React', 'SQL', 'Computer Vision', 'MLOps'].map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-black/[0.04] bg-transparent px-2.5 py-1 text-[11px] font-medium text-gray-700 dark:border-white/10 dark:text-gray-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
 
-            {/* Action Group & Social Dock */}
-            <div className="pt-6 border-t border-black/[0.06] dark:border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 relative z-10">
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="relative z-10 mt-6 flex flex-col gap-3 pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <a href="#Portofolio" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#0071E3] hover:bg-[#0077ED] text-white text-sm font-semibold transition-all duration-300 shadow-[0_4px_16px_rgba(0,113,227,0.35)] hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-                    <span>Explore Showcase</span>
-                    <ArrowRight className="w-4 h-4" />
+                  <button className="flex w-full items-center justify-center gap-2 rounded-full bg-[#0071E3] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0077ED] active:scale-95 sm:w-auto">
+                    Explore Showcase
+                    <ArrowRight className="h-4 w-4" />
                   </button>
                 </a>
 
                 <a href="#Contact" className="w-full sm:w-auto">
-                  <button className="w-full sm:w-auto px-5 py-3 rounded-full mac-glass text-gray-800 dark:text-[#f5f5f7] text-sm font-semibold border border-black/[0.08] dark:border-white/15 hover:bg-black/5 dark:hover:bg-white/10 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-                    <Mail className="w-4 h-4 text-[#0071E3]" />
-                    <span>Get in Touch</span>
+                  <button className="flex w-full items-center justify-center gap-2 rounded-full border border-black/[0.06] bg-transparent px-5 py-3 text-sm font-semibold text-gray-800 transition-all duration-300 hover:bg-black/5 dark:border-white/10 dark:text-[#f5f5f7] dark:hover:bg-white/10 sm:w-auto">
+                    <Mail className="h-4 w-4 text-[#0071E3]" />
+                    Get in Touch
                   </button>
                 </a>
               </div>
 
-              {/* Social Channels Pills */}
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                {SOCIAL_LINKS.map((item, index) => {
+              <div className="flex items-center justify-center gap-2 sm:justify-start">
+                {SOCIAL_LINKS.map((item) => {
                   const Icon = item.icon;
                   return (
                     <a
-                      key={index}
+                      key={item.name}
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={item.name}
-                      className="p-2.5 rounded-full mac-glass border border-black/[0.08] dark:border-white/15 text-gray-600 dark:text-gray-300 hover:text-[#0071E3] hover:scale-110 active:scale-95 transition-all shadow-sm"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.06] bg-transparent text-gray-600 transition-all duration-300 hover:-translate-y-0.5 hover:text-[#0071E3] dark:border-white/10 dark:text-gray-300"
                       title={item.name}
                     >
-                      <Icon className="w-4 h-4" />
+                      <Icon className="h-4 w-4" />
                     </a>
                   );
                 })}
@@ -276,210 +230,19 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Right Column: Interactive macOS AI & Code Studio Inspector (5 Columns) */}
-          <div
-            className="lg:col-span-5 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
-          >
-            {/* macOS Window Chrome */}
-            <MacWindowHeader
-              title="AI_Studio_Inspector.app"
-              icon={Terminal}
-              actions={
-                <span className="text-[10px] font-mono-code font-bold uppercase tracking-wider text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                  Online
-                </span>
-              }
-            />
-
-            {/* Segmented Tab Switcher (Visual vs Code vs Metrics) */}
-            <div className="p-2.5 sm:p-3 px-3 sm:px-4 border-b border-black/[0.06] dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02]">
-              <div className="grid grid-cols-3 gap-1 p-1 rounded-2xl mac-glass-subtle border border-black/[0.06] dark:border-white/10">
-                <button
-                  onClick={() => setActiveTab("visual")}
-                  className={`py-1.5 px-1.5 sm:px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeTab === "visual"
-                      ? "bg-[#0071E3] text-white shadow-sm"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                    }`}
-                >
-                  <Cpu className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">Preview</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveTab("code")}
-                  className={`py-1.5 px-1.5 sm:px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeTab === "code"
-                      ? "bg-[#0071E3] text-white shadow-sm"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                    }`}
-                >
-                  <Code2 className="w-3.5 h-3.5 shrink-0" />
-                  <span className="hidden sm:inline truncate">Pipeline.py</span>
-                  <span className="sm:hidden truncate">Code</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveTab("metrics")}
-                  className={`py-1.5 px-1.5 sm:px-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1 sm:gap-1.5 transition-all duration-300 ${activeTab === "metrics"
-                      ? "bg-[#0071E3] text-white shadow-sm"
-                      : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
-                    }`}
-                >
-                  <Activity className="w-3.5 h-3.5 shrink-0" />
-                  <span className="hidden sm:inline truncate">Telemetry</span>
-                  <span className="sm:hidden truncate">Metrics</span>
-                </button>
-              </div>
+          <div className="relative mx-auto mt-4 h-[220px] w-full overflow-hidden sm:h-[280px] lg:mt-0 lg:h-[360px]">
+            <CrowdCanvas src="/CrowdSprite.png" rows={15} cols={7} maxPeeps={60} />
+            <div className="pointer-events-none absolute inset-x-2 top-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
+              <span>Overview</span>
+              <span className="inline-flex items-center gap-1.5 text-emerald-500">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                Online
+              </span>
             </div>
-
-            {/* Tab Viewport */}
-            <div className="p-6 flex-1 flex flex-col justify-center min-h-[340px]">
-              {/* Tab 1: Visual Lottie Animation with telemetry pill */}
-              {activeTab === "visual" && (
-                <div className="flex flex-col items-center justify-center space-y-4 animate-fadeIn">
-                  <div className="w-full max-w-[280px] h-[220px] flex items-center justify-center">
-                    <DotLottieReact {...lottieOptions} />
-                  </div>
-                  <div className="w-full grid grid-cols-2 gap-2 pt-2">
-                    <div className="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 text-center">
-                      <span className="text-[10px] text-gray-500 uppercase block font-semibold">
-                        Model Training
-                      </span>
-                      <span className="text-xs font-bold text-[#0071E3]">
-                        PyTorch ViT
-                      </span>
-                    </div>
-                    <div className="p-2.5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 text-center">
-                      <span className="text-[10px] text-gray-500 uppercase block font-semibold">
-                        Status
-                      </span>
-                      <span className="text-xs font-bold text-emerald-500 flex items-center justify-center gap-1">
-                        <CheckCircle2 className="w-3 h-3" />
-                        Optimal 98.4%
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Tab 2: Syntax Highlighted Python Code */}
-              {activeTab === "code" && (
-                <div className="relative flex flex-col h-full animate-fadeIn">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono-code text-gray-500 dark:text-gray-400">
-                      python 3.11 • pytorch 2.3
-                    </span>
-                    <button
-                      onClick={copyCodeToClipboard}
-                      className="flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-lg mac-glass-subtle hover:text-[#0071E3] transition-colors"
-                      title="Copy code"
-                    >
-                      {hasCopiedCode ? (
-                        <>
-                          <Check className="w-3.5 h-3.5 text-emerald-500" />
-                          <span className="text-emerald-500 font-semibold">Copied</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="w-3.5 h-3.5" />
-                          <span>Copy</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-
-                  <pre className="p-3.5 rounded-2xl bg-black/80 dark:bg-black/90 text-gray-200 font-mono-code text-[11px] leading-relaxed overflow-x-auto max-h-[260px] border border-white/10">
-                    <code>{CODE_SNIPPET}</code>
-                  </pre>
-                </div>
-              )}
-
-              {/* Tab 3: Live Engineering Telemetry */}
-              {activeTab === "metrics" && (
-                <div className="space-y-3 animate-fadeIn">
-                  <div className="flex items-center justify-between pb-2 border-b border-black/[0.06] dark:border-white/10">
-                    <span className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">
-                      Model Benchmark Metrics
-                    </span>
-                    <span className="text-[11px] font-mono-code text-[#0071E3] bg-[#0071E3]/10 px-2 py-0.5 rounded-full">
-                      Evaluation Set
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 gap-2.5">
-                    {METRICS_DATA.map((m, idx) => (
-                      <div
-                        key={idx}
-                        className="p-3 rounded-2xl bg-black/[0.03] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 flex items-center justify-between"
-                      >
-                        <div>
-                          <span className="text-xs font-medium text-gray-800 dark:text-gray-200 block">
-                            {m.label}
-                          </span>
-                          <span className="text-[11px] text-gray-500 dark:text-gray-400">
-                            {m.detail}
-                          </span>
-                        </div>
-                        <span className="text-sm font-bold font-mono-code text-[#0071E3]">
-                          {m.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Window Footer Status */}
-            <div className="px-5 py-2.5 bg-black/[0.03] dark:bg-white/[0.02] border-t border-black/[0.06] dark:border-white/10 flex items-center justify-between text-[11px] text-gray-500 dark:text-gray-400 font-mono-code">
-              <span>mode: interactive_inspector</span>
-              <span>macOS Liquid Retina</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bento Highlight Strip (3 Cards) */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8"
-        >
-          <div className="p-5 rounded-3xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-md flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center text-[#0071E3] shrink-0">
-              <Cpu className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
-                Machine Learning Solutions
-              </h4>
-              <p className="text-xs text-gray-600 dark:text-[#86868b] mt-0.5">
-                From predictive models to Computer Vision & NLP applications.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-3xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-md flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-500 shrink-0">
-              <Code2 className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
-                Fullstack Web Architecture
-              </h4>
-              <p className="text-xs text-gray-600 dark:text-[#86868b] mt-0.5">
-                Clean, resilient frontend & backend data integration.
-              </p>
-            </div>
-          </div>
-
-          <div className="p-5 rounded-3xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-md flex items-center gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
-              <CheckCircle2 className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
-                Production-Ready Rigor
-              </h4>
-              <p className="text-xs text-gray-600 dark:text-[#86868b] mt-0.5">
-                Maintainable code, tested logic, and scalable performance.
-              </p>
+            <div className="absolute inset-x-0 bottom-1 text-center text-[10px] text-gray-400 dark:text-gray-500">
+              Animation by <a className="pointer-events-auto underline underline-offset-2" href="https://21st.dev/" target="_blank" rel="noreferrer">Skiper UI</a>
+              {" · Illustration by "}
+              <a className="pointer-events-auto underline underline-offset-2" href="https://www.openpeeps.com/" target="_blank" rel="noreferrer">Open Peeps</a>
             </div>
           </div>
         </div>
@@ -487,5 +250,4 @@ const Home = () => {
     </section>
   );
 };
-
 export default memo(Home);
