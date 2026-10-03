@@ -252,11 +252,6 @@ const Home = () => {
                   Live
                 </span>
               </div>
-              <div className="absolute inset-x-0 bottom-1 text-center text-[10px] text-gray-400 dark:text-gray-500">
-                Animation by <a className="pointer-events-auto underline underline-offset-2" href="https://21st.dev/" target="_blank" rel="noreferrer">Skiper UI</a>
-                {" · Illustration by "}
-                <a className="pointer-events-auto underline underline-offset-2" href="https://www.openpeeps.com/" target="_blank" rel="noreferrer">Open Peeps</a>
-              </div>
             </div>
           </div>
         </div>
