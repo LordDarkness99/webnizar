@@ -145,11 +145,11 @@ const Home = () => {
         </div>
 
         <div className="grid items-center gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="relative flex flex-col justify-between overflow-hidden p-5 sm:p-8">
-            <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-full bg-blue-500/5 blur-3xl" />
+          <div className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-black/[0.06] bg-white/60 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.06)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111217]/70 sm:p-8">
+            <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-full bg-blue-500/10 blur-3xl" />
 
             <div className="relative z-10 space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full px-0 py-1 text-xs font-medium text-gray-800 dark:text-gray-200">
+              <div className="inline-flex items-center gap-2 rounded-full border border-black/[0.04] bg-white/40 px-3 py-1.5 text-xs font-medium text-gray-800 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-white/5 dark:text-gray-200">
                 <Sparkles className="h-3.5 w-3.5 text-[#0071E3]" />
                 <span>Nizar Alif Ramadhan</span>
                 <span className="text-gray-400">•</span>
@@ -165,7 +165,7 @@ const Home = () => {
                   Systems.
                 </h1>
 
-                <div className="flex h-8 items-center">
+                <div className="flex h-8 items-center rounded-full border border-black/[0.04] bg-black/[0.02] px-3 py-1.5 dark:border-white/10 dark:bg-white/5">
                   <span className="mr-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
                     Focus /
                   </span>
@@ -184,7 +184,7 @@ const Home = () => {
                 {['Python', 'PyTorch', 'React', 'SQL', 'Computer Vision', 'MLOps'].map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-black/[0.04] bg-transparent px-2.5 py-1 text-[11px] font-medium text-gray-700 dark:border-white/10 dark:text-gray-300"
+                    className="rounded-full border border-black/[0.04] bg-white/40 px-2.5 py-1 text-[11px] font-medium text-gray-700 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-white/5 dark:text-gray-300"
                   >
                     {tech}
                   </span>
@@ -195,14 +195,14 @@ const Home = () => {
             <div className="relative z-10 mt-6 flex flex-col gap-3 pt-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-col gap-3 sm:flex-row">
                 <a href="#Portofolio" className="w-full sm:w-auto">
-                  <button className="flex w-full items-center justify-center gap-2 rounded-full bg-[#0071E3] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0077ED] active:scale-95 sm:w-auto">
+                  <button className="flex w-full items-center justify-center gap-2 rounded-full bg-[#0071E3] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-[#0077ED] active:scale-95 sm:w-auto shadow-[0_10px_24px_rgba(0,113,227,0.28)]">
                     Explore Showcase
                     <ArrowRight className="h-4 w-4" />
                   </button>
                 </a>
 
                 <a href="#Contact" className="w-full sm:w-auto">
-                  <button className="flex w-full items-center justify-center gap-2 rounded-full border border-black/[0.06] bg-transparent px-5 py-3 text-sm font-semibold text-gray-800 transition-all duration-300 hover:bg-black/5 dark:border-white/10 dark:text-[#f5f5f7] dark:hover:bg-white/10 sm:w-auto">
+                  <button className="flex w-full items-center justify-center gap-2 rounded-full border border-black/[0.06] bg-white/30 px-5 py-3 text-sm font-semibold text-gray-800 shadow-sm backdrop-blur-md transition-all duration-300 hover:bg-black/5 dark:border-white/10 dark:bg-white/5 dark:text-[#f5f5f7] dark:hover:bg-white/10 sm:w-auto">
                     <Mail className="h-4 w-4 text-[#0071E3]" />
                     Get in Touch
                   </button>
@@ -219,7 +219,7 @@ const Home = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={item.name}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.06] bg-transparent text-gray-600 transition-all duration-300 hover:-translate-y-0.5 hover:text-[#0071E3] dark:border-white/10 dark:text-gray-300"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-black/[0.06] bg-white/25 text-gray-600 shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:text-[#0071E3] dark:border-white/10 dark:bg-white/5 dark:text-gray-300"
                       title={item.name}
                     >
                       <Icon className="h-4 w-4" />
@@ -230,19 +230,33 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="relative mx-auto mt-4 h-[220px] w-full overflow-hidden sm:h-[280px] lg:mt-0 lg:h-[360px]">
-            <CrowdCanvas src="/CrowdSprite.png" rows={15} cols={7} maxPeeps={60} />
-            <div className="pointer-events-none absolute inset-x-2 top-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
-              <span>Overview</span>
-              <span className="inline-flex items-center gap-1.5 text-emerald-500">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                Online
-              </span>
-            </div>
-            <div className="absolute inset-x-0 bottom-1 text-center text-[10px] text-gray-400 dark:text-gray-500">
-              Animation by <a className="pointer-events-auto underline underline-offset-2" href="https://21st.dev/" target="_blank" rel="noreferrer">Skiper UI</a>
-              {" · Illustration by "}
-              <a className="pointer-events-auto underline underline-offset-2" href="https://www.openpeeps.com/" target="_blank" rel="noreferrer">Open Peeps</a>
+          <div className="relative mx-auto mt-4 h-[220px] w-full overflow-hidden rounded-[2rem] border border-black/[0.06] bg-white/30 shadow-[0_25px_60px_rgba(0,0,0,0.08)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111217]/80 sm:h-[280px] lg:mt-0 lg:h-[360px]">
+            <MacWindowHeader
+              title="system.vision"
+              icon={Activity}
+              actions={
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-emerald-500">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  Online
+                </span>
+              }
+              className="bg-white/30 dark:bg-black/20"
+            />
+
+            <div className="relative h-[calc(100%-49px)]">
+              <CrowdCanvas src="/CrowdSprite.png" rows={15} cols={7} maxPeeps={60} />
+              <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
+                <span>Overview</span>
+                <span className="inline-flex items-center gap-1.5 text-emerald-500">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  Live
+                </span>
+              </div>
+              <div className="absolute inset-x-0 bottom-1 text-center text-[10px] text-gray-400 dark:text-gray-500">
+                Animation by <a className="pointer-events-auto underline underline-offset-2" href="https://21st.dev/" target="_blank" rel="noreferrer">Skiper UI</a>
+                {" · Illustration by "}
+                <a className="pointer-events-auto underline underline-offset-2" href="https://www.openpeeps.com/" target="_blank" rel="noreferrer">Open Peeps</a>
+              </div>
             </div>
           </div>
         </div>

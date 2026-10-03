@@ -317,155 +317,144 @@ const AboutPage = () => {
         </div>
 
         {/* Middle Bento: 4 High-Impact Metric Widgets */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-        >
-          {/* Metric 1 */}
-          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
-            <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 text-[#0071E3] flex items-center justify-center">
-                <Code className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-[#0071E3] bg-[#0071E3]/10 px-2.5 py-1 rounded-full">
-                Delivered
-              </span>
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
+          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-[#0071E3]/20 hover:shadow-[0_12px_28px_rgba(0,113,227,0.08)] sm:p-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0071E3]/10 text-[#0071E3]">
+              <Code className="h-5 w-5" />
             </div>
-            <div>
-              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            <div className="min-w-0">
+              <div className="mb-1 flex items-center justify-between gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#0071E3]">
+                  Delivered
+                </span>
+              </div>
+              <div className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
                 {totalProjects}+
               </div>
-              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+              <div className="mt-1 text-sm font-semibold text-gray-800 dark:text-gray-200">
                 Completed Projects
               </div>
-              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+              <p className="mt-1 text-xs leading-relaxed text-gray-500 dark:text-[#86868b]">
                 Machine Learning apps & modern web software
               </p>
             </div>
           </div>
 
-          {/* Metric 2 */}
-          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
-            <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
-                <Award className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-500/10 px-2.5 py-1 rounded-full">
-                Accredited
-              </span>
+          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-amber-400/30 hover:shadow-[0_12px_28px_rgba(251,191,36,0.10)] sm:p-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+              <Award className="h-5 w-5" />
             </div>
-            <div>
-              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            <div className="min-w-0">
+              <div className="mb-1 flex items-center justify-between gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-amber-600">
+                  Accredited
+                </span>
+              </div>
+              <div className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
                 {totalCertificates}+
               </div>
-              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+              <div className="mt-1 text-sm font-semibold text-gray-800 dark:text-gray-200">
                 Verified Certificates
               </div>
-              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+              <p className="mt-1 text-xs leading-relaxed text-gray-500 dark:text-[#86868b]">
                 Validated technical & academic credentials
               </p>
             </div>
           </div>
 
-          {/* Metric 3 */}
-          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
-            <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
-                <Globe className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-500/10 px-2.5 py-1 rounded-full">
-                Experience
-              </span>
+          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-indigo-400/30 hover:shadow-[0_12px_28px_rgba(99,102,241,0.10)] sm:p-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-500">
+              <Globe className="h-5 w-5" />
             </div>
-            <div>
-              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            <div className="min-w-0">
+              <div className="mb-1 flex items-center justify-between gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-indigo-600">
+                  Experience
+                </span>
+              </div>
+              <div className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
                 {YearExperience}+ Years
               </div>
-              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+              <div className="mt-1 text-sm font-semibold text-gray-800 dark:text-gray-200">
                 Continuous Craft
               </div>
-              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+              <p className="mt-1 text-xs leading-relaxed text-gray-500 dark:text-[#86868b]">
                 Hands-on algorithmic & fullstack development
               </p>
             </div>
           </div>
 
-          {/* Metric 4 */}
-          <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
-            <div className="flex items-center justify-between">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6" />
-              </div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 bg-emerald-500/10 px-2.5 py-1 rounded-full">
-                Active
-              </span>
+          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-emerald-400/30 hover:shadow-[0_12px_28px_rgba(16,185,129,0.10)] sm:p-4">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
+              <CheckCircle2 className="h-5 w-5" />
             </div>
-            <div>
-              <div className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            <div className="min-w-0">
+              <div className="mb-1 flex items-center justify-between gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-600">
+                  Active
+                </span>
+              </div>
+              <div className="text-2xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-3xl">
                 5th Sem
               </div>
-              <div className="text-sm font-semibold text-gray-800 dark:text-gray-200 mt-1">
+              <div className="mt-1 text-sm font-semibold text-gray-800 dark:text-gray-200">
                 Academic Standing
               </div>
-              <p className="text-xs text-gray-500 dark:text-[#86868b] mt-0.5">
+              <p className="mt-1 text-xs leading-relaxed text-gray-500 dark:text-[#86868b]">
                 Information Technology Edu • State University of Surabaya
               </p>
             </div>
           </div>
         </div>
 
-        {/* Bottom Milestone Roadmap: Growth & Trajectory */}
-        <div
-          className="p-6 sm:p-8 rounded-[2.5rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-xl space-y-6"
-        >
-          <div className="flex items-center justify-between pb-4 border-b border-black/[0.06] dark:border-white/10">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-[#0071E3]/10 text-[#0071E3]">
-                <Layers className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
-                  Technical Evolution & Milestones
-                </h3>
-                <span className="text-xs text-gray-500 dark:text-gray-400">
-                  Continuous progression from core programming to deep learning architectures
-                </span>
-              </div>
+        <div className="space-y-5">
+          <div className="flex items-center gap-3 pb-3 border-b border-black/[0.06] dark:border-white/10">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0071E3]/10 text-[#0071E3]">
+              <Layers className="h-5 w-5" />
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+                Technical Evolution & Milestones
+              </h3>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                Continuous progression from core programming to deep learning architectures
+              </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="p-5 rounded-2xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 space-y-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="mac-glass-subtle rounded-2xl border-l-2 border-[#0071E3]/30 p-4">
               <span className="text-xs font-mono-code font-bold text-[#0071E3]">
                 Phase 01 // 2022 - 2023
               </span>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+              <h4 className="mt-2 text-sm font-bold text-gray-900 dark:text-white">
                 Software & Algorithm Fundamentals
               </h4>
-              <p className="text-xs text-gray-600 dark:text-[#86868b] leading-relaxed">
+              <p className="mt-2 text-xs leading-relaxed text-gray-600 dark:text-[#86868b]">
                 Mastering core OOP in Java, Python, and C++, relational schema modeling in MySQL/PostgreSQL, and foundational web protocols.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 space-y-2">
+            <div className="mac-glass-subtle rounded-2xl border-l-2 border-[#0071E3]/30 p-4">
               <span className="text-xs font-mono-code font-bold text-[#0071E3]">
                 Phase 02 // 2023 - 2024
               </span>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+              <h4 className="mt-2 text-sm font-bold text-gray-900 dark:text-white">
                 Data Science & Machine Learning
               </h4>
-              <p className="text-xs text-gray-600 dark:text-[#86868b] leading-relaxed">
+              <p className="mt-2 text-xs leading-relaxed text-gray-600 dark:text-[#86868b]">
                 Exploring mathematical foundations, Scikit-Learn pipelines, TensorFlow neural nets, and statistical data cleansing for real datasets.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-black/[0.02] dark:bg-white/5 border border-black/[0.05] dark:border-white/10 space-y-2">
+            <div className="mac-glass-subtle rounded-2xl border-l-2 border-emerald-500/30 p-4">
               <span className="text-xs font-mono-code font-bold text-emerald-500">
                 Phase 03 // 2024 - Present
               </span>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white">
+              <h4 className="mt-2 text-sm font-bold text-gray-900 dark:text-white">
                 Intelligent Production Systems
               </h4>
-              <p className="text-xs text-gray-600 dark:text-[#86868b] leading-relaxed">
+              <p className="mt-2 text-xs leading-relaxed text-gray-600 dark:text-[#86868b]">
                 Building Computer Vision models, PyTorch pipelines, and deploying high-performance web systems with modern React & Supabase cloud backend.
               </p>
             </div>
