@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, memo } from "react";
 import { MessageCircle, UserCircle2, Loader2, AlertCircle, Send, ImagePlus, X, Pin } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { supabase } from "../supabase";
 
 const Comment = memo(({ comment, formatDate, isPinned = false }) => (
@@ -201,14 +199,6 @@ const Komentar = () => {
   const [pinnedComment, setPinnedComment] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    AOS.init({
-      once: false,
-      duration: 1000,
-      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-    });
-  }, []);
 
   useEffect(() => {
     const fetchPinnedComment = async () => {

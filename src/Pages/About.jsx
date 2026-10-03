@@ -18,13 +18,11 @@ import {
   BrainCircuit,
   ArrowRight,
 } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import MacWindowHeader from "../components/MacWindowHeader";
 
 // Section Header
 const Header = memo(() => (
-  <div className="text-center mb-12 sm:mb-16" data-aos="fade-up" data-aos-duration="1000">
+  <div className="text-center mb-12 sm:mb-16">
     <span className="text-xs sm:text-sm font-semibold tracking-widest text-[#0071E3] uppercase block mb-3">
       System Overview & Trajectory
     </span>
@@ -60,13 +58,6 @@ const AboutPage = () => {
     };
   }, []);
 
-  useEffect(() => {
-    AOS.init({
-      once: false,
-      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-    });
-  }, []);
-
   return (
     <section
       className="min-h-screen font-sans overflow-hidden px-4 sm:px-6 lg:px-8 py-24 relative selection:bg-[#0071E3] selection:text-white"
@@ -81,8 +72,6 @@ const AboutPage = () => {
           {/* Card 1: Developer Profiler & Identity Window (5 Columns) */}
           <div
             className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
-            data-aos="fade-right"
-            data-aos-duration="1000"
           >
             <MacWindowHeader
               title="DeveloperProfiler.app"
@@ -171,8 +160,6 @@ const AboutPage = () => {
           {/* Card 2: Interactive Narrative & Research Studio (7 Columns) */}
           <div
             className="lg:col-span-7 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
-            data-aos="fade-left"
-            data-aos-duration="1000"
           >
             <MacWindowHeader
               title="Engineering_Narrative.md"
@@ -332,8 +319,6 @@ const AboutPage = () => {
         {/* Middle Bento: 4 High-Impact Metric Widgets */}
         <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
-          data-aos="fade-up"
-          data-aos-delay="100"
         >
           {/* Metric 1 */}
           <div className="p-6 rounded-[2rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-lg flex flex-col justify-between space-y-4 hover:scale-[1.02] transition-transform">
@@ -431,8 +416,6 @@ const AboutPage = () => {
         {/* Bottom Milestone Roadmap: Growth & Trajectory */}
         <div
           className="p-6 sm:p-8 rounded-[2.5rem] mac-glass border border-black/[0.08] dark:border-white/12 shadow-xl space-y-6"
-          data-aos="fade-up"
-          data-aos-delay="200"
         >
           <div className="flex items-center justify-between pb-4 border-b border-black/[0.06] dark:border-white/10">
             <div className="flex items-center gap-3">

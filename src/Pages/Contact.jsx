@@ -18,8 +18,6 @@ import WhatsAppIcon from "../components/icons/WhatsAppIcon";
 import SocialLinks from "../components/SocialLinks";
 import Komentar from "../components/Commentar";
 import Swal from "sweetalert2";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import axios from "axios";
 import MacWindowHeader from "../components/MacWindowHeader";
 import { useTheme } from "../context/ThemeContext";
@@ -62,13 +60,6 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
-
-  useEffect(() => {
-    AOS.init({
-      once: false,
-      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-    });
-  }, []);
 
   const handleTopicSelect = (topic) => {
     setSelectedTopic(topic.id);
@@ -186,7 +177,7 @@ const ContactPage = () => {
     >
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
-        <div className="text-center" data-aos="fade-up" data-aos-duration="1000">
+        <div className="text-center">
           <span className="text-xs sm:text-sm font-semibold tracking-widest text-[#0071E3] uppercase block mb-3">
             Direct Communication
           </span>
@@ -201,8 +192,6 @@ const ContactPage = () => {
 
         {/* Quick Availability & Direct Action Bar */}
         <div
-          data-aos="fade-up"
-          data-aos-delay="100"
           className="grid grid-cols-1 md:grid-cols-3 gap-4"
         >
           {/* Card 1: Availability Status */}
@@ -283,8 +272,6 @@ const ContactPage = () => {
           {/* Form Window Card (macOS Mail Compose Window) - 7 Columns */}
           <div
             className="lg:col-span-7 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
-            data-aos="fade-right"
-            data-aos-duration="1000"
           >
             {/* Window Chrome */}
             <MacWindowHeader title="New Message — Mail.app" icon={Mail} />
@@ -394,8 +381,6 @@ const ContactPage = () => {
           {/* Comments / Discussion Window (macOS Messages.app) - 5 Columns */}
           <div
             className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
-            data-aos="fade-left"
-            data-aos-duration="1000"
           >
             <MacWindowHeader
               title="Community Thread — Messages.app"

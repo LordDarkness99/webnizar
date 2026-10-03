@@ -171,18 +171,6 @@ html:not(.dark) body {
 	animation-delay: 4s;
 }
 
-[data-aos] {
-	will-change: transform, opacity !important;
-}
-
-/* Prevent AOS offscreen translations from creating horizontal overflow / forced zoom out on mobile */
-@media screen and (max-width: 768px) {
-	[data-aos="fade-left"],
-	[data-aos="fade-right"] {
-		transform: translate3d(0, 24px, 0) !important;
-	}
-}
-
 /* Prevent iOS Safari auto-zoom when focusing form inputs */
 @media screen and (max-width: 768px) {
 	input,

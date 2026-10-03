@@ -19,8 +19,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import WhatsAppIcon from "../components/icons/WhatsAppIcon";
 import MacWindowHeader from "../components/MacWindowHeader";
 
@@ -96,14 +94,6 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      offset: 10,
-      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-    });
-  }, []);
-
   // Typing Effect
   const handleTyping = useCallback(() => {
     if (isTyping) {
@@ -154,8 +144,6 @@ const Home = () => {
       <div className="max-w-7xl mx-auto">
         {/* Top Command Banner / Status Bar */}
         <div
-          data-aos="fade-down"
-          data-aos-duration="800"
           className="flex flex-wrap items-center justify-between gap-3 p-3 px-4 sm:px-5 mb-8 rounded-2xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-sm text-xs"
         >
           <div className="flex items-center gap-2.5 min-w-0">
@@ -188,8 +176,6 @@ const Home = () => {
           {/* Left Column: Developer Profile & Mission (7 Columns) */}
           <div
             className="lg:col-span-7 flex flex-col justify-between space-y-6 sm:space-y-8 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 p-5 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden"
-            data-aos="fade-right"
-            data-aos-duration="1000"
           >
             {/* Subtle inner background glow */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -293,8 +279,6 @@ const Home = () => {
           {/* Right Column: Interactive macOS AI & Code Studio Inspector (5 Columns) */}
           <div
             className="lg:col-span-5 mac-glass rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
-            data-aos="fade-left"
-            data-aos-duration="1000"
           >
             {/* macOS Window Chrome */}
             <MacWindowHeader
@@ -456,8 +440,6 @@ const Home = () => {
         {/* Bottom Bento Highlight Strip (3 Cards) */}
         <div
           className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8"
-          data-aos="fade-up"
-          data-aos-delay="200"
         >
           <div className="p-5 rounded-3xl mac-glass border border-black/[0.08] dark:border-white/12 shadow-md flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#0071E3]/10 flex items-center justify-center text-[#0071E3] shrink-0">

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Code2, Github, Globe, User, ArrowRight } from "lucide-react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const TypewriterEffect = ({ text }) => {
   const [displayText, setDisplayText] = useState("");
@@ -48,13 +46,6 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
   };
 
   useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      once: false,
-      mirror: false,
-      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-    });
-
     const timer = setTimeout(() => {
       handleFinish();
     }, 4500);
@@ -119,7 +110,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                 variants={childVariants}
               >
                 {[Code2, User, Github].map((Icon, index) => (
-                  <div key={index} data-aos="fade-down" data-aos-delay={index * 150}>
+                  <div key={index}>
                     <IconButton Icon={Icon} />
                   </div>
                 ))}
@@ -139,8 +130,6 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
               <motion.div
                 className="mb-8"
                 variants={childVariants}
-                data-aos="fade-up"
-                data-aos-delay="400"
               >
                 <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full mac-glass-subtle border border-black/[0.08] dark:border-white/15 shadow-sm">
                   <Globe className="w-4 h-4 text-[#0071E3]" />

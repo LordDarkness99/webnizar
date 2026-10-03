@@ -2,8 +2,6 @@ import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { supabase } from "../supabase";
 import CardProject from "../components/CardProject";
 import TechStackIcon from "../components/TechStackIcon";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Certificate from "../components/Certificate";
 import {
   Code,
@@ -77,13 +75,6 @@ export default function Portofolio() {
   const [showAllCertificates, setShowAllCertificates] = useState(false);
 
   const initialItems = 6;
-
-  useEffect(() => {
-    AOS.init({
-      once: false,
-      easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-    });
-  }, []);
 
   const fetchData = useCallback(async () => {
     try {
@@ -179,7 +170,7 @@ export default function Portofolio() {
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+        <div className="text-center mb-12">
           <span className="text-xs sm:text-sm font-semibold tracking-widest text-[#0071E3] uppercase block mb-3">
             Engineering Portfolio
           </span>
@@ -193,7 +184,7 @@ export default function Portofolio() {
         </div>
 
         {/* Custom macOS Segmented Control Bar */}
-        <div className="flex justify-center mb-10" data-aos="fade-up" data-aos-delay="100">
+        <div className="flex justify-center mb-10">
           <div className="p-1 sm:p-1.5 rounded-full mac-dock flex items-center gap-1 sm:gap-2 border border-black/[0.08] dark:border-white/15 max-w-2xl w-full justify-between sm:justify-center overflow-x-auto">
             <button
               onClick={() => setActiveTab("projects")}
@@ -230,7 +221,7 @@ export default function Portofolio() {
               }`}
             >
               <Boxes className="w-3.5 h-3.5 shrink-0" />
-              <span className="hidden sm:inline">Tech Arsenal</span>
+              <span className="hidden sm:inline">Tech Stack</span>
               <span className="sm:hidden">Stack</span>
             </button>
           </div>
@@ -325,9 +316,6 @@ export default function Portofolio() {
                   return (
                     <div
                       key={project.id || index}
-                      data-aos="fade-up"
-                      data-aos-duration="800"
-                      data-aos-delay={(index % 4) * 80}
                       className={isFeatured ? "col-span-full" : ""}
                     >
                       <CardProject
@@ -377,9 +365,6 @@ export default function Portofolio() {
               {displayedCertificates.map((certificate, index) => (
                 <div
                   key={certificate.id || index}
-                  data-aos="fade-up"
-                  data-aos-duration="800"
-                  data-aos-delay={(index % 3) * 100}
                 >
                   <Certificate
                     ImgSertif={certificate.Img}
@@ -416,9 +401,6 @@ export default function Portofolio() {
                 return (
                   <div
                     key={catIndex}
-                    data-aos="fade-up"
-                    data-aos-duration="800"
-                    data-aos-delay={catIndex * 100}
                     className="p-6 sm:p-8 rounded-[2.25rem] mac-glass border border-black/[0.08] dark:border-white/15 shadow-xl space-y-5"
                   >
                     <div className="flex items-center gap-3 pb-4 border-b border-black/[0.06] dark:border-white/10">
