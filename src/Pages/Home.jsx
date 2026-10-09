@@ -18,9 +18,8 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
-import CrowdCanvas from "../components/ui/CrowdCanvas";
+import MacDashboardBox from "../components/MacDashboardBox";
 import WhatsAppIcon from "../components/icons/WhatsAppIcon";
-import MacWindowHeader from "../components/MacWindowHeader";
 
 // Constants
 const TYPING_SPEED = 85;
@@ -144,7 +143,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="grid items-center gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+        <div className="grid items-center gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-black/[0.06] bg-white/60 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.06)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111217]/70 sm:p-8">
             <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-full bg-blue-500/10 blur-3xl" />
 
@@ -157,7 +156,7 @@ const Home = () => {
               </div>
 
               <div className="space-y-3">
-                <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight text-gray-900 dark:text-[#f5f5f7] sm:text-5xl lg:text-[4rem]">
+                <h1 className="text-4xl font-extrabold leading-[1.08] tracking-tight text-gray-900 dark:text-[#f5f5f7] sm:text-5xl lg:text-[3.5rem]">
                   Engineering{" "}
                   <span className="bg-gradient-to-r from-[#0071E3] via-sky-500 to-indigo-500 bg-clip-text text-transparent">
                     Intelligent
@@ -230,29 +229,8 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="relative mx-auto mt-4 h-[220px] w-full overflow-hidden rounded-[2rem] border border-black/[0.06] bg-white/30 shadow-[0_25px_60px_rgba(0,0,0,0.08)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111217]/80 sm:h-[280px] lg:mt-0 lg:h-[360px]">
-            <MacWindowHeader
-              title="system.vision"
-              icon={Activity}
-              actions={
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-emerald-500">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  Online
-                </span>
-              }
-              className="bg-white/30 dark:bg-black/20"
-            />
-
-            <div className="relative h-[calc(100%-49px)]">
-              <CrowdCanvas src="/CrowdSprite.png" rows={15} cols={7} maxPeeps={60} />
-              <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
-                <span>Overview</span>
-                <span className="inline-flex items-center gap-1.5 text-emerald-500">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  Live
-                </span>
-              </div>
-            </div>
+          <div className="relative mx-auto mt-4 w-full lg:mt-0">
+            <MacDashboardBox />
           </div>
         </div>
       </div>
