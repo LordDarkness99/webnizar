@@ -70,7 +70,7 @@ const AboutPage = () => {
 
           {/* Card 1: Developer Profiler & Identity Window (5 Columns) */}
           <div
-            className="lg:col-span-5 mac-glass rounded-xl sm:rounded-2xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-xl flex flex-col justify-between"
+            className="lg:col-span-5 mac-glass rounded-xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
           >
             <MacWindowHeader
               title="DeveloperProfiler.app"
@@ -85,7 +85,7 @@ const AboutPage = () => {
             <div className="p-5 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
               {/* Photo Viewport */}
               <div className="relative group mx-auto w-full max-w-[280px] sm:max-w-[320px]">
-                <div className="relative aspect-square rounded-[2rem] overflow-hidden bg-black/5 dark:bg-white/5 border border-black/[0.08] dark:border-white/10 shadow-lg">
+                <div className="relative aspect-square rounded-xl overflow-hidden bg-black/5 dark:bg-white/5 border border-black/[0.08] dark:border-white/10 shadow-lg">
                   <img
                     src="/niz.png"
                     alt="Nizar Rama"
@@ -158,7 +158,7 @@ const AboutPage = () => {
 
           {/* Card 2: Interactive Narrative & Research Studio (7 Columns) */}
           <div
-            className="lg:col-span-7 mac-glass rounded-xl sm:rounded-2xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-xl flex flex-col justify-between"
+            className="lg:col-span-7 mac-glass rounded-xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
           >
             <MacWindowHeader
               title="Engineering_Narrative.md"

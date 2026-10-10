@@ -12,7 +12,7 @@ const MacWindowHeader = ({
 }) => {
   return (
     <div
-      className={`relative flex items-center justify-between px-3.5 sm:px-4 py-2.5 sm:py-3 border-b border-black/[0.08] dark:border-white/10 bg-[#e8e8e8] dark:bg-[#28282d] rounded-t-xl sm:rounded-t-2xl select-none text-xs transition-colors duration-300 ${className}`}
+      className={`relative flex items-center justify-between px-3.5 sm:px-4 py-2.5 sm:py-3 border-b border-black/[0.08] dark:border-white/10 bg-[#e8e8e8] dark:bg-[#28282d] rounded-t-xl select-none text-xs transition-colors duration-300 ${className}`}
     >
       {/* Left Area: Traffic Lights & Navigation Controls */}
       <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">

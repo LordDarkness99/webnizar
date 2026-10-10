@@ -63,7 +63,7 @@ const ProjectStats = ({ project }) => {
   const featuresCount = project?.Features?.length || 0;
 
   return (
-    <div className="grid grid-cols-2 gap-2.5 sm:gap-4 p-3 sm:p-4 mac-glass rounded-[1.5rem] sm:rounded-[2rem] border border-black/[0.08] dark:border-white/12 shadow-lg w-full min-w-0">
+    <div className="grid grid-cols-2 gap-2.5 sm:gap-4 p-3 sm:p-4 mac-glass rounded-xl border border-black/[0.08] dark:border-white/12 shadow-lg w-full min-w-0">
       <div className="flex items-center gap-2.5 sm:gap-3.5 bg-black/[0.03] dark:bg-white/5 p-2.5 sm:p-3.5 rounded-2xl border border-black/[0.05] dark:border-white/10 transition-all duration-300 hover:scale-[1.02] min-w-0 overflow-hidden">
         <div className="bg-[#0071E3]/15 p-2 sm:p-2.5 rounded-xl border border-[#0071E3]/25 shrink-0">
           <Code2 className="text-[#0071E3] w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />
@@ -136,7 +136,7 @@ const ProjectDetails = () => {
   if (!project) {
     return (
       <div className="min-h-screen font-sans flex items-center justify-center">
-        <div className="text-center space-y-6 mac-glass p-8 rounded-[2rem]">
+        <div className="text-center space-y-6 mac-glass p-8 rounded-xl">
           <div className="w-12 h-12 mx-auto rounded-full border-2 border-black/10 dark:border-white/10 border-t-[#0071E3] animate-spin" />
           <h2 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
             Loading Project Preview...
@@ -233,7 +233,7 @@ const ProjectDetails = () => {
 
           {/* Right Column (macOS Window Showcase & Features) */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8 w-full min-w-0 max-w-full">
-            <div className="mac-glass rounded-xl sm:rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/15 shadow-2xl group w-full min-w-0 max-w-full">
+            <div className="mac-glass rounded-xl overflow-hidden border border-black/[0.08] dark:border-white/15 shadow-2xl group w-full min-w-0 max-w-full">
               <MacWindowHeader title={`${project.Title} — Safari.app`} icon={Compass} />
               <div className="relative overflow-hidden aspect-video bg-black/5 dark:bg-white/5">
                 <img
@@ -245,7 +245,7 @@ const ProjectDetails = () => {
             </div>
 
             {/* Key Features Container */}
-            <div className="mac-glass rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-black/[0.08] dark:border-white/15 shadow-xl space-y-5 w-full min-w-0 max-w-full">
+            <div className="mac-glass rounded-xl p-5 sm:p-8 border border-black/[0.08] dark:border-white/15 shadow-xl space-y-5 w-full min-w-0 max-w-full">
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7] flex items-center gap-2.5">
                 <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
                 Key Capabilities & Features

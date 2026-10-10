@@ -270,7 +270,7 @@ const ContactPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Form Window Card (macOS Mail Compose Window) - 7 Columns */}
           <div
-            className="lg:col-span-7 mac-glass rounded-xl sm:rounded-2xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-xl transition-all duration-500"
+            className="lg:col-span-7 mac-glass rounded-xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
           >
             {/* Window Chrome */}
             <MacWindowHeader title="New Message — Mail.app" icon={Mail} />
@@ -379,7 +379,7 @@ const ContactPage = () => {
 
           {/* Comments / Discussion Window (macOS Messages.app) - 5 Columns */}
           <div
-            className="lg:col-span-5 mac-glass rounded-xl sm:rounded-2xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-xl transition-all duration-500"
+            className="lg:col-span-5 mac-glass rounded-xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl transition-all duration-500"
           >
             <MacWindowHeader
               title="Community Thread — Messages.app"
