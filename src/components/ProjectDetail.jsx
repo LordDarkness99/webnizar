@@ -233,7 +233,7 @@ const ProjectDetails = () => {
 
           {/* Right Column (macOS Window Showcase & Features) */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8 w-full min-w-0 max-w-full">
-            <div className="mac-glass rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden border border-black/[0.08] dark:border-white/15 shadow-2xl group w-full min-w-0 max-w-full">
+            <div className="mac-glass rounded-xl sm:rounded-2xl overflow-hidden border border-black/[0.08] dark:border-white/15 shadow-2xl group w-full min-w-0 max-w-full">
               <MacWindowHeader title={`${project.Title} — Safari.app`} icon={Compass} />
               <div className="relative overflow-hidden aspect-video bg-black/5 dark:bg-white/5">
                 <img
@@ -245,7 +245,7 @@ const ProjectDetails = () => {
             </div>
 
             {/* Key Features Container */}
-            <div className="mac-glass rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 border border-black/[0.08] dark:border-white/15 shadow-xl space-y-5 w-full min-w-0 max-w-full">
+            <div className="mac-glass rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-black/[0.08] dark:border-white/15 shadow-xl space-y-5 w-full min-w-0 max-w-full">
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-[#f5f5f7] flex items-center gap-2.5">
                 <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
                 Key Capabilities & Features

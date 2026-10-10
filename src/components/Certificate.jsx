@@ -79,7 +79,7 @@ const Certificate = ({ ImgSertif, Link }) => {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="mac-glass rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl flex flex-col w-[95vw] sm:w-[90vw] max-w-[900px] max-h-[92vh] lg:max-h-[94vh] animate-scaleUp"
+            className="mac-glass rounded-xl sm:rounded-2xl overflow-hidden border border-white/20 shadow-2xl flex flex-col w-[95vw] sm:w-[90vw] max-w-[900px] max-h-[92vh] lg:max-h-[94vh] animate-scaleUp"
           >
             {/* Window Header */}
             <MacWindowHeader

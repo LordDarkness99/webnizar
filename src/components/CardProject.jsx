@@ -20,7 +20,7 @@ const CardProject = ({ Img, Title, Description, Link: ProjectLink, id, isFeature
 
   return (
     <div className={`group relative w-full h-full flex flex-col ${isFeatured ? "col-span-full mb-4" : ""}`}>
-      <div className="relative overflow-hidden rounded-[2.25rem] mac-glass border border-black/[0.08] dark:border-white/15 shadow-xl transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl flex flex-col h-full justify-between">
+      <div className="relative overflow-hidden rounded-xl sm:rounded-2xl mac-glass border border-black/[0.08] dark:border-white/15 shadow-xl transition-all duration-500 hover:scale-[1.015] hover:shadow-2xl flex flex-col h-full justify-between">
         
         {/* macOS Window Chrome with Traffic Lights & URL Bar */}
         <div>

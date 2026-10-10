@@ -39,7 +39,7 @@ const MacDashboardBox = ({ className = "" }) => {
 
   return (
     <div
-      className={`w-full bg-[#F6F7F9] dark:bg-[#121319] text-gray-800 dark:text-gray-100 rounded-[1.5rem] sm:rounded-[2rem] border border-gray-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.12)] overflow-hidden font-sans select-none flex flex-col md:flex-row text-xs transition-all ${className}`}
+      className={`w-full bg-[#F6F7F9] dark:bg-[#121319] text-gray-800 dark:text-gray-100 rounded-xl sm:rounded-2xl border border-gray-200/80 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.12)] overflow-hidden font-sans select-none flex flex-col md:flex-row text-xs transition-all ${className}`}
     >
       {/* Left Sidebar */}
       <div className="w-full md:w-52 lg:w-56 shrink-0 bg-[#FAFAFC] dark:bg-[#161720] border-b md:border-b-0 md:border-r border-gray-200/70 dark:border-white/10 p-3 sm:p-4 flex flex-col justify-between">

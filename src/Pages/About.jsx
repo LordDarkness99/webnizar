@@ -29,8 +29,7 @@ const Header = memo(() => (
     <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
       Behind the Architecture.
     </h2>
-    <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-2xl mx-auto flex items-center justify-center gap-2 font-normal">
-      <Sparkles className="w-4 h-4 text-[#0071E3]" />
+    <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-2xl mx-auto font-normal">
       Bridging foundational data science, machine learning models, and modern software craft.
     </p>
   </div>
@@ -71,7 +70,7 @@ const AboutPage = () => {
 
           {/* Card 1: Developer Profiler & Identity Window (5 Columns) */}
           <div
-            className="lg:col-span-5 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-5 mac-glass rounded-xl sm:rounded-2xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-xl flex flex-col justify-between"
           >
             <MacWindowHeader
               title="DeveloperProfiler.app"
@@ -159,7 +158,7 @@ const AboutPage = () => {
 
           {/* Card 2: Interactive Narrative & Research Studio (7 Columns) */}
           <div
-            className="lg:col-span-7 mac-glass rounded-[2rem] sm:rounded-[2.5rem] border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between"
+            className="lg:col-span-7 mac-glass rounded-xl sm:rounded-2xl border border-black/[0.08] dark:border-white/15 overflow-hidden shadow-xl flex flex-col justify-between"
           >
             <MacWindowHeader
               title="Engineering_Narrative.md"

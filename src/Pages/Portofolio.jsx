@@ -177,8 +177,7 @@ export default function Portofolio() {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-[#f5f5f7]">
             Work, Accreditations & Stack.
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-xl mx-auto flex items-center justify-center gap-2 font-normal">
-            <Sparkles className="w-4 h-4 text-[#0071E3]" />
+          <p className="mt-3 text-sm sm:text-base text-gray-600 dark:text-[#86868b] max-w-xl mx-auto font-normal">
             Curated machine learning models, production web systems, and technical certifications.
           </p>
         </div>
