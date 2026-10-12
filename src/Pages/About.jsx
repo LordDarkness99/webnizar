@@ -317,11 +317,11 @@ const AboutPage = () => {
 
         {/* Middle Bento: 4 High-Impact Metric Widgets */}
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-4">
-          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-[#0071E3]/20 hover:shadow-[0_12px_28px_rgba(0,113,227,0.08)] sm:p-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0071E3]/10 text-[#0071E3]">
+          <div className="about-stat-card group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-[#0071E3]/20 hover:shadow-[0_12px_28px_rgba(0,113,227,0.08)] sm:p-4">
+            <div className="about-stat-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0071E3]/10 text-[#0071E3]">
               <Code className="h-5 w-5" />
             </div>
-            <div className="min-w-0">
+            <div className="about-stat-content min-w-0">
               <div className="mb-1 flex items-center justify-between gap-2">
                 <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#0071E3]">
                   Delivered
@@ -339,11 +339,11 @@ const AboutPage = () => {
             </div>
           </div>
 
-          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-amber-400/30 hover:shadow-[0_12px_28px_rgba(251,191,36,0.10)] sm:p-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
+          <div className="about-stat-card group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-amber-400/30 hover:shadow-[0_12px_28px_rgba(251,191,36,0.10)] sm:p-4">
+            <div className="about-stat-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-500/10 text-amber-500">
               <Award className="h-5 w-5" />
             </div>
-            <div className="min-w-0">
+            <div className="about-stat-content min-w-0">
               <div className="mb-1 flex items-center justify-between gap-2">
                 <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-amber-600">
                   Accredited
@@ -361,11 +361,11 @@ const AboutPage = () => {
             </div>
           </div>
 
-          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-indigo-400/30 hover:shadow-[0_12px_28px_rgba(99,102,241,0.10)] sm:p-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-500">
+          <div className="about-stat-card group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-indigo-400/30 hover:shadow-[0_12px_28px_rgba(99,102,241,0.10)] sm:p-4">
+            <div className="about-stat-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-500">
               <Globe className="h-5 w-5" />
             </div>
-            <div className="min-w-0">
+            <div className="about-stat-content min-w-0">
               <div className="mb-1 flex items-center justify-between gap-2">
                 <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-indigo-600">
                   Experience
@@ -383,11 +383,11 @@ const AboutPage = () => {
             </div>
           </div>
 
-          <div className="group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-emerald-400/30 hover:shadow-[0_12px_28px_rgba(16,185,129,0.10)] sm:p-4">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
+          <div className="about-stat-card group mac-glass-subtle flex items-start gap-3 rounded-2xl p-3 transition-all duration-300 hover:border-emerald-400/30 hover:shadow-[0_12px_28px_rgba(16,185,129,0.10)] sm:p-4">
+            <div className="about-stat-icon flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-500">
               <CheckCircle2 className="h-5 w-5" />
             </div>
-            <div className="min-w-0">
+            <div className="about-stat-content min-w-0">
               <div className="mb-1 flex items-center justify-between gap-2">
                 <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-600">
                   Active

@@ -25,7 +25,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
       </AnimatePresence>
 
       {!showWelcome && (
-        <div className="min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500 overflow-x-hidden w-full max-w-full">
+        <div className="ink-orbit-theme min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500 overflow-x-hidden w-full max-w-full">
           <Navbar />
           <AnimatedBackground />
           <main className="relative z-10 overflow-x-hidden w-full max-w-full">
@@ -48,7 +48,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
                   >
                     Nizar Rama™
                   </a>
-                  . Designed with macOS Glass UI.
+                  . Designed & built with care.
                 </span>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-gray-500 dark:text-[#86868b]">
@@ -74,7 +74,7 @@ const LandingPage = ({ showWelcome, setShowWelcome }) => {
 };
 
 const ProjectPageLayout = () => (
-  <div className="min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500 overflow-x-hidden w-full max-w-full">
+  <div className="ink-orbit-theme min-h-screen text-gray-900 dark:text-[#f5f5f7] font-sans selection:bg-[#0071E3] selection:text-white transition-colors duration-500 overflow-x-hidden w-full max-w-full">
     <Navbar />
     <AnimatedBackground />
     <main className="relative z-10 overflow-x-hidden w-full max-w-full">

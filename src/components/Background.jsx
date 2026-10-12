@@ -46,7 +46,7 @@ const AnimatedBackground = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden transition-colors duration-700">
+    <div className="ink-orbit-background fixed inset-0 pointer-events-none z-0 overflow-hidden transition-colors duration-700">
       {/* Dynamic Aurora Ambient Blobs */}
       <div className="absolute inset-0">
         {/* Blob 1 - Top Left: Blue / Cyan */}

@@ -8,10 +8,7 @@ export const ThemeProvider = ({ children }) => {
     if (savedTheme === "dark" || savedTheme === "light") {
       return savedTheme;
     }
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: light)").matches) {
-      return "light";
-    }
-    return "dark"; // Default to macOS dark glass
+    return "light";
   });
 
   useEffect(() => {

@@ -8,7 +8,6 @@ import {
   Sparkles,
   Terminal,
   Code2,
-  Activity,
   Cpu,
   CheckCircle2,
   Copy,
@@ -18,9 +17,8 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
-import CrowdCanvas from "../components/ui/CrowdCanvas";
+import OrbitVision from "../components/ui/OrbitVision";
 import WhatsAppIcon from "../components/icons/WhatsAppIcon";
-import MacWindowHeader from "../components/MacWindowHeader";
 
 // Constants
 const TYPING_SPEED = 85;
@@ -144,8 +142,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="grid items-center gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="relative flex flex-col justify-between overflow-hidden rounded-xl border border-black/[0.06] bg-white/60 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.06)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111217]/70 sm:p-8">
+        <div className="home-hero-grid grid items-center gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="home-copy-card relative flex flex-col justify-between overflow-hidden rounded-xl border border-black/[0.06] bg-white/60 p-5 shadow-[0_20px_45px_rgba(0,0,0,0.06)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111217]/70 sm:p-8">
             <div className="pointer-events-none absolute right-0 top-0 h-36 w-36 rounded-full bg-blue-500/10 blur-3xl" />
 
             <div className="relative z-10 space-y-6">
@@ -165,14 +163,14 @@ const Home = () => {
                   Systems.
                 </h1>
 
-                <div className="flex h-8 items-center rounded-full border border-black/[0.04] bg-black/[0.02] px-3 py-1.5 dark:border-white/10 dark:bg-white/5">
-                  <span className="mr-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
+                <div className="home-focus flex min-h-8 items-center rounded-full border border-black/[0.04] bg-black/[0.02] px-3 py-1.5 dark:border-white/10 dark:bg-white/5">
+                  <span className="mr-2 shrink-0 whitespace-nowrap text-[10px] font-semibold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500">
                     Focus /
                   </span>
-                  <span className="font-mono-code text-base font-medium text-gray-800 dark:text-gray-200 sm:text-lg">
+                  <span className="min-w-0 break-words font-mono-code text-sm font-medium leading-tight text-gray-800 dark:text-gray-200 sm:text-lg">
                     {roleText}
                   </span>
-                  <span className="ml-1 h-4 w-1.5 animate-pulse bg-[#0071E3]" />
+                  <span className="ml-1 h-4 w-1.5 shrink-0 animate-pulse bg-[#0071E3]" />
                 </div>
               </div>
 
@@ -230,29 +228,8 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="relative mx-auto mt-4 h-[220px] w-full overflow-hidden rounded-xl border border-black/[0.06] bg-white/30 shadow-[0_25px_60px_rgba(0,0,0,0.08)] backdrop-blur-2xl dark:border-white/10 dark:bg-[#111217]/80 sm:h-[280px] lg:mt-0 lg:h-[360px]">
-            <MacWindowHeader
-              title="system.vision"
-              icon={Activity}
-              actions={
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.12em] text-emerald-500">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  Online
-                </span>
-              }
-              className="bg-white/30 dark:bg-black/20"
-            />
-
-            <div className="relative h-[calc(100%-49px)]">
-              <CrowdCanvas src="/CrowdSprite.png" rows={15} cols={7} maxPeeps={60} />
-              <div className="pointer-events-none absolute inset-x-3 top-3 flex items-center justify-between text-[10px] font-medium uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
-                <span>Overview</span>
-                <span className="inline-flex items-center gap-1.5 text-emerald-500">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  Live
-                </span>
-              </div>
-            </div>
+          <div className="home-orbit-frame orbit-vision-frame relative mx-auto mt-4 w-full overflow-hidden border border-black/[0.06] bg-[#111] lg:mt-0">
+            <OrbitVision showInterface={false} />
           </div>
         </div>
       </div>

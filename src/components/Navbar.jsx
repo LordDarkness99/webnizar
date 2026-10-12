@@ -89,7 +89,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 font-sans ${
+      className={`ink-orbit-navbar fixed w-full top-0 z-50 transition-all duration-300 font-sans ${
         isOpen
           ? "bg-white/95 dark:bg-[#09090c]/95 backdrop-blur-3xl border-b border-black/[0.08] dark:border-white/10"
           : scrolled
